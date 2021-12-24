@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     fontFamily: {
       noto: ['Noto Sans Bengali', 'sans-serif'],
-      hanuman: ['Hanuman', 'sans-serif']
+      hanuman: ['Hanuman', 'sans-serif'],
+      nunito: ['Nunito', 'sans-serif']
     },
     textColor: {
       primary: '#254125',

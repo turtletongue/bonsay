@@ -19,4 +19,9 @@
     font-weight: 400;
     src: url('https://fonts.googleapis.com/css2?family=Hanuman:wght@400&display=swap');
   }
+
+  @font-face {
+    font-family: Nunito;
+    src: url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+  }
 }

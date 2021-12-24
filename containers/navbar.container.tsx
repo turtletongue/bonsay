@@ -75,7 +75,7 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
                 </div>
                 <div className='flex-1 flex items-center sm:justify-between w-full'>
                   <div className='hidden sm:block sm:ml-6'>
-                    <div className='flex space-x-8'>
+                    <div className='flex space-x-8 font-nunito'>
                       {navigationState.leftNavigation.map((item) => (
                         <NavbarLink
                           key={item.name}
@@ -92,7 +92,7 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
                     <Logo />
                   </div>
                   <div className='hidden sm:block sm:ml-6'>
-                    <div className='flex space-x-8'>
+                    <div className='flex space-x-8 font-nunito'>
                       {navigationState.rightNavigation.map((item) => (
                         <NavbarLink
                           key={item.name}
