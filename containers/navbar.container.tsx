@@ -88,7 +88,7 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
                       ))}
                     </div>
                   </div>
-                  <div className='m-auto'>
+                  <div className='flex justify-center items-center w-full absolute inset-0'>
                     <Logo />
                   </div>
                   <div className='hidden sm:block sm:ml-6'>
