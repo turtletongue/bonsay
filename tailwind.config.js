@@ -1,5 +1,6 @@
 module.exports = {
   purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
+  plugins: [require('@tailwindcss/forms')],
   theme: {
     fontFamily: {
       noto: ['Noto Sans Bengali', 'sans-serif'],
@@ -8,19 +9,22 @@ module.exports = {
     textColor: {
       primary: '#254125',
       secondary: '#627A52',
+      darkgray: '#596270',
       white: 'white'
     },
     borderColor: {
       primary: '#254125',
       secondary: '#627A52',
-      decoration: '#EFEFEF'
+      decoration: '#EFEFEF',
+      gray: '#D1D5DB'
     },
     backgroundColor: {
       primary: '#254125',
       secondary: '#627A52',
       decoration: '#EFEFEF',
-      lightgray: '#FCFCFC',
-      white: 'white'
+      lightgray: '#FAFAFA',
+      white: 'white',
+      glassgreen: '#E6FFE6'
     },
     letterSpacing: {
       wider: '0.1em',

@@ -4,49 +4,49 @@ import ProductsGrid from './products-grid.container';
 const products = [
   {
     id: 1,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   },
   {
     id: 2,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   },
   {
     id: 3,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   },
   {
     id: 4,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   },
   {
     id: 5,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   },
   {
     id: 6,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   },
   {
     id: 7,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   },
   {
     id: 8,
-    title: 'SLEEPING WARIOR',
+    title: 'MONDAY PINE',
     price: 750,
     imageUrl: '/images/product.jpg'
   }

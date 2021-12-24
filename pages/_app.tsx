@@ -13,15 +13,11 @@ function App({ Component, pageProps }) {
 
   const navigation = {
     leftNavigation: [
-      {
-        name: 'Каталог',
-        href: '/catalog'
-      },
+      { name: 'Каталог', href: '/catalog' },
       { name: 'Категории', href: '/categories' },
       { name: 'О нас', href: '/about' }
     ],
     rightNavigation: [
-      { name: 'Поиск', href: '/search' },
       { name: 'Вход', href: '/sign-in' },
       {
         name: 'Корзина',

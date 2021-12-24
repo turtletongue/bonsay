@@ -1,9 +1,9 @@
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
 import NavbarLink from '../components/navbar-link.component';
 import Logo from '../components/logo.component';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 interface Navigation {
   href: string;
@@ -58,7 +58,7 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
 
   return (
     <>
-      <Disclosure as='nav'>
+      <Disclosure as='nav' className='sticky sm:static top-0 z-10 bg-white'>
         {({ open }) => (
           <>
             <div className='max-w-7xl mx-auto px-2 sm:px-6 lg:px-8'>
@@ -107,7 +107,6 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
                   </div>
                 </div>
               </div>
-              <hr className='border rounded-sm border-decoration' />
             </div>
 
             <Disclosure.Panel className='sm:hidden'>
@@ -127,6 +126,7 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
                   ))}
               </div>
             </Disclosure.Panel>
+            <hr className='border rounded-sm border-decoration' />
           </>
         )}
       </Disclosure>
