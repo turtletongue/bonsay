@@ -16,7 +16,7 @@ const CategoryPreview = () => {
       <div className='flex flex-col justify-between'>
         <div>
           <div className='text-primary text-2xl mb-4'>Фикусы</div>
-          <p className='text-primary'>
+          <p className='text-primary text-justify'>
             Фикус – это разновидность растений, произрастающих в тропиках по
             всему миру. Он невероятно разнообразен, некоторые виды используются
             в качестве домашних растений. Фикус может быть кустарником, лозой
