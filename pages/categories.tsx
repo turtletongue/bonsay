@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import CategoriesGrid from '../containers/categories-grid.container';
 
-export const Catalog = () => {
+export const Categories = () => {
   return (
     <>
       <Head>
@@ -15,4 +15,4 @@ export const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default Categories;
