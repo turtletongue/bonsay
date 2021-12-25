@@ -17,7 +17,7 @@ export const Card = ({ title, price, imageUrl }: CardProps) => {
         </div>
       </div>
       <span className='tracking-wider text-xs my-2'>{title}</span>
-      <hr className='border rounded-sm border-decoration group-hover:border-secondary mx-2' />
+      <hr className='border rounded-sm border-decoration mx-2' />
       <span className='text-sm my-2'>{price.toFixed(2)}₽</span>
     </div>
   );
