@@ -22,7 +22,7 @@ export const MainScreen = ({ title, description, image }: MainScreenProps) => {
         <p className='text-primary my-4 text-center sm:text-justify'>
           {description}
         </p>
-        <Button>ЗАКАЗАТЬ</Button>
+        <Button className='sm:w-32'>ЗАКАЗАТЬ</Button>
       </div>
       <div>
         <Image

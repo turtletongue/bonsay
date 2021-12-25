@@ -1,10 +1,15 @@
+import { ReactNode } from 'react';
+
 interface ButtonProps {
-  children: any;
+  className?: string;
+  children: ReactNode;
 }
 
-export const Button = ({ children }: ButtonProps) => {
+export const Button = ({ className, children }: ButtonProps) => {
   return (
-    <button className='hover:bg-secondary bg-primary mt-6 transition-colors duration-200 easy-out text-white text-xs font-hanuman tracking-wider w-full sm:w-32 h-12'>
+    <button
+      className={`hover:bg-secondary bg-primary mt-6 transition-colors duration-200 easy-out text-white text-xs font-hanuman tracking-wider w-full h-12 ${className}`}
+    >
       {children}
     </button>
   );
