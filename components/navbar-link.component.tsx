@@ -17,7 +17,9 @@ const NavbarLink = (
       <a
         ref={ref}
         onClick={onClick}
-        className={`${isActive ? 'text-primary' : 'text-secondary'} text-base`}
+        className={`${
+          isActive ? 'text-primary' : 'text-secondary'
+        } text-base flex items-center`}
       >
         {children}
       </a>

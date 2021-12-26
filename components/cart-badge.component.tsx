@@ -1,12 +1,8 @@
-interface CartBadgeProps {
-  qty: number;
-}
-
-export const CartBadge = ({ qty }: CartBadgeProps) => {
+export const CartBadge = () => {
   return (
-    <figure className='rounded-full mx-2 px-2 border-secondary border inline-flex items-center justify-center'>
-      {qty}
-    </figure>
+    <div className='flex h-3 w-3 relative justify-center items-center ml-1'>
+      <span className='relative rounded-full bg-secondary w-2 h-2' />
+    </div>
   );
 };
 

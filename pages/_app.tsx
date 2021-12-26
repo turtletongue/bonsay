@@ -22,7 +22,7 @@ function App({ Component, pageProps }) {
       {
         name: 'Корзина',
         href: '/cart',
-        extra: <CartBadge qty={state.productsInCartQty} />
+        extra: <CartBadge />
       }
     ]
   };
