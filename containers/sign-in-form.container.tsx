@@ -6,7 +6,7 @@ import UnderlineLink from '../components/underline-link.component';
 
 export const SignInForm = () => {
   return (
-    <InputGroup className='border-2 border-secondary w-64 sm:w-96 flex justify-center items-center my-16 mx-auto rounded-lg py-4'>
+    <InputGroup className='w-64 sm:w-96 flex justify-center items-center my-16 mx-auto rounded-lg py-4'>
       <div>
         <div className='text-2xl text-center text-primary mb-12 text-nunito'>
           Войдите в аккаунт
