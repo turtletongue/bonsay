@@ -19,11 +19,13 @@ function App({ Component, pageProps }) {
     ],
     rightNavigation: [
       { name: 'Вход', href: '/sign-in' },
+      // { name: 'Профиль', href: '/profile' },
       {
         name: 'Корзина',
         href: '/cart',
         extra: <CartBadge />
       }
+      // { name: 'Выход', href: '/sign-out' }
     ]
   };
 
