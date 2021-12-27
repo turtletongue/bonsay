@@ -15,7 +15,7 @@ export const CartItem = ({ imageUrl, title, price, qty }: CartItemProps) => {
       <div className='overflow-hidden max-w-xs'>
         <Image src={imageUrl} width={222} height={261} alt={title} />
       </div>
-      <div className='flex flex-col h-full p-6 items-center justify-between max-w-xs'>
+      <div className='flex flex-col h-full p-6 items-center justify-center max-w-xs'>
         <div className='flex flex-col items-center'>
           <div className='text-secondary font-medium'>{title}</div>
           <div className='my-4'>{price.toFixed(2)} ₽</div>
