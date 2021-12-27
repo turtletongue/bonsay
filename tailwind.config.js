@@ -26,6 +26,7 @@ module.exports = {
       secondary: '#627A52',
       decoration: '#EFEFEF',
       lightgray: '#FAFAFA',
+      verylightgray: '#FDFDFD',
       white: 'white',
       glassgreen: '#E6FFE6'
     },

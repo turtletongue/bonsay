@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import Button from './button.component';
-import CardButton from './card-button.component';
 
 interface CardProps {
   title: string;
@@ -10,7 +8,7 @@ interface CardProps {
 
 export const Card = ({ title, price, imageUrl }: CardProps) => {
   return (
-    <div className='group flex flex-col overflow-hidden border-2 border-decoration hover:border-secondary text-center font-hanuman text-primary cursor-pointer'>
+    <div className='group bg-white max-w-xs flex flex-col overflow-hidden border-2 border-decoration hover:border-secondary text-center font-hanuman text-primary cursor-pointer'>
       <div className='relative flex justify-center items-center'>
         <div className='overflow-hidden'>
           <Image src={imageUrl} width={222} height={261} alt={title} />
