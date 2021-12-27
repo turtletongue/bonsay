@@ -8,9 +8,6 @@ export const SignUpForm = () => {
   return (
     <InputGroup className='w-64 sm:w-96 flex justify-center items-center my-16 mx-auto rounded-lg py-4'>
       <div>
-        <div className='text-2xl text-center text-primary mb-12 text-nunito'>
-          Создайте аккаунт
-        </div>
         <div className='my-4'>
           <Label htmlFor='login' className='mb-2'>
             Введите ваш email

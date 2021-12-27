@@ -3,10 +3,7 @@ import OrderSummary from './order-summary.container';
 
 export const AddressForm = () => {
   return (
-    <div className='grid grid-cols-1 gap-4 justify-center'>
-      <div className='text-2xl text-center text-primary text-nunito my-3'>
-        Детали заказа
-      </div>
+    <div className='grid grid-cols-1 gap-4 justify-center my-10'>
       <div className='flex flex-col'>
         <div className='text-primary'>
           ФИО <span className='text-red'>*</span>
