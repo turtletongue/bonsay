@@ -11,10 +11,10 @@ export const SignIn = () => {
       </Head>
       <div className='w-full relative'>
         <CartItems />
-        <div className='hidden sm:block absolute right-12 top-12'>
+        <div className='hidden md:block absolute right-12 top-12'>
           <CartTotal total={3000} />
         </div>
-        <div className='flex justify-center mb-4 w-full  sm:hidden'>
+        <div className='flex justify-center mb-4 w-full md:hidden'>
           <CartTotal total={3000} />
         </div>
       </div>

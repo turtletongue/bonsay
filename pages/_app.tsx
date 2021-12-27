@@ -30,11 +30,11 @@ function App({ Component, pageProps }) {
   };
 
   return (
-    <>
+    <div className='min-h-screen'>
       <Navbar navigation={navigation} currentRoute={router.pathname} />
       <Component {...pageProps} />
       <Footer />
-    </>
+    </div>
   );
 }
 

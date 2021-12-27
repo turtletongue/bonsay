@@ -11,6 +11,7 @@ module.exports = {
       primary: '#254125',
       secondary: '#627A52',
       darkgray: '#596270',
+      gray: '#718096',
       white: 'white',
       red: '#D11A2A'
     },
@@ -33,7 +34,11 @@ module.exports = {
       widest: '.25em'
     },
     screens: {
-      sm: '800px'
+      sm: '800px',
+      md: '960px',
+      lg: '1023px',
+      xl: '1279px',
+      '2xl': '1535px'
     },
     minWidth: {
       0: '0',
