@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import Card from '../components/card.component';
+import Card from './card.container';
 
 interface Product {
   id: number;
