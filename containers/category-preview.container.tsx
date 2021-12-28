@@ -4,7 +4,7 @@ import UnderlineLink from '../components/underline-link.component';
 
 const CategoryPreview = () => {
   return (
-    <div className='grid grid-cols-2 gap-6 sm:gap-12'>
+    <div className='grid grid-cols-2 gap-6 sm:gap-12 justify-center'>
       <div>
         <Image
           src='/images/ficuses.jpg'
@@ -27,8 +27,8 @@ const CategoryPreview = () => {
           </p>
         </div>
         <div className='mt-4 sm:mt-0'>
-          <UnderlineLink href='/categories/ficuses'>
-            Посмотреть категорию
+          <UnderlineLink href='/catalog?category=ficuses'>
+            Найти в каталоге
           </UnderlineLink>
         </div>
       </div>
