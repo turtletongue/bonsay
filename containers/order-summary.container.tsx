@@ -5,7 +5,7 @@ export const OrderSummary = () => {
   return (
     <div>
       <Total total={3500} />
-      <Button>ОПЛАТИТЬ</Button>
+      <Button className='mt-6'>ОПЛАТИТЬ</Button>
     </div>
   );
 };

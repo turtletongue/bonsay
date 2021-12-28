@@ -58,7 +58,7 @@ export const Settings = () => {
         <OutlineButton className='mt-2' onClick={togglePasswordChange}>
           {isPasswordChange ? 'ОТМЕНИТЬ' : 'ИЗМЕНИТЬ ПАРОЛЬ'}
         </OutlineButton>
-        <Button>СОХРАНИТЬ</Button>
+        <Button className='mt-6'>СОХРАНИТЬ</Button>
       </div>
     </div>
   );

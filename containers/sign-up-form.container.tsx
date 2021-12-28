@@ -30,7 +30,7 @@ export const SignUpForm = () => {
             className='w-52 sm:w-60'
           />
         </div>
-        <Button className='w-60'>ЗАРЕГИСТРИРОВАТЬСЯ</Button>
+        <Button className='w-60 mt-6'>ЗАРЕГИСТРИРОВАТЬСЯ</Button>
         <div className='flex text-sm mt-4'>
           <span className='mr-2'>Уже есть аккаунт?</span>
           <UnderlineLink href='/sign-in'>Войти</UnderlineLink>

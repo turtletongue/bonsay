@@ -15,7 +15,9 @@ export const CartTotal = ({ total }: CartTotalProps) => {
   return (
     <div className='grid grid-cols-1 w-72'>
       <Total total={total} />
-      <Button onClick={redirectToOrderPlacing}>ОПЛАТИТЬ</Button>
+      <Button className='mt-6' onClick={redirectToOrderPlacing}>
+        ОПЛАТИТЬ
+      </Button>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import Card from '../components/card.component';
 
 interface Product {
@@ -12,6 +14,8 @@ interface ProductsGridProps {
 }
 
 export const ProductsGrid = ({ products }: ProductsGridProps) => {
+  const { push } = useRouter();
+
   return (
     <div className='grid grid-flow-row max-w-6xl auto-cols-fr grid-cols-4 justify-center gap-6'>
       {products.map((product) => {
@@ -21,6 +25,7 @@ export const ProductsGrid = ({ products }: ProductsGridProps) => {
             title={product.title}
             price={product.price}
             imageUrl={product.imageUrl}
+            onClick={() => push(`/catalog/${product.id}`)}
           />
         );
       })}

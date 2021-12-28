@@ -20,7 +20,7 @@ export const SignInForm = () => {
           </Label>
           <Input name='password' type='password' className='w-52 sm:w-60' />
         </div>
-        <Button className='w-60'>ВОЙТИ</Button>
+        <Button className='w-60 mt-6'>ВОЙТИ</Button>
         <div className='flex text-sm mt-4'>
           <span className='mr-2'>Нет аккаунта?</span>
           <UnderlineLink href='/sign-up'>Зарегистрироваться</UnderlineLink>
