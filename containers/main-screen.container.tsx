@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ReactElement } from 'react';
+
 import Button from '../components/button.component';
 
 interface MainScreenProps {

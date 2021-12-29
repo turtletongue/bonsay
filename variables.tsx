@@ -99,3 +99,15 @@ export const aboutConfig = {
     }
   ]
 };
+
+export const DEFAULT_FETCH_LIMIT = 8;
+
+export const DEFAULT_PRODUCT_IMAGE = '/images/product.jpg';
+
+export const DEFAULT_CATEGORY_IMAGE = '/images/pines.jpg';
+
+export const CATEGORY_IMAGE_WIDTH = 550;
+
+export const CATEGORY_IMAGE_HEIGHT = 366.01;
+
+export const ISR_DELAY_IN_SECONDS = 10;

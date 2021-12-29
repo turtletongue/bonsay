@@ -1,13 +1,9 @@
 import { useRouter } from 'next/router';
 
-import Card from './card.container';
+import { Product } from '../store/products/products.declarations';
+import { DEFAULT_PRODUCT_IMAGE } from '../variables';
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  imageUrl: string;
-}
+import Card from './card.container';
 
 interface ProductsGridProps {
   products: Product[];
@@ -22,9 +18,9 @@ export const ProductsGrid = ({ products }: ProductsGridProps) => {
         return (
           <Card
             key={product.id}
-            title={product.title}
+            title={product.name}
             price={product.price}
-            imageUrl={product.imageUrl}
+            imageUrl={product.upload.path || DEFAULT_PRODUCT_IMAGE}
             onClick={() => push(`/catalog/${product.id}`)}
           />
         );
