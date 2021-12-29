@@ -16,6 +16,24 @@ export interface PaginationData {
   $skip: number;
 }
 
+export interface Product {
+  id: Id;
+  name: string;
+  description: string;
+  age: number;
+  height: number;
+  price: number;
+
+  upload?: {
+    path: string;
+  };
+
+  similarProducts?: Product[];
+
+  createdAt: Date | string;
+  updatedAt: Date | string;
+}
+
 export interface Category {
   id: Id;
   name: string;

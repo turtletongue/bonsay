@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { Product } from '../store/products/products.declarations';
+import { Product } from '../declarations';
 import { DEFAULT_PRODUCT_IMAGE } from '../variables';
 
 import Card from './card.container';

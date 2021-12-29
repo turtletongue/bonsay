@@ -6,58 +6,14 @@ import ProductsGrid from './products-grid.container';
 import Filters from './filters.container';
 import FiltersDialog from './filters-dialog.container';
 
-const products = [
-  {
-    id: 1,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  },
-  {
-    id: 2,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  },
-  {
-    id: 3,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  },
-  {
-    id: 4,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  },
-  {
-    id: 5,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  },
-  {
-    id: 6,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  },
-  {
-    id: 7,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  },
-  {
-    id: 8,
-    title: 'MONDAY PINE',
-    price: 750,
-    imageUrl: '/images/product.jpg'
-  }
-];
+import { Product } from '../declarations';
 
-export const CatalogScreen = () => {
+interface CatalogScreenProps {
+  products: Product[];
+  total: number;
+}
+
+export const CatalogScreen = ({ products, total }: CatalogScreenProps) => {
   const { query, pathname } = useRouter();
 
   const { page } = query;
@@ -77,7 +33,7 @@ export const CatalogScreen = () => {
         <Filters className='hidden sm:block' />
         <ProductsGrid products={products} />
       </div>
-      <Pagination pageNumber={pageNumber} total={51} url={pathname} />
+      <Pagination pageNumber={pageNumber} total={total} url={pathname} />
     </div>
   );
 };

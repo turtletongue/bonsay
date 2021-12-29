@@ -6,8 +6,7 @@ import MainScreen from '../containers/main-screen.container';
 import Bestsellers from '../containers/bestsellers.container';
 import CategoriesScreen from '../containers/categories-screen.container';
 
-import { Product } from '../store/products/products.declarations';
-import { Category } from '../declarations';
+import { Category, Product } from '../declarations';
 
 export default function Home({ bestsellers, categories }) {
   return (
