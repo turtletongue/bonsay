@@ -1,23 +1,34 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
+import { useAppDispatch, useAppSelector } from '../hooks';
+import {
+  fetchProducts,
+  selectIsLoading,
+  selectProducts,
+  selectTotal
+} from '../store/products/products.slice';
 import Search from '../components/search.component';
 import Pagination from '../components/pagination.component';
 import ProductsGrid from './products-grid.container';
 import Filters from './filters.container';
 import FiltersDialog from './filters-dialog.container';
 
-import { Product } from '../declarations';
+export const CatalogScreen = () => {
+  const dispatch = useAppDispatch();
 
-interface CatalogScreenProps {
-  products: Product[];
-  total: number;
-}
+  const isLoading = useAppSelector(selectIsLoading);
+  const total = useAppSelector(selectTotal);
+  const products = useAppSelector(selectProducts);
 
-export const CatalogScreen = ({ products, total }: CatalogScreenProps) => {
   const { query, pathname } = useRouter();
 
   const { page } = query;
   const pageNumber = +page || 1;
+
+  useEffect(() => {
+    dispatch(fetchProducts(pageNumber));
+  }, [dispatch, pageNumber]);
 
   return (
     <div className='flex flex-col items-center w-full my-5'>

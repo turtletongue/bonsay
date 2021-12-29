@@ -1,12 +1,4 @@
-import { Id } from '../../declarations';
-
-export interface User {
-  id: Id;
-  email: string;
-
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { User } from '../../declarations';
 
 export interface UserState {
   user?: User;

@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import initialState from './core.initial-state';
-import { User } from './core.declarations';
 import { RootState } from '..';
+import { User } from '../../declarations';
 
 export const userSlice = createSlice({
   name: 'core',

@@ -46,3 +46,11 @@ export interface Category {
   createdAt: Date | string;
   updatedAt: Date | string;
 }
+
+export interface User {
+  id: Id;
+  email: string;
+
+  createdAt: Date;
+  updatedAt: Date;
+}
