@@ -1,60 +1,21 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Disclosure, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
+import { useAppSelector } from '../hooks';
+import { selectIsAuthenticated } from '../store/core/core.slice';
+import { anonymousNavigation, authenticatedNavigation } from '../variables';
 import NavbarLink from '../components/navbar-link.component';
 import Logo from '../components/logo.component';
 
-interface Navigation {
-  href: string;
-  name: string;
-  current?: boolean;
-  extra?: any;
-}
+export const Navbar = () => {
+  const { pathname } = useRouter();
 
-interface NavigationState {
-  leftNavigation: Navigation[];
-  rightNavigation: Navigation[];
-}
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
-interface NavbarProps {
-  navigation: NavigationState;
-  currentRoute: string;
-}
-
-const setActiveLink = (
-  setNavigationState: Dispatch<SetStateAction<NavigationState>>,
-  name: string
-) => {
-  return () => {
-    setNavigationState((prevState) => {
-      return {
-        leftNavigation: prevState.leftNavigation.map((navigationData) => ({
-          ...navigationData,
-          current: navigationData.name === name
-        })),
-        rightNavigation: prevState.rightNavigation.map((navigationData) => ({
-          ...navigationData,
-          current: navigationData.name === name
-        }))
-      };
-    });
-  };
-};
-
-export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
-  const [navigationState, setNavigationState] = useState({
-    leftNavigation: navigation.leftNavigation,
-    rightNavigation: navigation.rightNavigation
-  });
-
-  const currentName = Object.values(navigation)
-    .flat(1)
-    .find((navigationData) => navigationData.href === currentRoute)?.name;
-
-  useEffect(() => {
-    setActiveLink(setNavigationState, currentName)();
-  }, [currentName, setNavigationState]);
+  const navigation = isAuthenticated
+    ? authenticatedNavigation
+    : anonymousNavigation;
 
   return (
     <>
@@ -76,11 +37,11 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
                 <div className='flex-1 flex items-center sm:justify-between w-full'>
                   <div className='hidden sm:block sm:ml-6 z-20'>
                     <div className='flex space-x-8 font-nunito'>
-                      {navigationState.leftNavigation.map((item) => (
+                      {navigation.leftNavigation.map((item) => (
                         <NavbarLink
                           key={item.name}
                           href={item.href}
-                          isActive={item.current}
+                          isActive={item.href === pathname}
                         >
                           {item.name}
                           {item.extra}
@@ -93,11 +54,11 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
                   </div>
                   <div className='hidden sm:block sm:ml-6 z-20'>
                     <div className='flex space-x-8 font-nunito'>
-                      {navigationState.rightNavigation.map((item) => (
+                      {navigation.rightNavigation.map((item) => (
                         <NavbarLink
                           key={item.name}
                           href={item.href}
-                          isActive={item.current}
+                          isActive={item.href === pathname}
                         >
                           {item.name}
                           {item.extra}
@@ -120,14 +81,14 @@ export const Navbar = ({ navigation, currentRoute }: NavbarProps) => {
             >
               <Disclosure.Panel className='sm:hidden z-20'>
                 <div className='px-2 pt-2 pb-3 space-y-1 w-full flex flex-col bg-white absolute'>
-                  {Object.values(navigationState)
+                  {Object.values(navigation)
                     .flat(1)
                     .map((item) => (
                       <Disclosure.Button
                         key={item.name}
                         as={NavbarLink}
                         href={item.href}
-                        isActive={item.current}
+                        isActive={item.href === pathname}
                       >
                         {item.name}
                         {item.extra}

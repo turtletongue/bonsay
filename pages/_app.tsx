@@ -1,40 +1,21 @@
-import { useRouter } from 'next/dist/client/router';
-import { useState } from 'react';
+import { Provider } from 'react-redux';
+
+import { store } from '../store';
 
 import Navbar from '../containers/navbar.container';
-import CartBadge from '../components/cart-badge.component';
-
-import '../styles/globals.css';
 import Footer from '../containers/footer.container';
 
+import '../styles/globals.css';
+
 function App({ Component, pageProps }) {
-  const router = useRouter();
-  const [state, setState] = useState({ productsInCartQty: 0 });
-
-  const navigation = {
-    leftNavigation: [
-      { name: 'Каталог', href: '/catalog' },
-      { name: 'Категории', href: '/categories' },
-      { name: 'О нас', href: '/about' }
-    ],
-    rightNavigation: [
-      { name: 'Вход', href: '/sign-in' },
-      // { name: 'Профиль', href: '/profile' },
-      {
-        name: 'Корзина',
-        href: '/cart',
-        extra: <CartBadge />
-      }
-      // { name: 'Выход', href: '/sign-out' }
-    ]
-  };
-
   return (
-    <div className='min-h-screen'>
-      <Navbar navigation={navigation} currentRoute={router.pathname} />
-      <Component {...pageProps} />
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <div className='min-h-screen'>
+        <Navbar />
+        <Component {...pageProps} />
+        <Footer />
+      </div>
+    </Provider>
   );
 }
 

@@ -1,3 +1,39 @@
+import CartBadge from './components/cart-badge.component';
+import { Navigation } from './declarations';
+
+export const anonymousNavigation: Navigation = {
+  leftNavigation: [
+    { name: 'Каталог', href: '/catalog' },
+    { name: 'Категории', href: '/categories' },
+    { name: 'О нас', href: '/about' }
+  ],
+  rightNavigation: [
+    { name: 'Вход', href: '/sign-in' },
+    {
+      name: 'Корзина',
+      href: '/cart',
+      extra: <CartBadge />
+    }
+  ]
+};
+
+export const authenticatedNavigation: Navigation = {
+  leftNavigation: [
+    { name: 'Каталог', href: '/catalog' },
+    { name: 'Категории', href: '/categories' },
+    { name: 'О нас', href: '/about' }
+  ],
+  rightNavigation: [
+    { name: 'Профиль', href: '/profile' },
+    {
+      name: 'Корзина',
+      href: '/cart',
+      extra: <CartBadge />
+    },
+    { name: 'Выход', href: '/sign-out' }
+  ]
+};
+
 export const mainScreenConfig = {
   title: (
     <>
