@@ -2,11 +2,13 @@ import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 
 import coreReducer from './core/core.slice';
 import productsReducer from './products/products.slice';
+import categoriesReducer from './categories/categories.slice';
 
 export const store = configureStore({
   reducer: {
     core: coreReducer,
-    products: productsReducer
+    products: productsReducer,
+    categories: categoriesReducer
   }
 });
 

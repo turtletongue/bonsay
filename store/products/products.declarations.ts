@@ -1,8 +1,29 @@
-import { Product } from '../../declarations';
+import { Id, Product } from '../../declarations';
+
+interface ProductsFilters {
+  price: {
+    min: number;
+    max: number;
+  };
+  age: {
+    min: number;
+    max: number;
+  };
+  categories: {
+    [key: Id]: true;
+  };
+  search: string;
+}
 
 export interface ProductsState {
   total: number;
   data: Product[];
   loading: 'idle' | 'pending';
   error?: string;
+  filters: ProductsFilters;
 }
+
+export type FetchProductsParams = {
+  page: number;
+  filters: ProductsFilters;
+};

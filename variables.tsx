@@ -111,3 +111,11 @@ export const CATEGORY_IMAGE_WIDTH = 550;
 export const CATEGORY_IMAGE_HEIGHT = 366.01;
 
 export const ISR_DELAY_IN_SECONDS = 10;
+
+export const DEFAULT_PRICE_MINIMUM = 0;
+
+export const DEFAULT_PRICE_MAXIMUM = 1_000_000;
+
+export const DEFAULT_AGE_MINIMUM = 0;
+
+export const DEFAULT_AGE_MAXIMUM = 100;

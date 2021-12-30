@@ -2,12 +2,13 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import initialState from './products.initial-state';
 
-import { Product } from '../../declarations';
+import { Id, Product } from '../../declarations';
+import { FetchProductsParams } from './products.declarations';
 import { RootState } from '..';
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async (page: number) => {
+  async (params: FetchProductsParams) => {
     const products: Product[] = [
       {
         id: 1,
@@ -23,7 +24,7 @@ export const fetchProducts = createAsyncThunk(
       {
         id: 2,
         name: 'MONDAY PINE',
-        price: 750,
+        price: 750000,
         description: '',
         createdAt: '2020-12-20',
         updatedAt: '2020-12-20',
@@ -99,14 +100,39 @@ export const fetchProducts = createAsyncThunk(
       }
     ]; //server fetching
 
-    return { total: 51, products };
+    return {
+      total: 51,
+      products: products
+    };
   }
 );
 
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setMinimumPrice: (state, action: PayloadAction<number>) => {
+      state.filters.price.min = action.payload;
+    },
+    setMaximumPrice: (state, action: PayloadAction<number>) => {
+      state.filters.price.max = action.payload;
+    },
+    setMinimumAge: (state, action: PayloadAction<number>) => {
+      state.filters.age.min = action.payload;
+    },
+    setMaximumAge: (state, action: PayloadAction<number>) => {
+      state.filters.age.max = action.payload;
+    },
+    addCategory: (state, action: PayloadAction<Id>) => {
+      state.filters.categories[action.payload] = true;
+    },
+    removeCategory: (state, action: PayloadAction<Id>) => {
+      delete state.filters.categories[action.payload];
+    },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.filters.search = action.payload;
+    }
+  },
   extraReducers: {
     [fetchProducts.pending as any]: (state) => {
       state.loading = 'pending';
@@ -129,9 +155,31 @@ export const productsSlice = createSlice({
   }
 });
 
+export const {
+  setMinimumPrice,
+  setMaximumPrice,
+  setMinimumAge,
+  setMaximumAge,
+  addCategory,
+  removeCategory,
+  setSearch
+} = productsSlice.actions;
+
 export const selectIsLoading = (state: RootState) =>
   state.products.loading === 'pending';
 export const selectProducts = (state: RootState) => state.products.data;
 export const selectTotal = (state: RootState) => state.products.total;
+export const selectMinimumPrice = (state: RootState) =>
+  state.products.filters.price.min;
+export const selectMaximumPrice = (state: RootState) =>
+  state.products.filters.price.max;
+export const selectMinimumAge = (state: RootState) =>
+  state.products.filters.age.min;
+export const selectMaximumAge = (state: RootState) =>
+  state.products.filters.age.max;
+export const selectFilterCategories = (state: RootState) =>
+  Object.keys(state.products.filters.categories);
+export const selectSearch = (state: RootState) => state.products.filters.search;
+export const selectFilters = (state: RootState) => state.products.filters;
 
 export default productsSlice.reducer;

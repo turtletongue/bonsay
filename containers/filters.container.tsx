@@ -1,3 +1,27 @@
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import {
+  addCategory,
+  selectFilterCategories,
+  selectMaximumAge,
+  selectMaximumPrice,
+  selectMinimumAge,
+  selectMinimumPrice,
+  setMaximumAge,
+  setMaximumPrice,
+  setMinimumAge,
+  setMinimumPrice
+} from '../store/products/products.slice';
+import {
+  fetchCategories,
+  selectCategories
+} from '../store/categories/categories.slice';
+import {
+  DEFAULT_AGE_MAXIMUM,
+  DEFAULT_AGE_MINIMUM,
+  DEFAULT_PRICE_MAXIMUM,
+  DEFAULT_PRICE_MINIMUM
+} from '../variables';
 import RangeFilter from './range-filter.container';
 import SelectionFilter from './selection-filter.container';
 
@@ -6,13 +30,106 @@ interface FiltersProps {
 }
 
 export const Filters = ({ className }: FiltersProps) => {
+  const dispatch = useAppDispatch();
+
+  const categories = useAppSelector(selectCategories);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  useEffect(() => {
+    categories.forEach((category) => dispatch(addCategory(category.id)));
+  }, [dispatch, categories]);
+
+  const minimumPrice = useAppSelector(selectMinimumPrice);
+  const maximumPrice = useAppSelector(selectMaximumPrice);
+
+  const changeMinimumPrice = (event) => {
+    const value = +event.target.value;
+
+    if (value > DEFAULT_PRICE_MAXIMUM) {
+      dispatch(setMinimumPrice(DEFAULT_PRICE_MAXIMUM));
+    } else if (value < DEFAULT_PRICE_MINIMUM) {
+      dispatch(setMinimumPrice(DEFAULT_PRICE_MINIMUM));
+    } else if (value > maximumPrice) {
+      dispatch(setMinimumPrice(value));
+      dispatch(setMaximumPrice(value));
+    } else {
+      dispatch(setMinimumPrice(value));
+    }
+  };
+
+  const changeMaximumPrice = (event) => {
+    const value = +event.target.value;
+
+    if (value > DEFAULT_PRICE_MAXIMUM) {
+      dispatch(setMaximumPrice(DEFAULT_PRICE_MAXIMUM));
+    } else if (value < DEFAULT_PRICE_MINIMUM) {
+      dispatch(setMaximumPrice(DEFAULT_PRICE_MINIMUM));
+    } else if (value < minimumPrice) {
+      dispatch(setMaximumPrice(value));
+      dispatch(setMinimumPrice(value));
+    } else {
+      dispatch(setMaximumPrice(value));
+    }
+  };
+
+  const minimumAge = useAppSelector(selectMinimumAge);
+  const maximumAge = useAppSelector(selectMaximumAge);
+
+  const changeMinimumAge = (event) => {
+    const value = +event.target.value;
+
+    if (value > DEFAULT_AGE_MAXIMUM) {
+      dispatch(setMinimumAge(DEFAULT_AGE_MAXIMUM));
+    } else if (value < DEFAULT_AGE_MINIMUM) {
+      dispatch(setMinimumAge(DEFAULT_AGE_MINIMUM));
+    } else if (value > maximumAge) {
+      dispatch(setMinimumAge(value));
+      dispatch(setMaximumAge(value));
+    } else {
+      dispatch(setMinimumAge(value));
+    }
+  };
+
+  const changeMaximumAge = (event) => {
+    const value = +event.target.value;
+
+    if (value > DEFAULT_AGE_MAXIMUM) {
+      dispatch(setMaximumAge(DEFAULT_AGE_MAXIMUM));
+    } else if (value < DEFAULT_AGE_MINIMUM) {
+      dispatch(setMaximumAge(DEFAULT_AGE_MINIMUM));
+    } else if (value < minimumAge) {
+      dispatch(setMinimumAge(value));
+      dispatch(setMaximumAge(value));
+    } else {
+      dispatch(setMaximumAge(value));
+    }
+  };
+
+  const selectedCategories = useAppSelector(selectFilterCategories);
+
   return (
     <div className={className}>
-      <RangeFilter title='Цена' />
-      <RangeFilter title='Возраст' max={100} />
+      <RangeFilter
+        title='Цена'
+        min={minimumPrice}
+        max={maximumPrice}
+        onMinChange={changeMinimumPrice}
+        onMaxChange={changeMaximumPrice}
+      />
+      <RangeFilter
+        title='Возраст'
+        min={minimumAge}
+        max={maximumAge}
+        onMinChange={changeMinimumAge}
+        onMaxChange={changeMaximumAge}
+      />
       <SelectionFilter
         title='Категория'
-        values={['Сосна', 'Яблоня', 'Можжевельник']}
+        values={categories}
+        selected={selectedCategories}
       />
     </div>
   );

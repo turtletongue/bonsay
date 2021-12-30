@@ -1,17 +1,21 @@
-import { ReactNode } from 'react';
+import { ChangeEventHandler, ReactNode } from 'react';
 
 interface NumberInputProps {
   leftItem?: ReactNode;
   placeholder?: string;
+  value?: number;
   min?: number;
   max?: number;
+  onChange?: ChangeEventHandler;
 }
 
 export const NumberInput = ({
   placeholder,
   leftItem,
+  value,
   min = 0,
-  max = 1000000
+  max = 1000000,
+  onChange
 }: NumberInputProps) => {
   return (
     <>
@@ -23,8 +27,10 @@ export const NumberInput = ({
           type='number'
           className='bg-gray border border-gray text-gray text-sm rounded-lg focus:border-secondary focus:ring-green-700 block w-full pl-10 p-2.5'
           placeholder={placeholder}
+          value={value}
           min={min}
           max={max}
+          onChange={onChange}
         />
       </div>
     </>

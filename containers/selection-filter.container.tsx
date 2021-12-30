@@ -1,14 +1,33 @@
 import { Disclosure, Transition } from '@headlessui/react';
 import { PlusIcon, MinusIcon } from '@heroicons/react/solid';
 
+import { useAppDispatch } from '../hooks';
+import { addCategory, removeCategory } from '../store/products/products.slice';
 import CheckInput from '../components/check-input.component';
+
+import { Category, Id } from '../declarations';
 
 interface SelectionFilterProps {
   title: string;
-  values: string[];
+  values: Category[];
+  selected: Id[];
 }
 
-export const SelectionFilter = ({ title, values }: SelectionFilterProps) => {
+export const SelectionFilter = ({
+  title,
+  values,
+  selected
+}: SelectionFilterProps) => {
+  const dispatch = useAppDispatch();
+
+  const changeIsSelected = (categoryId: Id, event) => {
+    if (event.target.checked) {
+      dispatch(addCategory(categoryId));
+    } else {
+      dispatch(removeCategory(categoryId));
+    }
+  };
+
   return (
     <Disclosure as='div' defaultOpen={true}>
       {({ open }) => (
@@ -37,11 +56,13 @@ export const SelectionFilter = ({ title, values }: SelectionFilterProps) => {
             <div className='pt-6'>
               <div className='space-y-6'>
                 <div className='flex flex-col'>
-                  {values.map((value, index) => (
+                  {values.map((value) => (
                     <CheckInput
-                      id={index.toString()}
-                      key={index}
-                      title={value}
+                      id={value.id.toString()}
+                      key={value.id}
+                      title={value.name}
+                      selected={selected.includes(value.id.toString())}
+                      onChange={(event) => changeIsSelected(value.id, event)}
                     />
                   ))}
                 </div>

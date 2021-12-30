@@ -6,7 +6,10 @@ import {
   fetchProducts,
   selectIsLoading,
   selectProducts,
-  selectTotal
+  selectTotal,
+  selectFilters,
+  selectSearch,
+  setSearch
 } from '../store/products/products.slice';
 import Search from '../components/search.component';
 import Pagination from '../components/pagination.component';
@@ -20,6 +23,8 @@ export const CatalogScreen = () => {
   const isLoading = useAppSelector(selectIsLoading);
   const total = useAppSelector(selectTotal);
   const products = useAppSelector(selectProducts);
+  const filters = useAppSelector(selectFilters);
+  const search = useAppSelector(selectSearch);
 
   const { query, pathname } = useRouter();
 
@@ -27,14 +32,18 @@ export const CatalogScreen = () => {
   const pageNumber = +page || 1;
 
   useEffect(() => {
-    dispatch(fetchProducts(pageNumber));
-  }, [dispatch, pageNumber]);
+    dispatch(fetchProducts({ page: pageNumber, filters }));
+  }, [dispatch, pageNumber, filters]);
+
+  const changeSearchValue = (event) => {
+    dispatch(setSearch(event.target.value));
+  };
 
   return (
     <div className='flex flex-col items-center w-full my-5'>
       <div className='flex flex-row justify-center items-center w-full mb-3'>
         <div className='ml-6 sm:ml-0'>
-          <Search />
+          <Search value={search} onChange={changeSearchValue} />
         </div>
         <div className='block sm:hidden mx-4'>
           <FiltersDialog />

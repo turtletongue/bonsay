@@ -1,17 +1,22 @@
 import { Disclosure, Transition } from '@headlessui/react';
 import { PlusIcon, MinusIcon } from '@heroicons/react/solid';
+import { ChangeEventHandler } from 'react';
 import NumberInput from '../components/number-input.component';
 
 interface RangeFilterProps {
   title: string;
   min?: number;
   max?: number;
+  onMinChange?: ChangeEventHandler;
+  onMaxChange?: ChangeEventHandler;
 }
 
 export const RangeFilter = ({
   title,
   min = 0,
-  max = 100000
+  max = 100000,
+  onMinChange,
+  onMaxChange
 }: RangeFilterProps) => {
   return (
     <Disclosure as='div' defaultOpen={true}>
@@ -44,14 +49,14 @@ export const RangeFilter = ({
                   <NumberInput
                     leftItem='от'
                     placeholder={min.toString()}
-                    min={min}
-                    max={max}
+                    value={min}
+                    onChange={onMinChange}
                   />
                   <NumberInput
                     leftItem='до'
                     placeholder={max.toString()}
-                    min={min}
-                    max={max}
+                    value={max}
+                    onChange={onMaxChange}
                   />
                 </div>
               </div>
