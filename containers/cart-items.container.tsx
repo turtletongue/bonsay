@@ -1,20 +1,18 @@
 import CartItem from './cart-item.containter';
+import { DEFAULT_PRODUCT_IMAGE } from '../variables';
 
-export const CartItems = () => {
+import { CartItem as CartItemData } from '../declarations';
+
+interface CartItemsProps {
+  items: CartItemData[];
+}
+
+export const CartItems = ({ items }: CartItemsProps) => {
   return (
     <div className='py-4'>
-      <CartItem
-        imageUrl={'/images/product.jpg'}
-        title='MONDAY PINE'
-        price={750}
-        qty={3}
-      />
-      <CartItem
-        imageUrl={'/images/product.jpg'}
-        title='MONDAY PINE'
-        price={750}
-        qty={1}
-      />
+      {items.map((item) => (
+        <CartItem key={item.product.id} product={item.product} qty={item.qty} />
+      ))}
     </div>
   );
 };

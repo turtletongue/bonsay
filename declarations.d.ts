@@ -16,6 +16,11 @@ export interface PaginationData {
   $skip: number;
 }
 
+export interface Upload {
+  id?: Id;
+  path: string;
+}
+
 export interface Product {
   id: Id;
   name: string;
@@ -24,9 +29,9 @@ export interface Product {
   height: number;
   price: number;
 
-  upload?: {
-    path: string;
-  };
+  upload?: Upload;
+
+  photos?: Upload[];
 
   similarProducts?: Product[];
 
@@ -39,9 +44,7 @@ export interface Category {
   name: string;
   description: string;
 
-  upload?: {
-    path: string;
-  };
+  upload?: Upload;
 
   createdAt: Date | string;
   updatedAt: Date | string;
@@ -58,4 +61,9 @@ export interface User {
 export interface SortType {
   id?: Id;
   name: string;
+}
+
+export interface CartItem {
+  product: Product;
+  qty: number;
 }

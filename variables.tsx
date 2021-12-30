@@ -1,7 +1,9 @@
 import CartBadge from './components/cart-badge.component';
 import { Navigation, SortType } from './declarations';
 
-export const anonymousNavigation: Navigation = {
+export const anonymousNavigation: (count: number) => Navigation = (
+  cartItemsCount: number
+) => ({
   leftNavigation: [
     { name: 'Каталог', href: '/catalog' },
     { name: 'Категории', href: '/categories' },
@@ -12,12 +14,14 @@ export const anonymousNavigation: Navigation = {
     {
       name: 'Корзина',
       href: '/cart',
-      extra: <CartBadge />
+      extra: cartItemsCount > 0 && <CartBadge />
     }
   ]
-};
+});
 
-export const authenticatedNavigation: Navigation = {
+export const authenticatedNavigation: (count: number) => Navigation = (
+  cartItemsCount: number
+) => ({
   leftNavigation: [
     { name: 'Каталог', href: '/catalog' },
     { name: 'Категории', href: '/categories' },
@@ -28,11 +32,11 @@ export const authenticatedNavigation: Navigation = {
     {
       name: 'Корзина',
       href: '/cart',
-      extra: <CartBadge />
+      extra: cartItemsCount > 0 && <CartBadge />
     },
     { name: 'Выход', href: '/sign-out' }
   ]
-};
+});
 
 export const mainScreenConfig = {
   title: (
@@ -134,3 +138,5 @@ export const sortTypes: SortType[] = [
     name: 'Убывание цены'
   }
 ];
+
+export const DEFAULT_IMAGE = { id: 0, path: DEFAULT_PRODUCT_IMAGE };

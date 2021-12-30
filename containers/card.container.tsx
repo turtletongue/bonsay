@@ -4,13 +4,22 @@ interface CardProps {
   title: string;
   price: number;
   imageUrl: string;
+  isInCart?: boolean;
   onClick?: () => void;
 }
 
-export const Card = ({ title, price, imageUrl, onClick }: CardProps) => {
+export const Card = ({
+  title,
+  price,
+  imageUrl,
+  isInCart,
+  onClick
+}: CardProps) => {
   return (
     <div
-      className='group bg-white max-w-xs flex flex-col overflow-hidden border-2 border-decoration hover:border-secondary transition-colors text-center font-hanuman text-primary cursor-pointer'
+      className={`group bg-white max-w-xs flex flex-col overflow-hidden border-2 ${
+        isInCart ? 'border-secondary' : 'border-decoration'
+      } hover:border-secondary transition-colors text-center font-hanuman text-primary cursor-pointer`}
       onClick={onClick}
     >
       <div className='relative flex justify-center items-center'>

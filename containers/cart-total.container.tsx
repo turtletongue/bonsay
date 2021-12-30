@@ -13,7 +13,7 @@ export const CartTotal = ({ total }: CartTotalProps) => {
   const redirectToOrderPlacing = () => push('/order-placing');
 
   return (
-    <div className='grid grid-cols-1 w-72'>
+    <div className='grid grid-cols-1 w-72 select-none'>
       <Total total={total} />
       <Button className='mt-6' onClick={redirectToOrderPlacing}>
         ОПЛАТИТЬ

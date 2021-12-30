@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { store } from '../store';
+import { store, persistor } from '../store';
 
 import Navbar from '../containers/navbar.container';
 import Footer from '../containers/footer.container';
@@ -10,11 +11,13 @@ import '../styles/globals.css';
 function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <div className='min-h-screen'>
-        <Navbar />
-        <Component {...pageProps} />
-        <Footer />
-      </div>
+      <PersistGate loading={null} persistor={persistor}>
+        <div className='min-h-screen'>
+          <Navbar />
+          <Component {...pageProps} />
+          <Footer />
+        </div>
+      </PersistGate>
     </Provider>
   );
 }

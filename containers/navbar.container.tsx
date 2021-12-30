@@ -3,6 +3,7 @@ import { Disclosure } from '@headlessui/react';
 
 import { useAppSelector } from '../hooks';
 import { selectIsAuthenticated } from '../store/core/core.slice';
+import { selectCartItemsCount } from '../store/cart/cart.slice';
 import { anonymousNavigation, authenticatedNavigation } from '../variables';
 import Navigation from './navigation.container';
 import NavbarButton from '../components/navbar-button.component';
@@ -13,11 +14,15 @@ import DecorationLine from '../components/decoration-line.component';
 export const Navbar = () => {
   const { pathname } = useRouter();
 
+  const cartItemsCount = useAppSelector(selectCartItemsCount);
+
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
-  const navigation = isAuthenticated
+  const getNavigation = isAuthenticated
     ? authenticatedNavigation
     : anonymousNavigation;
+
+  const navigation = getNavigation(cartItemsCount);
 
   return (
     <>
