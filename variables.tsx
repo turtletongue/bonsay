@@ -1,5 +1,5 @@
 import CartBadge from './components/cart-badge.component';
-import { Navigation } from './declarations';
+import { Navigation, SortType } from './declarations';
 
 export const anonymousNavigation: Navigation = {
   leftNavigation: [
@@ -119,3 +119,34 @@ export const DEFAULT_PRICE_MAXIMUM = 1_000_000;
 export const DEFAULT_AGE_MINIMUM = 0;
 
 export const DEFAULT_AGE_MAXIMUM = 100;
+
+export const sortTypes: SortType[] = [
+  {
+    id: '',
+    name: 'По умолчанию'
+  },
+  {
+    id: 2,
+    name: 'Дорогие'
+  },
+  {
+    id: 3,
+    name: 'Дешевые'
+  },
+  {
+    id: 4,
+    name: 'Старые'
+  },
+  {
+    id: 5,
+    name: 'Молодые'
+  },
+  {
+    id: 6,
+    name: 'Высокие'
+  },
+  {
+    id: 7,
+    name: 'Низкие'
+  }
+];

@@ -54,3 +54,8 @@ export interface User {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface SortType {
+  id?: Id;
+  name: string;
+}

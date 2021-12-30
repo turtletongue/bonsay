@@ -131,6 +131,9 @@ export const productsSlice = createSlice({
     },
     setSearch: (state, action: PayloadAction<string>) => {
       state.filters.search = action.payload;
+    },
+    setSortId: (state, action: PayloadAction<Id | undefined>) => {
+      state.filters.sortId = action.payload;
     }
   },
   extraReducers: {
@@ -162,7 +165,8 @@ export const {
   setMaximumAge,
   addCategory,
   removeCategory,
-  setSearch
+  setSearch,
+  setSortId
 } = productsSlice.actions;
 
 export const selectIsLoading = (state: RootState) =>
@@ -180,6 +184,7 @@ export const selectMaximumAge = (state: RootState) =>
 export const selectFilterCategories = (state: RootState) =>
   Object.keys(state.products.filters.categories);
 export const selectSearch = (state: RootState) => state.products.filters.search;
+export const selectSortId = (state: RootState) => state.products.filters.sortId;
 export const selectFilters = (state: RootState) => state.products.filters;
 
 export default productsSlice.reducer;

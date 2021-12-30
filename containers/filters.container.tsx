@@ -7,10 +7,12 @@ import {
   selectMaximumPrice,
   selectMinimumAge,
   selectMinimumPrice,
+  selectSortId,
   setMaximumAge,
   setMaximumPrice,
   setMinimumAge,
-  setMinimumPrice
+  setMinimumPrice,
+  setSortId
 } from '../store/products/products.slice';
 import {
   fetchCategories,
@@ -20,10 +22,12 @@ import {
   DEFAULT_AGE_MAXIMUM,
   DEFAULT_AGE_MINIMUM,
   DEFAULT_PRICE_MAXIMUM,
-  DEFAULT_PRICE_MINIMUM
+  DEFAULT_PRICE_MINIMUM,
+  sortTypes
 } from '../variables';
 import RangeFilter from './range-filter.container';
 import SelectionFilter from './selection-filter.container';
+import RadioFilter from './radio-filter.container';
 
 interface FiltersProps {
   className?: string;
@@ -110,8 +114,22 @@ export const Filters = ({ className }: FiltersProps) => {
 
   const selectedCategories = useAppSelector(selectFilterCategories);
 
+  const selectedSortId = useAppSelector(selectSortId);
+
+  const changeSortId = (event) => {
+    if (event.target.checked) {
+      dispatch(setSortId(event.target.value));
+    }
+  };
+
   return (
     <div className={className}>
+      <RadioFilter
+        title='Сортировка'
+        values={sortTypes}
+        selectedId={selectedSortId}
+        onChange={changeSortId}
+      />
       <RangeFilter
         title='Цена'
         min={minimumPrice}
