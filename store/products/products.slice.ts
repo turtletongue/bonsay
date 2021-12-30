@@ -129,6 +129,11 @@ export const productsSlice = createSlice({
     removeCategory: (state, action: PayloadAction<Id>) => {
       delete state.filters.categories[action.payload];
     },
+    sortByOneCategory: (state, action: PayloadAction<Id>) => {
+      state.filters.categories = {
+        [action.payload.toString()]: true
+      };
+    },
     setSearch: (state, action: PayloadAction<string>) => {
       state.filters.search = action.payload;
     },
@@ -165,6 +170,7 @@ export const {
   setMaximumAge,
   addCategory,
   removeCategory,
+  sortByOneCategory,
   setSearch,
   setSortId
 } = productsSlice.actions;

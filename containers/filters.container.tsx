@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   addCategory,
@@ -12,7 +14,8 @@ import {
   setMaximumPrice,
   setMinimumAge,
   setMinimumPrice,
-  setSortId
+  setSortId,
+  sortByOneCategory
 } from '../store/products/products.slice';
 import {
   fetchCategories,
@@ -34,6 +37,10 @@ interface FiltersProps {
 }
 
 export const Filters = ({ className }: FiltersProps) => {
+  const {
+    query: { category }
+  } = useRouter();
+
   const dispatch = useAppDispatch();
 
   const categories = useAppSelector(selectCategories);
@@ -43,8 +50,16 @@ export const Filters = ({ className }: FiltersProps) => {
   }, [dispatch]);
 
   useEffect(() => {
-    categories.forEach((category) => dispatch(addCategory(category.id)));
-  }, [dispatch, categories]);
+    if (!category) {
+      categories.forEach((category) => dispatch(addCategory(category.id)));
+    }
+  }, [dispatch, category, categories]);
+
+  useEffect(() => {
+    if (category) {
+      dispatch(sortByOneCategory(category.toString()));
+    }
+  }, [dispatch, category]);
 
   const minimumPrice = useAppSelector(selectMinimumPrice);
   const maximumPrice = useAppSelector(selectMaximumPrice);
