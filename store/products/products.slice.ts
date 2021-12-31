@@ -9,6 +9,8 @@ import { RootState } from '..';
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (params: FetchProductsParams) => {
+    await new Promise((res) => setTimeout(res, 5000));
+
     const products: Product[] = [
       {
         id: 1,

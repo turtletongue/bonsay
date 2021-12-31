@@ -1,4 +1,5 @@
 import CartBadge from './components/cart-badge.component';
+import CardMock from './containers/card-mock.container';
 import { Navigation, SortType } from './declarations';
 
 export const anonymousNavigation: (count: number) => Navigation = (
@@ -140,3 +141,7 @@ export const sortTypes: SortType[] = [
 ];
 
 export const DEFAULT_IMAGE = { id: 0, path: DEFAULT_PRODUCT_IMAGE };
+
+export const cardMocks = [1, 2, 3, 4, 5, 6, 7, 8].map((key) => (
+  <CardMock key={key} />
+));
