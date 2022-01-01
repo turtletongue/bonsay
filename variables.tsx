@@ -35,7 +35,7 @@ export const authenticatedNavigation: (count: number) => Navigation = (
       href: '/cart',
       extra: cartItemsCount > 0 && <CartBadge />
     },
-    { name: 'Выход', href: '/sign-out' }
+    { name: 'Выход', href: '#', isSignOut: true }
   ]
 });
 

@@ -4,6 +4,7 @@ export interface NavLink {
   name: string;
   href: string;
   extra?: ReactNode;
+  isSignOut?: boolean;
 }
 
 export interface Navigation {
