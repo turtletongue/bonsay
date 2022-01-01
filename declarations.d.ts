@@ -54,8 +54,8 @@ export interface User {
   id: Id;
   email: string;
 
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string | Date;
+  updatedAt: string | Date;
 }
 
 export interface SortType {

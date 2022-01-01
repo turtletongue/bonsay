@@ -1,9 +1,15 @@
 import Settings from './settings.container';
 
-export const ProfileScreen = () => {
+import { User } from '../declarations';
+
+interface ProfileScreenProps {
+  user: User;
+}
+
+export const ProfileScreen = ({ user }: ProfileScreenProps) => {
   return (
     <div className='w-full p-4'>
-      <Settings />
+      <Settings user={user} />
     </div>
   );
 };
