@@ -1,10 +1,14 @@
 import Button from '../components/button.component';
 import Total from '../components/total.component';
 
-export const OrderSummary = () => {
+interface OrderSummaryProps {
+  total: number;
+}
+
+export const OrderSummary = ({ total }: OrderSummaryProps) => {
   return (
     <div>
-      <Total total={3500} />
+      <Total total={total} />
       <Button className='mt-6'>ОПЛАТИТЬ</Button>
     </div>
   );
