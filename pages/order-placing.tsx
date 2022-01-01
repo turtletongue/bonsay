@@ -1,9 +1,22 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
+import { useAppSelector } from '../hooks';
+import { selectIsAuthenticated } from '../store/core/core.slice';
 import OrderDataForm from '../containers/order-data-form.containet';
-import OrderSummary from '../containers/order-summary.container';
 
 export const OrderPlacing = () => {
+  const { push } = useRouter();
+
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      push('/');
+    }
+  }, [push, isAuthenticated]);
+
   return (
     <>
       <Head>
