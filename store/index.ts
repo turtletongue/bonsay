@@ -2,7 +2,7 @@ import {
   Action,
   combineReducers,
   configureStore,
-  ThunkAction
+  ThunkAction,
 } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -12,7 +12,7 @@ import {
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER
+  REGISTER,
 } from 'redux-persist';
 
 import persistStorage from './persistStorage';
@@ -27,7 +27,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage: persistStorage,
-  blacklist: ['settings']
+  blacklist: ['settings', 'products', 'categories'],
 };
 
 const rootReducer = combineReducers({
@@ -36,7 +36,7 @@ const rootReducer = combineReducers({
   categories: categoriesReducer,
   cart: cartReducer,
   settings: settingsReducer,
-  order: orderReducer
+  order: orderReducer,
 });
 
 const persistedRootReducer = persistReducer(persistConfig, rootReducer);
@@ -46,9 +46,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
-    })
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);

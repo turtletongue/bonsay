@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 import initialState from './products.initial-state';
+import { api } from './../../api';
+import { DEFAULT_FETCH_LIMIT, sortTypes } from '../../variables';
 
 import { Id, Product } from '../../declarations';
 import { FetchProductsParams } from './products.declarations';
@@ -8,103 +11,40 @@ import { RootState } from '..';
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async (params: FetchProductsParams) => {
-    await new Promise((res) => setTimeout(res, 5000));
+  async ({
+    page,
+    filters: { price, age, categories, sortId, search },
+  }: FetchProductsParams) => {
+    const minBirthdate = new Date();
+    minBirthdate.setFullYear(minBirthdate.getFullYear() - age.max);
 
-    const products: Product[] = [
-      {
-        id: 1,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 2,
-        name: 'MONDAY PINE',
-        price: 750000,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 3,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 4,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 5,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 6,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 7,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 8,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      }
-    ]; //server fetching
+    const maxBirthdate = new Date();
+    maxBirthdate.setFullYear(maxBirthdate.getFullYear() - age.min);
+
+    const products: { total: number; data: Product[] } = (
+      await axios.get(api.products, {
+        params: {
+          $skip: page * DEFAULT_FETCH_LIMIT - DEFAULT_FETCH_LIMIT,
+          $order: sortTypes.find((type) => String(type.id) === sortId)?.order,
+          price: {
+            $btw: [price.min, price.max],
+          },
+          birthdate: {
+            $btw: [minBirthdate, maxBirthdate],
+          },
+          categoryId: {
+            $in: Object.keys(categories),
+          },
+          name: {
+            $iLike: `%${search}%`,
+          },
+        },
+      })
+    ).data;
 
     return {
-      total: 51,
-      products: products
+      total: products.total,
+      products: products.data,
     };
   }
 );
@@ -133,7 +73,7 @@ export const productsSlice = createSlice({
     },
     sortByOneCategory: (state, action: PayloadAction<Id>) => {
       state.filters.categories = {
-        [action.payload.toString()]: true
+        [action.payload.toString()]: true,
       };
     },
     setSearch: (state, action: PayloadAction<string>) => {
@@ -141,7 +81,7 @@ export const productsSlice = createSlice({
     },
     setSortId: (state, action: PayloadAction<Id | undefined>) => {
       state.filters.sortId = action.payload;
-    }
+    },
   },
   extraReducers: {
     [fetchProducts.pending as any]: (state) => {
@@ -151,7 +91,7 @@ export const productsSlice = createSlice({
     [fetchProducts.fulfilled as any]: (
       state,
       {
-        payload: { products, total }
+        payload: { products, total },
       }: PayloadAction<{ total: number; products: Product[] }>
     ) => {
       state.loading = 'idle';
@@ -161,8 +101,8 @@ export const productsSlice = createSlice({
     [fetchProducts.rejected as any]: (state, action: PayloadAction<string>) => {
       state.loading = 'idle';
       state.error = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -174,7 +114,7 @@ export const {
   removeCategory,
   sortByOneCategory,
   setSearch,
-  setSortId
+  setSortId,
 } = productsSlice.actions;
 
 export const selectIsLoading = (state: RootState) =>

@@ -8,16 +8,16 @@ export const anonymousNavigation: (count: number) => Navigation = (
   leftNavigation: [
     { name: 'Каталог', href: '/catalog' },
     { name: 'Категории', href: '/categories' },
-    { name: 'О нас', href: '/about' }
+    { name: 'О нас', href: '/about' },
   ],
   rightNavigation: [
     { name: 'Вход', href: '/sign-in' },
     {
       name: 'Корзина',
       href: '/cart',
-      extra: cartItemsCount > 0 && <CartBadge />
-    }
-  ]
+      extra: cartItemsCount > 0 && <CartBadge />,
+    },
+  ],
 });
 
 export const authenticatedNavigation: (count: number) => Navigation = (
@@ -26,17 +26,17 @@ export const authenticatedNavigation: (count: number) => Navigation = (
   leftNavigation: [
     { name: 'Каталог', href: '/catalog' },
     { name: 'Категории', href: '/categories' },
-    { name: 'О нас', href: '/about' }
+    { name: 'О нас', href: '/about' },
   ],
   rightNavigation: [
     { name: 'Профиль', href: '/profile' },
     {
       name: 'Корзина',
       href: '/cart',
-      extra: cartItemsCount > 0 && <CartBadge />
+      extra: cartItemsCount > 0 && <CartBadge />,
     },
-    { name: 'Выход', href: '#', isSignOut: true }
-  ]
+    { name: 'Выход', href: '#', isSignOut: true },
+  ],
 });
 
 export const mainScreenConfig = {
@@ -52,7 +52,7 @@ export const mainScreenConfig = {
       Лучший подарок для дорогих вам ценителей природы.
     </>
   ),
-  image: { url: '/images/main.jpg', width: 411, height: 548 }
+  image: { url: '/images/main.jpg', width: 411, height: 548 },
 };
 
 export const aboutConfig = {
@@ -67,20 +67,20 @@ export const aboutConfig = {
             <>
               {' '}
               В любое время дня, вы можете позвонить по номеру{' '}
-              <span className='text-secondary'>+7-905-033-55-01</span>
+              <span className="text-secondary">+7-905-033-55-01</span>
             </>
-          )
+          ),
         },
         {
           id: 2,
           content: (
             <>
               Или написать на e-mail{' '}
-              <span className='text-secondary'>bonsay@gmail.com</span>
+              <span className="text-secondary">bonsay@gmail.com</span>
             </>
-          )
-        }
-      ]
+          ),
+        },
+      ],
     },
     {
       id: 2,
@@ -89,20 +89,20 @@ export const aboutConfig = {
         {
           id: 3,
           content:
-            'Мы дорожим каждым нашим клиентом, поэтому высокое товаров - приоритет для нас. Вы всегда можете задать интересующие вас вопросы по телефону или по почте и получить подробную консультацию.'
+            'Мы дорожим каждым нашим клиентом, поэтому высокое товаров - приоритет для нас. Вы всегда можете задать интересующие вас вопросы по телефону или по почте и получить подробную консультацию.',
         },
         {
           id: 4,
           content:
-            'Команда профессионалов собирает лучшие деревья со всего мира, бережно ухаживает за деревом до момента передачи клиенту. Сотрудники проходят основательную подготовку, совершенствуют свои навыки и знания в бонсай-искусстве, проходят специальные курсы и тренинги, чтобы идти в ногу со временем.'
+            'Команда профессионалов собирает лучшие деревья со всего мира, бережно ухаживает за деревом до момента передачи клиенту. Сотрудники проходят основательную подготовку, совершенствуют свои навыки и знания в бонсай-искусстве, проходят специальные курсы и тренинги, чтобы идти в ногу со временем.',
         },
         {
           id: 5,
-          content: 'Мы работаем более чем с 120 городами России и СНГ.'
-        }
-      ]
-    }
-  ]
+          content: 'Мы работаем более чем с 120 городами России и СНГ.',
+        },
+      ],
+    },
+  ],
 };
 
 export const DEFAULT_FETCH_LIMIT = 8;
@@ -123,21 +123,27 @@ export const DEFAULT_PRICE_MAXIMUM = 1_000_000;
 
 export const DEFAULT_AGE_MINIMUM = 0;
 
-export const DEFAULT_AGE_MAXIMUM = 100;
+export const DEFAULT_AGE_MAXIMUM = 150;
 
 export const sortTypes: SortType[] = [
   {
     id: '',
-    name: 'По умолчанию'
+    name: 'По умолчанию',
   },
   {
     id: 2,
-    name: 'Возрастание цены'
+    name: 'Возрастание цены',
+    order: {
+      price: 'ASC',
+    },
   },
   {
     id: 3,
-    name: 'Убывание цены'
-  }
+    name: 'Убывание цены',
+    order: {
+      price: 'DESC',
+    },
+  },
 ];
 
 export const DEFAULT_IMAGE = { id: 0, path: DEFAULT_PRODUCT_IMAGE };

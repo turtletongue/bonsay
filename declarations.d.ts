@@ -65,6 +65,9 @@ export interface User {
 export interface SortType {
   id?: Id;
   name: string;
+  order?: {
+    [key: string]: 'ASC' | 'DESC';
+  }
 }
 
 export interface CartItem {

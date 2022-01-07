@@ -25,3 +25,7 @@
     src: url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
   }
 }
+
+.product-card {
+  max-height: 21.5rem;
+}
