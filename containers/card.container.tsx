@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { DEFAULT_CARD_IMAGE_HEIGHT, DEFAULT_CARD_IMAGE_WIDTH } from '../variables';
+
 interface CardProps {
   title: string;
   price: number;
@@ -24,12 +26,12 @@ export const Card = ({
     >
       <div className='relative flex justify-center items-center'>
         <div className='overflow-hidden'>
-          <Image src={imageUrl} width={222} height={261} alt={title} />
+          <Image src={imageUrl} width={DEFAULT_CARD_IMAGE_WIDTH} height={DEFAULT_CARD_IMAGE_HEIGHT} alt={title} />
         </div>
       </div>
       <span className='tracking-wider text-xs my-2'>{title}</span>
       <hr className='border rounded-sm border-decoration mx-2' />
-      <span className='text-sm my-2'>{price.toFixed(2)} ₽</span>
+      <span className='text-sm my-2'>{Number(price).toFixed(2)} ₽</span>
     </div>
   );
 };

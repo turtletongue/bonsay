@@ -9,7 +9,7 @@ interface ScreenHeadingProps {
 export const ScreenHeading = ({ children, href }: ScreenHeadingProps) => {
   return (
     <div className='flex justify-between mb-6 m-auto items-center'>
-      <div className='text-primary text-2xl font-hanuman'>{children}</div>
+      <div className='text-primary text-2xl font-nunito'>{children}</div>
       <ArrowLink href={href}>Посмотреть всё</ArrowLink>
     </div>
   );

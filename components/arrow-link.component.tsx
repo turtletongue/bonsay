@@ -10,7 +10,7 @@ export const ArrowLink = ({ children, href }: ArrowLinkProps) => {
   return (
     <Link href={href}>
       <a className='flex items-center cursor-pointer'>
-        <span className='mr-2 font-hanuman text-lg hidden sm:block'>
+        <span className='mr-2 font-nunito text-lg hidden sm:block'>
           {children}
         </span>
         <svg

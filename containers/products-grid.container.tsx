@@ -30,7 +30,7 @@ export const ProductsGrid = ({
                 key={product.id}
                 title={product.name}
                 price={product.price}
-                imageUrl={product.upload.path || DEFAULT_PRODUCT_IMAGE}
+                imageUrl={product.path || product.upload?.path || DEFAULT_PRODUCT_IMAGE}
                 isInCart={cartProductsIds.includes(product.id.toString())}
                 onClick={() => push(`/catalog/${product.id}`)}
               />

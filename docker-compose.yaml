@@ -6,8 +6,15 @@ services:
     restart: unless-stopped
     tty: true
     build: ./
+    env_file:
+      - .env
     ports:
       - 3000:3000
     volumes:
       - .:/app
       - /app/node_modules
+    networks:
+      - bonsay
+networks:
+  bonsay:
+    external: true

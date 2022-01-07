@@ -26,18 +26,20 @@ export interface Product {
   id: Id;
   name: string;
   description: string;
-  age: number;
+  age?: number;
+  birthdate?: Date | string;
   height: number;
   price: number;
 
+  path?: string;
   upload?: Upload;
 
   photos?: Upload[];
 
   similarProducts?: Product[];
 
-  createdAt: Date | string;
-  updatedAt: Date | string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 }
 
 export interface Category {
@@ -45,10 +47,11 @@ export interface Category {
   name: string;
   description: string;
 
+  path?: string;
   upload?: Upload;
 
-  createdAt: Date | string;
-  updatedAt: Date | string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 }
 
 export interface User {

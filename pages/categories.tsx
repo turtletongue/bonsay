@@ -1,10 +1,14 @@
 import Head from 'next/head';
+import { Pool } from 'pg';
 
 import CategoriesGrid from '../containers/categories-grid.container';
 
+import { dbConnectionConfig } from '../db-connection.config';
+import { categoriesPreview } from '../sql/categories-preview.sql';
+import { ISR_DELAY_IN_SECONDS } from '../variables';
+
 import { GetStaticProps } from 'next';
 import { Category } from '../declarations';
-import { ISR_DELAY_IN_SECONDS } from '../variables';
 
 export const Categories = ({ categories }) => {
   return (
@@ -21,31 +25,19 @@ export const Categories = ({ categories }) => {
 
 export default Categories;
 
-export const getStaticProps: GetStaticProps = () => {
-  const categories: Category[] = [
-    {
-      id: 1,
-      name: 'Фикусы',
-      upload: { path: '/images/ficuses.jpg' },
-      description:
-        'Фикус – это разновидность растений, произрастающих в тропиках по всему миру. Он невероятно разнообразен, некоторые виды используются в качестве домашних растений. Фикус может быть кустарником, лозой или просто небольшим декоративным растением. Многие подвиды производят воздушные корни, другие дают вкусные плоды, к примеру, инжир. Священный инжир имеет особое значение для последователей некоторых азиатских религий, включая буддизм.',
-      createdAt: '2020-12-20',
-      updatedAt: '2020-12-20'
-    },
-    {
-      id: 2,
-      name: 'Сосны',
-      upload: { path: '/images/pines.jpg' },
-      description:
-        'Сосна - это вечнозеленое хвойное дерево, кустарник или стланик, относится к классу хвойные, порядку сосновые, семейству сосновые, роду сосны. Продолжительность жизни сосны колеблется от 100 до 600 лет. Сегодня встречаются единичные деревья, возраст которых приближается к 5 векам. Сосна – это светолюбивое растение. Время цветения наступает в конце весны, но процесс происходит без появления цветков. В итоге образуются сосновые шишки, которые отличаются многообразием форм, размеров и цветов.',
-      createdAt: '2020-12-20',
-      updatedAt: '2020-12-20'
-    }
-  ]; // server fetching
+export const getStaticProps: GetStaticProps = async () => {
+  const pool = new Pool(dbConnectionConfig);
+
+  const categories: { rows: Category[] } = await pool.query(categoriesPreview);
+
+  await pool.end();
 
   return {
     props: {
-      categories
+      categories: categories.rows.map(category => category.path ?
+        { ...category, path: process.env.PRIVATE_API_PATH + category.path } :
+        category
+      )
     },
     revalidate: ISR_DELAY_IN_SECONDS
   };

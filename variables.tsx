@@ -145,3 +145,7 @@ export const DEFAULT_IMAGE = { id: 0, path: DEFAULT_PRODUCT_IMAGE };
 export const cardMocks = [1, 2, 3, 4, 5, 6, 7, 8].map((key) => (
   <CardMock key={key} />
 ));
+
+export const DEFAULT_CARD_IMAGE_WIDTH = 222;
+
+export const DEFAULT_CARD_IMAGE_HEIGHT = 261;

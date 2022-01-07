@@ -14,13 +14,13 @@ interface CategoryPreviewProps {
 }
 
 const CategoryPreview = ({
-  category: { id, name, upload, description }
+  category: { id, name, path, upload, description }
 }: CategoryPreviewProps) => {
   return (
     <div className='grid grid-cols-2 gap-6 sm:gap-12 justify-center'>
       <div>
         <Image
-          src={upload?.path || DEFAULT_CATEGORY_IMAGE}
+          src={path || upload?.path || DEFAULT_CATEGORY_IMAGE}
           alt={name}
           width={CATEGORY_IMAGE_WIDTH}
           height={CATEGORY_IMAGE_HEIGHT}
