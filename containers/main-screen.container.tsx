@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
 
 import Button from '../components/button.component';
@@ -14,6 +15,10 @@ interface MainScreenProps {
 }
 
 export const MainScreen = ({ title, description, image }: MainScreenProps) => {
+  const { push } = useRouter();
+
+  const redirectToCatalog = () => push('/catalog');
+
   return (
     <div className='max-w-7xl mx-auto px-2 font-noto sm:px-6 lg:px-8 relative -top-0.5 mb-6 flex flex-col-reverse items-center sm:flex-row justify-between'>
       <div className='flex flex-col justify-center max-w-md'>
@@ -23,7 +28,7 @@ export const MainScreen = ({ title, description, image }: MainScreenProps) => {
         <p className='text-primary my-4 text-center sm:text-justify'>
           {description}
         </p>
-        <Button className='sm:w-32 mt-6'>В КАТАЛОГ</Button>
+        <Button className='sm:w-32 mt-6' onClick={redirectToCatalog}>В КАТАЛОГ</Button>
       </div>
       <div>
         <Image
