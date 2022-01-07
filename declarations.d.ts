@@ -30,6 +30,7 @@ export interface Product {
   birthdate?: Date | string;
   height: number;
   price: number;
+  categoryId?: Id;
 
   path?: string;
   upload?: Upload;
@@ -67,7 +68,7 @@ export interface SortType {
   name: string;
   order?: {
     [key: string]: 'ASC' | 'DESC';
-  }
+  };
 }
 
 export interface CartItem {

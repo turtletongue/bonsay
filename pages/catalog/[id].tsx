@@ -1,23 +1,30 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { Pool } from 'pg';
 
 import { ISR_DELAY_IN_SECONDS } from '../../variables';
+import { bestsellers } from '../../sql/bestsellers.sql';
+import { productById } from '../../sql/product-by-id.sql';
+import { dbConnectionConfig } from '../../db-connection.config';
 import ProductInfo from '../../containers/product-info.container';
 import ProductsGrid from '../../containers/products-grid.container';
 
-import { Product } from '../../declarations';
+import { Product, Upload } from '../../declarations';
+import { productPhotos } from '../../sql/product-photos.sql';
+import { similarProducts } from '../../sql/similar-products.sql';
+import { IMAGE_API_URL } from '../../api';
 
 export const ProductPage = ({ product }) => {
   return (
     <>
       <Head>
-        <title>Товар | BONSAY</title>
+        <title>{product.name} | BONSAY</title>
       </Head>
       <ProductInfo product={product} />
-      <div className='w-full my-2 text-center font-medium text-primary'>
+      <div className="w-full my-2 text-center font-medium text-primary">
         ПОХОЖИЕ ТОВАРЫ
       </div>
-      <div className='my-6 flex justify-center w-full'>
+      <div className="my-6 flex justify-center w-full">
         <ProductsGrid products={product.similarProducts} />
       </div>
     </>
@@ -27,84 +34,45 @@ export const ProductPage = ({ product }) => {
 export default ProductPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const productsIds = [{ id: '1' }, { id: '2' }, { id: '3' }]; // server fetching
+  const pool = new Pool(dbConnectionConfig);
+
+  const products: { rows: Product[] } = await pool.query(bestsellers);
+
+  await pool.end();
 
   return {
-    paths: productsIds.map((productId) => ({ params: productId })),
-    fallback: true
+    paths: products.rows.map((product) => ({
+      params: { id: String(product.id) },
+    })),
+    fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const product: Product = {
-    id: params.id.toString(),
-    name: 'MONDAY PINE',
-    price: 750,
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores fugiat quos eligendi amet magnam! Vitae dolore totam optio fuga aspernatur nostrum cumque quas nobis odit, obcaecati, expedita ipsam reprehenderit natus repudiandae eius error neque vero placeat. Velit, sequi nam! Dolorem blanditiis soluta, facere repudiandae, dolore ea deserunt obcaecati provident aspernatur, adipisci saepe cupiditate pariatur voluptas illum sint labore? Explicabo quisquam dolore, ad eveniet, culpa atque animi praesentium nemo facere minus dolorum mollitia doloribus tempore necessitatibus eos veritatis saepe architecto esse quod natus magnam, dignissimos dolores. Blanditiis, delectus dolorem perferendis tenetur voluptate nam ex eveniet mollitia quas voluptates, ducimus ad nesciunt.',
-    createdAt: '2020-12-20',
-    updatedAt: '2020-12-20',
-    age: 30,
-    height: 34,
-    upload: { id: 5, path: '/images/product.jpg' },
-    photos: [
-      { id: 1, path: '/images/pines.jpg' },
-      { id: 2, path: '/images/product.jpg' },
-      { id: 3, path: '/images/product.jpg' },
-      { id: 4, path: '/images/product.jpg' }
-    ],
-    similarProducts: [
-      {
-        id: 2,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 3,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 4,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      },
-      {
-        id: 5,
-        name: 'MONDAY PINE',
-        price: 750,
-        description: '',
-        createdAt: '2020-12-20',
-        updatedAt: '2020-12-20',
-        age: 30,
-        height: 34,
-        upload: { path: '/images/product.jpg' }
-      }
-    ]
-  }; // server fetching
+  const pool = new Pool(dbConnectionConfig);
+
+  const product: Product = (await pool.query(productById, [params.id])).rows[0];
+
+  const photos: Upload[] = (await pool.query(productPhotos, [product.id])).rows;
+
+  const similar: Product[] = (
+    await pool.query(similarProducts, [product.categoryId, product.id])
+  ).rows;
+
+  await pool.end();
 
   return {
     props: {
-      product
+      product: {
+        ...product,
+        photos,
+        similarProducts: similar.map((product) =>
+          product.path
+            ? { ...product, path: IMAGE_API_URL + product.path }
+            : product
+        ),
+      },
     },
-    revalidate: ISR_DELAY_IN_SECONDS
+    revalidate: ISR_DELAY_IN_SECONDS,
   };
 };

@@ -5,19 +5,19 @@ import { useAppDispatch } from '../hooks';
 import {
   decreaseProductQty,
   increaseProductQty,
-  removeFromCart
+  removeFromCart,
 } from '../store/cart/cart.slice';
 import { DEFAULT_PRODUCT_IMAGE } from '../variables';
+import { IMAGE_API_URL } from '../api';
 
 import { Product } from '../declarations';
-
 interface CartItemProps {
   product: Product;
   qty: number;
 }
 
 export const CartItem = ({ product, qty }: CartItemProps) => {
-  const { id, name, upload, price } = product;
+  const { id, name, upload, path, price } = product;
 
   const dispatch = useAppDispatch();
 
@@ -34,37 +34,37 @@ export const CartItem = ({ product, qty }: CartItemProps) => {
   };
 
   return (
-    <div className='grid grid-cols-4 justify-center sm:justify-start items-center my-4'>
-      <div className='flex flex-col h-full p-2 sm:p-6 items-center justify-between'>
-        <div className='text-sm text-primary font-medium mb-2'>{name}</div>
+    <div className="grid grid-cols-4 justify-center sm:justify-start items-center my-4">
+      <div className="flex flex-col h-full p-2 sm:p-6 items-center justify-between">
+        <div className="text-sm text-primary font-medium mb-2">{name}</div>
         <Image
-          src={upload?.path || DEFAULT_PRODUCT_IMAGE}
+          src={IMAGE_API_URL + (path || upload?.path || DEFAULT_PRODUCT_IMAGE)}
           width={110}
           height={140}
           alt={name}
-          className='select-none'
+          className="select-none"
         />
         <div
-          className='text-gray font-medium text-xs cursor-pointer hover:text-red select-none mt-2'
+          className="text-gray font-medium text-xs cursor-pointer hover:text-red select-none mt-2"
           onClick={onDelete}
         >
           Удалить
         </div>
       </div>
-      <div className='flex items-center justify-center p-0 sm:p-4'>
+      <div className="flex items-center justify-center p-0 sm:p-4">
         <ChevronLeftIcon
-          className='w-5 h-5 cursor-pointer'
+          className="w-5 h-5 cursor-pointer"
           onClick={onDecreaseQty}
         />
-        <span className='mx-4 select-none'>{qty}</span>
+        <span className="mx-4 select-none">{qty}</span>
         <ChevronRightIcon
-          className='w-5 h-5 cursor-pointer'
+          className="w-5 h-5 cursor-pointer"
           onClick={onIncreaseQty}
         />
       </div>
-      <div className='flex items-center justify-center'>
-        <div className='flex flex-col items-center'>
-          <div className='my-4 select-none'>{(price * qty).toFixed(2)} ₽</div>
+      <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center">
+          <div className="my-4 select-none">{(price * qty).toFixed(2)} ₽</div>
         </div>
       </div>
     </div>

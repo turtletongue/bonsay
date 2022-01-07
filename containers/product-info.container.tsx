@@ -5,9 +5,11 @@ import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   increaseProductQty,
-  selectProductsIds
+  selectProductsIds,
 } from '../store/cart/cart.slice';
+import { getAgeWord } from '../utils/get-age-word';
 import { DEFAULT_IMAGE } from '../variables';
+import { IMAGE_API_URL } from '../api';
 import Button from '../components/button.component';
 import LittleImage from '../components/little-image.component';
 import OutlineButton from '../components/outline-button.component';
@@ -27,7 +29,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const [photos, setPhotos] = useState<Upload[]>(product.photos || []);
   const [mainImage, setMainImage] = useState<Upload>(
-    product.upload || DEFAULT_IMAGE
+    product.upload || { id: 0, path: product.path } || DEFAULT_IMAGE
   );
 
   const changeMainImage = (event) => {
@@ -55,47 +57,53 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
   };
 
   return (
-    <div className='grid grid-cols-2 justify-center items-center grid-auto-flow gap-4 py-2 sm:py-10 px-2'>
-      <div className='flex flex-col-reverse sm:flex-row justify-center items-center h-full mx-2'>
-        <div className='flex flex-row sm:flex-col justify-around mx-1 mb-1 sm:h-full max-h-screen mt-1 sm:mt-0'>
+    <div className="grid grid-cols-2 justify-center items-center grid-auto-flow gap-4 py-2 sm:py-10 px-2">
+      <div className="flex flex-col-reverse sm:flex-row justify-center items-center h-full mx-2">
+        <div className="flex flex-row sm:flex-col justify-around mx-1 mb-1 sm:h-full max-h-screen mt-1 sm:mt-0">
           {photos.map((photo) => (
             <div
               key={photo.id}
-              className='flex items-center cursor-pointer mx-1'
+              className="flex items-center cursor-pointer mx-1"
               onClick={changeMainImage}
             >
-              <LittleImage src={photo.path} alt={product.name} id={photo.id} />
+              <LittleImage
+                src={IMAGE_API_URL + photo.path}
+                alt={product.name}
+                id={photo.id}
+              />
             </div>
           ))}
         </div>
-        <div className='relative'>
+        <div className="relative">
           <Image
-            src={mainImage.path}
+            src={IMAGE_API_URL + mainImage.path}
             width={450}
             height={500}
             alt={product.name}
           />
         </div>
       </div>
-      <div className='max-w-lg'>
-        <div className='flex flex-col sm:flex-row p-2 sm:p-0 items-start sm:items-center justify-between'>
-          <div className='w-full'>
-            <div className='flex justify-between w-full'>
-              <div className='text-lg font-medium text-secondary'>
+      <div className="max-w-lg">
+        <div className="flex flex-col sm:flex-row p-2 sm:p-0 items-start sm:items-center justify-between">
+          <div className="w-full">
+            <div className="flex justify-between w-full">
+              <div className="text-lg font-medium text-secondary">
                 {product.name}
               </div>
-              <div className='text-center sm:hidden text-sm font-medium text-primary'>
+              <div className="text-center sm:hidden text-sm font-medium text-primary">
                 {product.height} см
               </div>
             </div>
-            <div className='flex justify-between w-full'>
-              <div className='text-gray'>750.00 ₽</div>
-              <div className='text-center sm:hidden text-sm font-medium text-primary'>
+            <div className="flex justify-between w-full">
+              <div className="text-gray">
+                {Number(product.price).toFixed(2)} ₽
+              </div>
+              <div className="text-center sm:hidden text-sm font-medium text-primary">
                 {product.age} лет
               </div>
             </div>
           </div>
-          <div className='w-full mt-6 sm:mt-0 flex items-center'>
+          <div className="w-full mt-6 sm:mt-0 flex items-center">
             {cartProductsIds.includes(product.id.toString()) ? (
               <OutlineButton onClick={navigateToCart}>В КОРЗИНЕ</OutlineButton>
             ) : (
@@ -103,11 +111,13 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
             )}
           </div>
         </div>
-        <div className='text-sm hidden sm:flex font-medium text-primary w-24 items-center justify-between mt-1'>
+        <div className="text-sm hidden sm:flex font-medium text-primary w-24 items-center justify-between mt-1">
           <div>{product.height} см</div>
-          <div>{product.age} лет</div>
+          <div>
+            {product.age} {getAgeWord(product.age)}
+          </div>
         </div>
-        <div className='text-justify my-4 p-2 sm:p-0'>
+        <div className="text-justify my-4 p-2 sm:p-0">
           {product.description}
         </div>
       </div>
