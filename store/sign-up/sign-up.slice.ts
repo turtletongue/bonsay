@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import initialState from './sign-up.initial-state';
+import { login } from './../sign-in/sign-in.slice';
 import { api } from '../../api';
 
 import { RegisterRequest } from './sign-up.declarations';
@@ -9,13 +10,15 @@ import { RootState } from '..';
 
 export const register = createAsyncThunk(
   'signUp/register',
-  async (params: RegisterRequest, { rejectWithValue }) => {
+  async (params: RegisterRequest, { rejectWithValue, dispatch }) => {
     try {
       await axios.post(api.clients, params, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
+
+      dispatch(login(params));
     } catch (error) {
       return rejectWithValue(error.message);
     }
