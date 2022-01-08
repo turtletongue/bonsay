@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -27,10 +27,16 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const cartProductsIds = useAppSelector(selectProductsIds);
 
-  const [photos, setPhotos] = useState<Upload[]>(product.photos || []);
-  const [mainImage, setMainImage] = useState<Upload>(
-    product.upload || { id: 0, path: product.path } || DEFAULT_IMAGE
-  );
+  const [photos, setPhotos] = useState<Upload[]>([]);
+  const [mainImage, setMainImage] = useState<Upload>(DEFAULT_IMAGE);
+
+  useEffect(() => {
+    setPhotos(product.photos || []);
+
+    setMainImage(
+      product.upload || { id: 0, path: product.path } || DEFAULT_IMAGE
+    );
+  }, [product]);
 
   const changeMainImage = (event) => {
     const selectedImage = photos.find(
