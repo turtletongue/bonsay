@@ -1,8 +1,27 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 import initialState from './settings.initial-state';
+import { api } from '../../api';
 
 import { RootState } from '..';
+import { UpdateSettingsRequest } from './settings.declarations';
+
+export const updateSettings = createAsyncThunk(
+  'settings/updateSettings',
+  async (params: UpdateSettingsRequest, { rejectWithValue }) => {
+    try {
+      await axios.patch(`${api.users}/${params.id}`, params, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${params.accessToken}`,
+        },
+      });
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export const settingsSlice = createSlice({
   name: 'settings',
@@ -38,6 +57,28 @@ export const settingsSlice = createSlice({
       state.newPassword = '';
       state.confirmPassword = '';
     },
+    clear: (state) => {
+      state.success = false;
+      delete state.error;
+    },
+  },
+  extraReducers: {
+    [updateSettings.pending as any]: (state) => {
+      state.loading = 'pending';
+      state.success = false;
+      delete state.error;
+    },
+    [updateSettings.fulfilled as any]: (state) => {
+      state.loading = 'idle';
+      state.success = true;
+    },
+    [updateSettings.rejected as any]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.loading = 'idle';
+      state.error = action.payload;
+    },
   },
 });
 
@@ -48,6 +89,7 @@ export const {
   setConfirmPassword,
   togglePasswordChange,
   clearPasswordFields,
+  clear,
 } = settingsSlice.actions;
 
 export const selectEmail = (state: RootState) => state.settings.email;

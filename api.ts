@@ -7,4 +7,5 @@ export const api = {
   categories: API_URL + 'categories',
   clients: API_URL + 'clients',
   authentication: API_URL + 'authentication',
+  users: API_URL + 'users',
 };

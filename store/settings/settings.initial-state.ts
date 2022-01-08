@@ -6,7 +6,10 @@ export const initialState: SettingsState = {
   newPassword: '',
   confirmPassword: '',
   passwordChangeError: undefined,
-  isPasswordChange: false
+  isPasswordChange: false,
+  loading: 'idle',
+  error: undefined,
+  success: false,
 };
 
 export default initialState;
