@@ -22,6 +22,8 @@ import categoriesReducer from './categories/categories.slice';
 import cartReducer from './cart/cart.slice';
 import settingsReducer from './settings/settings.slice';
 import orderReducer from './order/order.slice';
+import signUpReducer from './sign-up/sign-up.slice';
+import signInReducer from './sign-in/sign-in.slice';
 
 const persistConfig = {
   key: 'root',
@@ -37,6 +39,8 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   settings: settingsReducer,
   order: orderReducer,
+  signUp: signUpReducer,
+  signIn: signInReducer,
 });
 
 const persistedRootReducer = persistReducer(persistConfig, rootReducer);

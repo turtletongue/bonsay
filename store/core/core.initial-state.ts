@@ -2,7 +2,9 @@ import { UserState } from './core.declarations';
 
 export const initialState: UserState = {
   user: undefined,
-  isAuthenticated: false
+  accessToken: undefined,
+  refreshToken: undefined,
+  isAuthenticated: false,
 };
 
 export default initialState;

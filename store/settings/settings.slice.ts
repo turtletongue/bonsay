@@ -9,7 +9,7 @@ export const settingsSlice = createSlice({
   initialState,
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
+      state.email = action.payload.trim();
     },
     setCurrentPassword: (state, action: PayloadAction<string>) => {
       state.currentPassword = action.payload;
@@ -37,8 +37,8 @@ export const settingsSlice = createSlice({
       state.currentPassword = '';
       state.newPassword = '';
       state.confirmPassword = '';
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -47,7 +47,7 @@ export const {
   setNewPassword,
   setConfirmPassword,
   togglePasswordChange,
-  clearPasswordFields
+  clearPasswordFields,
 } = settingsSlice.actions;
 
 export const selectEmail = (state: RootState) => state.settings.email;

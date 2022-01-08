@@ -8,15 +8,28 @@ export const userSlice = createSlice({
   name: 'core',
   initialState,
   reducers: {
-    signIn: (state, action: PayloadAction<User>) => {
-      state.user = action.payload;
+    signIn: (
+      state,
+      action: PayloadAction<{
+        user: User;
+        accessToken: string;
+        refreshToken: string;
+      }>
+    ) => {
+      const { user, accessToken, refreshToken } = action.payload;
+
+      state.user = user;
+      state.accessToken = accessToken;
+      state.refreshToken = refreshToken;
       state.isAuthenticated = true;
     },
     signOut: (state) => {
       delete state.user;
+      delete state.accessToken;
+      delete state.refreshToken;
       state.isAuthenticated = false;
-    }
-  }
+    },
+  },
 });
 
 export const { signIn, signOut } = userSlice.actions;
