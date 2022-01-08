@@ -37,5 +37,7 @@ export const { signIn, signOut } = userSlice.actions;
 export const selectUser = (state: RootState) => state.core.user;
 export const selectIsAuthenticated = (state: RootState) =>
   state.core.isAuthenticated;
+export const selectAccessToken = (state: RootState) => state.core.accessToken;
+export const selectRefreshToken = (state: RootState) => state.core.refreshToken;
 
 export default userSlice.reducer;

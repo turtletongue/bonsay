@@ -2,7 +2,6 @@ import { SettingsState } from './settings.declarations';
 
 export const initialState: SettingsState = {
   email: '',
-  currentPassword: '',
   newPassword: '',
   confirmPassword: '',
   passwordChangeError: undefined,

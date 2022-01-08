@@ -2,7 +2,6 @@ import { Id } from '../../declarations';
 
 export interface SettingsState {
   email: string;
-  currentPassword: string;
   newPassword: string;
   confirmPassword: string;
   passwordChangeError?: string;
