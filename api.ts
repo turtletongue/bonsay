@@ -8,4 +8,5 @@ export const api = {
   clients: API_URL + 'clients',
   authentication: API_URL + 'authentication',
   users: API_URL + 'users',
+  refresh: API_URL + 'authentication/refresh',
 };

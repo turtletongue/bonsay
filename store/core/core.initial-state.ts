@@ -5,6 +5,10 @@ export const initialState: UserState = {
   accessToken: undefined,
   refreshToken: undefined,
   isAuthenticated: false,
+  accessTokenExpireAt: undefined,
+  refreshLoading: 'idle',
+  refreshError: undefined,
+  refreshTokenExpireAt: undefined,
 };
 
 export default initialState;

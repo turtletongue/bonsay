@@ -155,3 +155,17 @@ export const cardMocks = [1, 2, 3, 4, 5, 6, 7, 8].map((key) => (
 export const DEFAULT_CARD_IMAGE_WIDTH = 222;
 
 export const DEFAULT_CARD_IMAGE_HEIGHT = 261;
+
+export const SECOND = 1000;
+
+export const MINUTE = SECOND * 60;
+
+export const HOUR = MINUTE * 60;
+
+export const DAY = HOUR * 24;
+
+export const WEEK = DAY * 7;
+
+export const ACCESS_TOKEN_TTL = HOUR;
+
+export const REFRESH_TOKEN_TTL = WEEK;
