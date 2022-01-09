@@ -13,13 +13,17 @@ export const refreshTokens = createAsyncThunk(
   'core/refreshTokens',
   async (params: RefreshTokensRequest, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await axios.post(api.refresh, params, {
+      const {
+        data: {
+          data: { user, payload },
+        },
+      } = await axios.post(api.refresh, params, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
-      dispatch(signIn(data.data));
+      dispatch(signIn({ user, accessToken: payload.accessToken }));
     } catch (error) {
       return rejectWithValue(error.message);
     }
