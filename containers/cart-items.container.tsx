@@ -9,7 +9,7 @@ interface CartItemsProps {
 
 export const CartItems = ({ items }: CartItemsProps) => {
   return (
-    <div className='py-4'>
+    <div className="py-4 min-h-screen">
       {items.map((item) => (
         <CartItem key={item.product.id} product={item.product} qty={item.qty} />
       ))}

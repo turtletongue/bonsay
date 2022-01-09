@@ -31,12 +31,19 @@ export const cartSlice = createSlice({
     },
     removeFromCart: (state, action: PayloadAction<Id>) => {
       delete state.items[action.payload];
-    }
-  }
+    },
+    clearCart: (state) => {
+      state.items = {};
+    },
+  },
 });
 
-export const { increaseProductQty, decreaseProductQty, removeFromCart } =
-  cartSlice.actions;
+export const {
+  increaseProductQty,
+  decreaseProductQty,
+  removeFromCart,
+  clearCart,
+} = cartSlice.actions;
 
 export const selectCartItems = (state: RootState) =>
   Object.values(state.cart.items);

@@ -3,15 +3,18 @@ import { OrderState } from './order.declarations';
 export const initialState: OrderState = {
   fullname: {
     firstname: '',
-    lastname: ''
+    lastname: '',
   },
   address: {
     city: '',
     street: '',
     house: '',
-    postcode: ''
+    postcode: '',
   },
-  phone: ''
+  phone: '',
+  loading: 'idle',
+  success: false,
+  error: undefined,
 };
 
 export default initialState;

@@ -9,4 +9,7 @@ export const api = {
   authentication: API_URL + 'authentication',
   users: API_URL + 'users',
   refresh: API_URL + 'authentication/refresh',
+  addresses: API_URL + 'addresses',
+  orders: API_URL + 'orders',
+  purchases: API_URL + 'purchases',
 };

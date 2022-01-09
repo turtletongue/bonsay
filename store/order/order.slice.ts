@@ -1,8 +1,52 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 import initialState from './order.initial-state';
 
+import { CreateOrderRequest } from './order.declarations';
 import { RootState } from '..';
+import { api } from '../../api';
+
+export const createOrder = createAsyncThunk(
+  'order/create',
+  async (
+    {
+      accessToken,
+      fullname,
+      address: addressData,
+      phone,
+      cartItems,
+    }: CreateOrderRequest,
+    { rejectWithValue }
+  ) => {
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      };
+
+      const { data: address } = await axios.post(api.addresses, addressData, {
+        headers,
+      });
+
+      await axios.post(
+        api.orders,
+        {
+          ...fullname,
+          phone,
+          purchases: cartItems.map((cartItem) => ({
+            productId: cartItem.product.id,
+            qty: cartItem.qty,
+          })),
+          addressId: address.id,
+        },
+        { headers }
+      );
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export const orderSlice = createSlice({
   name: 'order',
@@ -28,8 +72,29 @@ export const orderSlice = createSlice({
     },
     setPhone: (state, action: PayloadAction<string>) => {
       state.phone = action.payload;
-    }
-  }
+    },
+    clear: (state) => {
+      state.success = false;
+      delete state.error;
+      state.fullname = { firstname: '', lastname: '' };
+      state.address = { city: '', street: '', house: '', postcode: '' };
+      state.phone = '';
+    },
+  },
+  extraReducers: {
+    [createOrder.pending as any]: (state) => {
+      state.loading = 'pending';
+      delete state.error;
+    },
+    [createOrder.fulfilled as any]: (state) => {
+      state.loading = 'idle';
+      state.success = true;
+    },
+    [createOrder.rejected as any]: (state, action: PayloadAction<string>) => {
+      state.loading = 'idle';
+      state.error = action.payload;
+    },
+  },
 });
 
 export const {
@@ -39,7 +104,8 @@ export const {
   setStreet,
   setHouse,
   setPostcode,
-  setPhone
+  setPhone,
+  clear,
 } = orderSlice.actions;
 
 export const selectFirstname = (state: RootState) =>
@@ -52,5 +118,6 @@ export const selectHouse = (state: RootState) => state.order.address.house;
 export const selectPostcode = (state: RootState) =>
   state.order.address.postcode;
 export const selectPhone = (state: RootState) => state.order.phone;
+export const selectSuccess = (state: RootState) => state.order.success;
 
 export default orderSlice.reducer;

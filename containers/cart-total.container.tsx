@@ -19,14 +19,14 @@ export const CartTotal = ({ total }: CartTotalProps) => {
   const redirectToSignIn = () => push('/sign-in');
 
   return (
-    <div className='grid grid-cols-1 w-72 select-none'>
+    <div className="grid grid-cols-1 w-72 select-none">
       <Total total={total} />
       {isAuthenticated ? (
-        <Button className='mt-6' onClick={redirectToOrderPlacing}>
-          ОПЛАТИТЬ
+        <Button className="mt-6" onClick={redirectToOrderPlacing}>
+          ОФОРМЛЕНИЕ ЗАКАЗА
         </Button>
       ) : (
-        <OutlineButton className='mt-6' onClick={redirectToSignIn}>
+        <OutlineButton className="mt-6" onClick={redirectToSignIn}>
           ВОЙТИ В АККАУНТ
         </OutlineButton>
       )}
