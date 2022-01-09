@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { Token } from 'react-stripe-checkout';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
@@ -95,7 +96,7 @@ export const OrderDataForm = () => {
 
   const accessToken = useAppSelector(selectAccessToken);
 
-  const onCreate = () => {
+  const onCreate = (token: Token) => {
     dispatch(
       createOrder({
         accessToken,
@@ -103,6 +104,8 @@ export const OrderDataForm = () => {
         address: { city, street, house, postcode },
         phone,
         cartItems,
+        token,
+        total,
       })
     );
   };
@@ -177,7 +180,6 @@ export const OrderDataForm = () => {
           <Input
             className="mr-2 w-52"
             type="text"
-            placeholder="+71112223344"
             value={phone}
             onChange={onPhoneChange}
           />

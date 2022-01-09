@@ -169,3 +169,8 @@ export const WEEK = DAY * 7;
 export const ACCESS_TOKEN_TTL = HOUR;
 
 export const REFRESH_TOKEN_TTL = WEEK;
+
+export const STRIPE_KEY =
+  'pk_test_51I1stlJeVfJJ7K9IfCyNNgvQ8j3tmjJrcFZZLYpwaIIy3ST8Fbw6B9GIMJpfuzyXUY2iwU4DNnn424XcBFKUhkZ0003GYx4lrA';
+
+export const KOPECKS_IN_RUBLE = 100;

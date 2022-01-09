@@ -12,4 +12,5 @@ export const api = {
   addresses: API_URL + 'addresses',
   orders: API_URL + 'orders',
   purchases: API_URL + 'purchases',
+  payments: API_URL + 'payments',
 };

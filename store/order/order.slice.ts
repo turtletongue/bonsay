@@ -16,6 +16,8 @@ export const createOrder = createAsyncThunk(
       address: addressData,
       phone,
       cartItems,
+      token,
+      total,
     }: CreateOrderRequest,
     { rejectWithValue }
   ) => {
@@ -29,7 +31,7 @@ export const createOrder = createAsyncThunk(
         headers,
       });
 
-      await axios.post(
+      const { data: order } = await axios.post(
         api.orders,
         {
           ...fullname,
@@ -39,6 +41,16 @@ export const createOrder = createAsyncThunk(
             qty: cartItem.qty,
           })),
           addressId: address.id,
+        },
+        { headers }
+      );
+
+      await axios.post(
+        api.payments,
+        {
+          orderId: order.id,
+          tokenId: token.id,
+          sum: total,
         },
         { headers }
       );

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { useAppSelector } from '../hooks';
 import { selectIsAuthenticated } from '../store/core/core.slice';
-import OrderDataForm from '../containers/order-data-form.containet';
+import OrderDataForm from '../containers/order-data-form.container';
 
 export const OrderPlacing = () => {
   const { push } = useRouter();
@@ -22,7 +22,7 @@ export const OrderPlacing = () => {
       <Head>
         <title>Оформление заказа | BONSAY</title>
       </Head>
-      <div className='py-4 max-w-md mx-auto'>
+      <div className="py-4 max-w-md mx-auto">
         <OrderDataForm />
       </div>
     </>

@@ -1,5 +1,6 @@
-import { CartItem } from '../../declarations';
+import { Token } from 'react-stripe-checkout';
 
+import { CartItem } from '../../declarations';
 export interface OrderState {
   fullname: {
     firstname: string;
@@ -31,6 +32,10 @@ export interface CreateOrderRequest {
     postcode: string;
   };
   phone: string;
+
+  token: Token;
+
+  total: number;
 
   cartItems: CartItem[];
 }
