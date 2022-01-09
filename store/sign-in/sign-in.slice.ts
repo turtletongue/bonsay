@@ -7,11 +7,12 @@ import { api } from '../../api';
 
 import { RootState } from '..';
 import { LoginRequest } from './sign-in.declarations';
+import fetchWithErrorHandling from '../../utils/fetch-with-error-handling';
 
 export const login = createAsyncThunk(
   'signIn/login',
   async (params: LoginRequest, { rejectWithValue, dispatch }) => {
-    try {
+    return await fetchWithErrorHandling(async () => {
       const {
         data: { user, payload },
       } = await axios.post(api.authentication, params, {
@@ -27,9 +28,7 @@ export const login = createAsyncThunk(
           refreshToken: payload.refreshToken,
         })
       );
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+    }, rejectWithValue);
   }
 );
 
@@ -68,5 +67,6 @@ export const { setEmail, setPassword, clear } = signInSlice.actions;
 
 export const selectEmail = (state: RootState) => state.signIn.email;
 export const selectPassword = (state: RootState) => state.signIn.password;
+export const selectError = (state: RootState) => state.signIn.error;
 
 export default signInSlice.reducer;

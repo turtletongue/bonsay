@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useAlert } from 'react-alert';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
@@ -16,11 +17,13 @@ import {
   updateSettings,
   selectSuccess,
   clear,
+  selectError,
 } from '../store/settings/settings.slice';
 import {
   selectAccessToken,
   selectIsAuthenticated,
 } from '../store/core/core.slice';
+import { SUCCESS_SAVE } from '../utils/alert-messages';
 import OutlineButton from '../components/outline-button.component';
 import Button from '../components/button.component';
 import Input from '../components/input.component';
@@ -37,6 +40,8 @@ export const Settings = ({ user }: SettingsProps) => {
 
   const dispatch = useAppDispatch();
 
+  const alert = useAlert();
+
   useEffect(() => {
     dispatch(setEmail(user?.email || ''));
   }, [dispatch, user?.email]);
@@ -46,6 +51,10 @@ export const Settings = ({ user }: SettingsProps) => {
   const success = useAppSelector(selectSuccess);
 
   useEffect(() => {
+    if (success) {
+      alert.success(SUCCESS_SAVE);
+    }
+
     if (success || !isAuthenticated) {
       dispatch(clear());
 
@@ -53,10 +62,9 @@ export const Settings = ({ user }: SettingsProps) => {
 
       push('/');
     }
-  }, [dispatch, push, success, isAuthenticated]);
+  }, [dispatch, push, alert, success, isAuthenticated]);
 
   const isPasswordChange = useAppSelector(selectIsPasswordChange);
-
   const onIsPasswordChangeToggle = () => {
     if (isPasswordChange) {
       dispatch(clearPasswordFields());
@@ -66,19 +74,16 @@ export const Settings = ({ user }: SettingsProps) => {
   };
 
   const email = useAppSelector(selectEmail);
-
   const onEmailChange = (event) => {
     dispatch(setEmail(event.target.value));
   };
 
   const newPassword = useAppSelector(selectNewPassword);
-
   const onNewPasswordChange = (event) => {
     dispatch(setNewPassword(event.target.value));
   };
 
   const confirmPassword = useAppSelector(selectConfirmPassword);
-
   const onConfirmPasswordChange = (event) => {
     dispatch(setConfirmPassword(event.target.value));
   };
@@ -86,6 +91,8 @@ export const Settings = ({ user }: SettingsProps) => {
   const passwordChangeError = useAppSelector(selectPasswordChangeError);
 
   const accessToken = useAppSelector(selectAccessToken);
+
+  const error = useAppSelector(selectError);
 
   const saveChanges = () => {
     dispatch(
@@ -99,7 +106,12 @@ export const Settings = ({ user }: SettingsProps) => {
   };
 
   return (
-    <div className="w-96 mx-auto my-16">
+    <div className="w-96 mx-auto my-16 relative">
+      {error && (
+        <div className="absolute -top-6 text-red text-sm text-center w-full">
+          {error}
+        </div>
+      )}
       <div>
         <Label htmlFor="email" className="font-medium text-secondary mb-2">
           Email

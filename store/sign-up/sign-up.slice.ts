@@ -7,11 +7,12 @@ import { api } from '../../api';
 
 import { RegisterRequest } from './sign-up.declarations';
 import { RootState } from '..';
+import fetchWithErrorHandling from '../../utils/fetch-with-error-handling';
 
 export const register = createAsyncThunk(
   'signUp/register',
   async (params: RegisterRequest, { rejectWithValue, dispatch }) => {
-    try {
+    return await fetchWithErrorHandling(async () => {
       await axios.post(api.clients, params, {
         headers: {
           'Content-Type': 'application/json',
@@ -19,9 +20,7 @@ export const register = createAsyncThunk(
       });
 
       dispatch(login(params));
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+    }, rejectWithValue);
   }
 );
 
@@ -85,5 +84,6 @@ export const selectPasswordsError = (state: RootState) =>
 export const selectIsLoading = (state: RootState) =>
   state.signUp.loading === 'pending';
 export const selectSuccess = (state: RootState) => state.signUp.success;
+export const selectError = (state: RootState) => state.signUp.registerError;
 
 export default signUpSlice.reducer;

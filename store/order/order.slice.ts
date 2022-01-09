@@ -85,6 +85,9 @@ export const orderSlice = createSlice({
     setPhone: (state, action: PayloadAction<string>) => {
       state.phone = action.payload;
     },
+    removeError: (state) => {
+      delete state.error;
+    },
     clear: (state) => {
       state.success = false;
       delete state.error;
@@ -117,6 +120,7 @@ export const {
   setHouse,
   setPostcode,
   setPhone,
+  removeError,
   clear,
 } = orderSlice.actions;
 
@@ -131,5 +135,6 @@ export const selectPostcode = (state: RootState) =>
   state.order.address.postcode;
 export const selectPhone = (state: RootState) => state.order.phone;
 export const selectSuccess = (state: RootState) => state.order.success;
+export const selectError = (state: RootState) => state.order.error;
 
 export default orderSlice.reducer;

@@ -1,25 +1,24 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import fetchWithErrorHandling from '../../utils/fetch-with-error-handling';
 import initialState from './settings.initial-state';
 import { api } from '../../api';
 
-import { RootState } from '..';
 import { UpdateSettingsRequest } from './settings.declarations';
+import { RootState } from '..';
 
 export const updateSettings = createAsyncThunk(
   'settings/updateSettings',
   async (params: UpdateSettingsRequest, { rejectWithValue }) => {
-    try {
-      await axios.patch(`${api.users}/${params.id}`, params, {
+    return await fetchWithErrorHandling(async () => {
+      return await axios.patch(`${api.users}/${params.id}`, params, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${params.accessToken}`,
         },
       });
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+    }, rejectWithValue);
   }
 );
 
@@ -97,5 +96,6 @@ export const selectIsPasswordChange = (state: RootState) =>
 export const selectPasswordChangeError = (state: RootState) =>
   state.settings.passwordChangeError;
 export const selectSuccess = (state: RootState) => state.settings.success;
+export const selectError = (state: RootState) => state.settings.error;
 
 export default settingsSlice.reducer;

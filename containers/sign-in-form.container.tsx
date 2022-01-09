@@ -9,6 +9,7 @@ import {
   setPassword,
   login,
   clear,
+  selectError,
 } from '../store/sign-in/sign-in.slice';
 import { selectIsAuthenticated } from '../store/core/core.slice';
 import Button from '../components/button.component';
@@ -33,16 +34,16 @@ export const SignInForm = () => {
   }, [dispatch, push, isAuthenticated]);
 
   const email = useAppSelector(selectEmail);
-
   const changeEmail = (event) => {
     dispatch(setEmail(event.target.value));
   };
 
   const password = useAppSelector(selectPassword);
-
   const changePassword = (event) => {
     dispatch(setPassword(event.target.value));
   };
+
+  const error = useAppSelector(selectError);
 
   const signIn = () => {
     dispatch(login({ email, password }));
@@ -50,7 +51,12 @@ export const SignInForm = () => {
 
   return (
     <InputGroup className="w-64 sm:w-96 flex justify-center items-center my-16 mx-auto rounded-lg py-4">
-      <div>
+      <div className="relative">
+        {error && (
+          <div className="absolute text-sm text-red -top-6 text-center w-full">
+            Неправильный логин или пароль
+          </div>
+        )}
         <div className="my-4">
           <Label htmlFor="login" className="mb-2">
             Email

@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Token } from 'react-stripe-checkout';
+import { useAlert } from 'react-alert';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   clear,
   createOrder,
+  removeError,
   selectCity,
+  selectError,
   selectFirstname,
   selectHouse,
   selectLastname,
@@ -28,11 +30,16 @@ import {
   selectCartItems,
   selectTotal,
 } from '../store/cart/cart.slice';
+import { ERROR_PAYMENT, SUCCESS_PAYMENT } from '../utils/alert-messages';
 import Input from '../components/input.component';
 import OrderSummary from './order-summary.container';
 
+import { Token } from 'react-stripe-checkout';
+
 export const OrderDataForm = () => {
   const { push } = useRouter();
+
+  const alert = useAlert();
 
   const dispatch = useAppDispatch();
 
@@ -44,50 +51,55 @@ export const OrderDataForm = () => {
 
       dispatch(clearCart());
 
+      alert.success(SUCCESS_PAYMENT);
+
       push('/');
     }
-  }, [dispatch, push, success]);
+  }, [dispatch, push, alert, success]);
+
+  const error = useAppSelector(selectError);
+
+  useEffect(() => {
+    if (error) {
+      alert.error(ERROR_PAYMENT);
+
+      dispatch(removeError());
+    }
+  }, [dispatch, alert, error]);
 
   const total = useAppSelector(selectTotal);
 
   const firstname = useAppSelector(selectFirstname);
-
   const onFirstnameChange = (event) => {
     dispatch(setFirstname(event.target.value));
   };
 
   const lastname = useAppSelector(selectLastname);
-
   const onLastnameChange = (event) => {
     dispatch(setLastname(event.target.value));
   };
 
   const city = useAppSelector(selectCity);
-
   const onCityChange = (event) => {
     dispatch(setCity(event.target.value));
   };
 
   const street = useAppSelector(selectStreet);
-
   const onStreetChange = (event) => {
     dispatch(setStreet(event.target.value));
   };
 
   const house = useAppSelector(selectHouse);
-
   const onHouseChange = (event) => {
     dispatch(setHouse(event.target.value));
   };
 
   const postcode = useAppSelector(selectPostcode);
-
   const onPostcodeChange = (event) => {
     dispatch(setPostcode(event.target.value));
   };
 
   const phone = useAppSelector(selectPhone);
-
   const onPhoneChange = (event) => {
     dispatch(setPhone(event.target.value));
   };
@@ -95,6 +107,15 @@ export const OrderDataForm = () => {
   const cartItems = useAppSelector(selectCartItems);
 
   const accessToken = useAppSelector(selectAccessToken);
+
+  const isButtonDisabled =
+    !firstname ||
+    !lastname ||
+    !city ||
+    !street ||
+    !house ||
+    !postcode ||
+    !phone;
 
   const onCreate = (token: Token) => {
     dispatch(
@@ -185,7 +206,11 @@ export const OrderDataForm = () => {
           />
         </div>
       </div>
-      <OrderSummary total={total} onCreate={onCreate} />
+      <OrderSummary
+        total={total}
+        onCreate={onCreate}
+        isButtonDisabled={isButtonDisabled}
+      />
     </div>
   );
 };

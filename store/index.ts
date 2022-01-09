@@ -29,7 +29,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage: persistStorage,
-  blacklist: ['settings', 'products', 'categories'],
+  blacklist: ['settings', 'products', 'categories', 'signIn', 'signUp'],
 };
 
 const rootReducer = combineReducers({

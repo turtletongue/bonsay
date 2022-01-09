@@ -13,6 +13,7 @@ import {
   setPassword,
   setPasswordConfirmation,
   selectSuccess,
+  selectError,
 } from '../store/sign-up/sign-up.slice';
 import Button from '../components/button.component';
 import InputGroup from '../components/input-group.component';
@@ -36,24 +37,23 @@ export const SignUpForm = () => {
   }, [dispatch, push, success]);
 
   const email = useAppSelector(selectEmail);
-
   const changeEmail = (event) => {
     dispatch(setEmail(event.target.value));
   };
 
   const password = useAppSelector(selectPassword);
-
   const changePassword = (event) => {
     dispatch(setPassword(event.target.value));
   };
 
   const passwordConfirmation = useAppSelector(selectPasswordConfirmation);
-
   const changePasswordConfirmation = (event) => {
     dispatch(setPasswordConfirmation(event.target.value));
   };
 
   const passwordsError = useAppSelector(selectPasswordsError);
+
+  const error = useAppSelector(selectError);
 
   const signUp = () => {
     dispatch(register({ email, password }));
@@ -61,7 +61,12 @@ export const SignUpForm = () => {
 
   return (
     <InputGroup className="w-64 sm:w-96 flex justify-center items-center my-16 mx-auto rounded-lg py-4">
-      <div>
+      <div className="relative">
+        {error && (
+          <div className="absolute text-sm text-red -top-6 text-center w-full">
+            {error}
+          </div>
+        )}
         <div className="my-4">
           <Label htmlFor="login" className="mb-2">
             Введите ваш email
