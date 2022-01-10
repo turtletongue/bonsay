@@ -6,7 +6,10 @@ import { ACCESS_TOKEN_TTL, REFRESH_TOKEN_TTL } from '../../variables';
 import { api } from '../../api';
 
 import { User } from '../../declarations';
-import { RefreshTokensRequest } from './core.declarations';
+import {
+  ReevokeTokensRequest,
+  RefreshTokensRequest,
+} from './core.declarations';
 import { RootState } from '..';
 
 export const refreshTokens = createAsyncThunk(
@@ -24,6 +27,21 @@ export const refreshTokens = createAsyncThunk(
       });
 
       dispatch(signIn({ user, accessToken: payload.accessToken }));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const revokeToken = createAsyncThunk(
+  'core/revokeToken',
+  async (params: ReevokeTokensRequest, { rejectWithValue }) => {
+    try {
+      await axios.post(api.revoke, params, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -78,6 +96,17 @@ export const userSlice = createSlice({
     [refreshTokens.rejected as any]: (state, action: PayloadAction<string>) => {
       state.refreshLoading = 'idle';
       state.refreshError = action.payload;
+    },
+    [revokeToken.pending as any]: (state) => {
+      state.revokeLoading = 'pending';
+      delete state.revokeError;
+    },
+    [revokeToken.fulfilled as any]: (state) => {
+      state.revokeLoading = 'idle';
+    },
+    [revokeToken.rejected as any]: (state, action: PayloadAction<string>) => {
+      state.revokeLoading = 'idle';
+      state.revokeError = action.payload;
     },
   },
 });

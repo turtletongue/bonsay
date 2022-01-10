@@ -9,8 +9,14 @@ export interface UserState {
   refreshTokenExpireAt?: string;
   refreshLoading: 'idle' | 'pending';
   refreshError?: string;
+  revokeLoading: 'idle' | 'pending';
+  revokeError?: string;
 }
 
 export interface RefreshTokensRequest {
+  refreshToken: string;
+}
+
+export interface ReevokeTokensRequest {
   refreshToken: string;
 }

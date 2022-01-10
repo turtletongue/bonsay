@@ -1,7 +1,11 @@
 import NavbarLink from '../components/navbar-link.component';
 
-import { useAppDispatch } from '../hooks';
-import { signOut } from '../store/core/core.slice';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import {
+  revokeToken,
+  selectRefreshToken,
+  signOut,
+} from '../store/core/core.slice';
 import { NavLink } from '../declarations';
 
 interface NavigationProps {
@@ -11,17 +15,20 @@ interface NavigationProps {
 
 export const Navigation = ({
   navigation,
-  currentPathname
+  currentPathname,
 }: NavigationProps) => {
   const dispatch = useAppDispatch();
 
+  const refreshToken = useAppSelector(selectRefreshToken);
+
   const onSignOut = () => {
+    dispatch(revokeToken({ refreshToken }));
     dispatch(signOut());
   };
 
   return (
-    <div className='hidden sm:block sm:ml-6 z-20'>
-      <div className='flex space-x-8 font-nunito'>
+    <div className="hidden sm:block sm:ml-6 z-20">
+      <div className="flex space-x-8 font-nunito">
         {navigation.map((item) => (
           <NavbarLink
             key={item.name}
