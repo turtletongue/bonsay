@@ -102,7 +102,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
             </div>
             <div className="flex justify-between w-full">
               <div className="text-gray">
-                {Number(product.price).toFixed(2)} ₽
+                {Number(product.price).toLocaleString(2)} ₽
               </div>
               <div className="text-center sm:hidden text-sm font-medium text-primary">
                 {product.age} лет

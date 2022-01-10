@@ -64,7 +64,9 @@ export const CartItem = ({ product, qty }: CartItemProps) => {
       </div>
       <div className="flex items-center justify-center">
         <div className="flex flex-col items-center">
-          <div className="my-4 select-none">{(price * qty).toFixed(2)} ₽</div>
+          <div className="my-4 select-none">
+            {(price * qty).toLocaleString()} ₽
+          </div>
         </div>
       </div>
     </div>

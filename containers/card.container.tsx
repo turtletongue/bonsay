@@ -39,7 +39,7 @@ export const Card = ({
       </div>
       <span className="tracking-wider text-xs my-2">{title}</span>
       <hr className="border rounded-sm border-decoration mx-2" />
-      <span className="text-sm my-2">{Number(price).toFixed(2)} ₽</span>
+      <span className="text-sm my-2">{Number(price).toLocaleString()} ₽</span>
     </div>
   );
 };
