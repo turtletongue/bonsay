@@ -3,6 +3,7 @@ export const errorMessages = {
     'Пароль должен содержать минимум 7 символов',
   'This email is already taken': 'Этот email уже используется',
   'Invalid login or password': 'Неправильный логин или пароль',
+  'Invalid email or password': 'Неправильный логин или пароль',
   'email must be an email': 'Некорректная почта',
 };
 
