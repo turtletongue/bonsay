@@ -9,6 +9,7 @@ export const initialState: UserState = {
   refreshLoading: 'idle',
   refreshError: undefined,
   refreshTokenExpireAt: undefined,
+  revokeLoading: 'idle',
 };
 
 export default initialState;
