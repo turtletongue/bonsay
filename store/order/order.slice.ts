@@ -134,6 +134,8 @@ export const selectHouse = (state: RootState) => state.order.address.house;
 export const selectPostcode = (state: RootState) =>
   state.order.address.postcode;
 export const selectPhone = (state: RootState) => state.order.phone;
+export const selectIsLoading = (state: RootState) =>
+  state.order.loading !== 'idle';
 export const selectSuccess = (state: RootState) => state.order.success;
 export const selectError = (state: RootState) => state.order.error;
 

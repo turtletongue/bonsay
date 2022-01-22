@@ -11,6 +11,7 @@ import {
   selectError,
   selectFirstname,
   selectHouse,
+  selectIsLoading,
   selectLastname,
   selectPhone,
   selectPostcode,
@@ -108,6 +109,8 @@ export const OrderDataForm = () => {
 
   const accessToken = useAppSelector(selectAccessToken);
 
+  const isLoading = useAppSelector(selectIsLoading);
+
   const isButtonDisabled =
     !firstname ||
     !lastname ||
@@ -115,7 +118,8 @@ export const OrderDataForm = () => {
     !street ||
     !house ||
     !postcode ||
-    !phone;
+    !phone ||
+    isLoading;
 
   const onCreate = (token: Token) => {
     dispatch(
