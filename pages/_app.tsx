@@ -11,7 +11,7 @@ import Footer from '../containers/footer.container';
 
 import '../styles/globals.css';
 
-const options = {
+const alertOptions = {
   position: positions.TOP_RIGHT,
   timeout: 5000,
   offset: '30px',
@@ -22,7 +22,7 @@ function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AlertProvider template={AlertTemplate} {...options}>
+        <AlertProvider template={AlertTemplate} {...alertOptions}>
           <AppContainer>
             <Navbar />
             <Component {...pageProps} />
