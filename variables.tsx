@@ -66,7 +66,8 @@ export const aboutConfig = {
           content: (
             <>
               {' '}
-              В любое время дня, вы можете позвонить по номеру{' '}
+              В любое время дня, вы можете позвонить по номеру
+              <br />
               <span className="text-secondary">+7-905-033-55-01</span>
             </>
           ),
@@ -75,7 +76,8 @@ export const aboutConfig = {
           id: 2,
           content: (
             <>
-              Или написать на e-mail{' '}
+              Или написать на e-mail
+              <br />
               <span className="text-secondary">bonsay@gmail.com</span>
             </>
           ),
