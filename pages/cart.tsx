@@ -3,7 +3,7 @@ import Head from 'next/head';
 import {
   selectCartItems,
   selectCartItemsCount,
-  selectTotal
+  selectTotal,
 } from '../store/cart/cart.slice';
 import { useAppSelector } from '../hooks';
 import CartItems from '../containers/cart-items.container';
@@ -21,17 +21,17 @@ export const SignIn = () => {
         <title>Корзина | BONSAY</title>
       </Head>
       {cartItemsCount > 0 ? (
-        <div className='w-full relative'>
+        <div className="w-full relative">
           <CartItems items={cartItems} />
-          <div className='hidden md:block absolute right-12 top-12'>
+          <div className="hidden md:block absolute right-12 top-12">
             <CartTotal total={total} />
           </div>
-          <div className='flex justify-center mb-4 w-full md:hidden'>
+          <div className="flex justify-center mb-4 w-full md:hidden">
             <CartTotal total={total} />
           </div>
         </div>
       ) : (
-        <Void text='КОРЗИНА ПУСТА' />
+        <Void text="КОРЗИНА ПУСТА" />
       )}
     </>
   );

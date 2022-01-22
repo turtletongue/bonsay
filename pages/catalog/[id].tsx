@@ -1,21 +1,21 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { FadeLoader } from 'react-spinners';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Pool } from 'pg';
 
-import { ISR_DELAY_IN_SECONDS } from '../../variables';
+import { DEFAULT_PRODUCT_IMAGE, ISR_DELAY_IN_SECONDS } from '../../variables';
 import { bestsellers } from '../../sql/bestsellers.sql';
 import { productById } from '../../sql/product-by-id.sql';
+import { productPhotos } from '../../sql/product-photos.sql';
+import { similarProducts } from '../../sql/similar-products.sql';
+import { API_URL, FRONT_URL, IMAGE_API_URL } from '../../api';
 import { dbConnectionConfig } from '../../db-connection.config';
 import ProductInfo from '../../containers/product-info.container';
 import ProductsGrid from '../../containers/products-grid.container';
 import Void from '../../containers/void.container';
 
 import { Product, Upload } from '../../declarations';
-import { productPhotos } from '../../sql/product-photos.sql';
-import { similarProducts } from '../../sql/similar-products.sql';
-import { IMAGE_API_URL } from '../../api';
-import { FadeLoader } from 'react-spinners';
 
 export const ProductPage = ({ product }) => {
   const router = useRouter();
@@ -35,6 +35,16 @@ export const ProductPage = ({ product }) => {
     <>
       <Head>
         <title>{product.name} | BONSAY</title>
+        <meta name="description" content={product.description} />
+        <meta property="og:description" content={product.description} />
+        <meta
+          property="og:image"
+          content={
+            product.path
+              ? API_URL + product.path
+              : FRONT_URL + DEFAULT_PRODUCT_IMAGE
+          }
+        />
       </Head>
       <ProductInfo product={product} />
       <div className="w-full my-2 text-center font-medium text-primary">

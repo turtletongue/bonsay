@@ -6,6 +6,7 @@ import CategoriesGrid from '../containers/categories-grid.container';
 import { dbConnectionConfig } from '../db-connection.config';
 import { categories as categoriesQuery } from '../sql/categories.sql';
 import { ISR_DELAY_IN_SECONDS } from '../variables';
+import { pageDescriptions } from '../page-descriptions';
 
 import { GetStaticProps } from 'next';
 import { Category } from '../declarations';
@@ -15,6 +16,7 @@ export const Categories = ({ categories }) => {
     <>
       <Head>
         <title>Категории | BONSAY</title>
+        <meta name="description" content={pageDescriptions.categories} />
       </Head>
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
         <CategoriesGrid categories={categories} />

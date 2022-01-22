@@ -5,6 +5,7 @@ import { Pool } from 'pg';
 import { ISR_DELAY_IN_SECONDS, mainScreenConfig } from '../variables';
 import { dbConnectionConfig } from '../db-connection.config';
 import { categoriesPreview } from '../sql/categories-preview.sql';
+import { pageDescriptions } from '../page-descriptions';
 import { bestsellers } from '../sql/bestsellers.sql';
 import MainScreen from '../containers/main-screen.container';
 import Bestsellers from '../containers/bestsellers.container';
@@ -17,6 +18,7 @@ export default function Home({ bestsellers, categories }) {
     <>
       <Head>
         <title>Главная | BONSAY</title>
+        <meta name="description" content={pageDescriptions.index} />
       </Head>
       <MainScreen
         title={mainScreenConfig.title}
@@ -38,13 +40,16 @@ export const getStaticProps: GetStaticProps = async () => {
 
   await pool.end();
 
-  const setPaths = (entity: Category | Product) => entity.path ? { ...entity,  path: process.env.PRIVATE_API_PATH + entity.path } : entity;
+  const setPaths = (entity: Category | Product) =>
+    entity.path
+      ? { ...entity, path: process.env.PRIVATE_API_PATH + entity.path }
+      : entity;
 
   return {
     props: {
       bestsellers: products.rows.map(setPaths),
-      categories: categories.rows.map(setPaths)
+      categories: categories.rows.map(setPaths),
     },
-    revalidate: ISR_DELAY_IN_SECONDS
+    revalidate: ISR_DELAY_IN_SECONDS,
   };
 };
