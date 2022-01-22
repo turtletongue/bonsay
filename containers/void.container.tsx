@@ -1,10 +1,12 @@
+import { ReactNode } from 'react';
+
 interface VoidProps {
-  text: string;
+  text: ReactNode;
 }
 
 export const Void = ({ text }: VoidProps) => {
   return (
-    <div className='w-full select-none min-h-screen text-secondary text-xl font-medium text-center flex justify-center items-center'>
+    <div className="w-full select-none min-h-screen text-secondary text-xl font-medium text-center flex justify-center items-center">
       {text}
     </div>
   );

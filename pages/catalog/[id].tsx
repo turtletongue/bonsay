@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Pool } from 'pg';
 
@@ -8,13 +9,28 @@ import { productById } from '../../sql/product-by-id.sql';
 import { dbConnectionConfig } from '../../db-connection.config';
 import ProductInfo from '../../containers/product-info.container';
 import ProductsGrid from '../../containers/products-grid.container';
+import Void from '../../containers/void.container';
 
 import { Product, Upload } from '../../declarations';
 import { productPhotos } from '../../sql/product-photos.sql';
 import { similarProducts } from '../../sql/similar-products.sql';
 import { IMAGE_API_URL } from '../../api';
+import { FadeLoader } from 'react-spinners';
 
 export const ProductPage = ({ product }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <>
+        <Head>
+          <title>Товар | BONSAY</title>
+        </Head>
+        <Void text={<FadeLoader color="#627A52" />} />
+      </>
+    );
+  }
+
   return (
     <>
       <Head>

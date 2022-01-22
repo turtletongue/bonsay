@@ -1,5 +1,6 @@
 import CartBadge from './components/cart-badge.component';
 import CardMock from './containers/card-mock.container';
+
 import { Navigation, SortType } from './declarations';
 
 export const anonymousNavigation: (count: number) => Navigation = (
