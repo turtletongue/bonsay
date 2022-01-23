@@ -38,7 +38,11 @@ export const CartItem = ({ product, qty }: CartItemProps) => {
       <div className="flex flex-col h-full p-2 sm:p-6 items-center justify-between">
         <div className="text-sm text-primary font-medium mb-2">{name}</div>
         <Image
-          src={IMAGE_API_URL + (path || upload?.path || DEFAULT_PRODUCT_IMAGE)}
+          src={
+            path || upload?.path
+              ? IMAGE_API_URL + (path || upload?.path)
+              : DEFAULT_PRODUCT_IMAGE
+          }
           width={110}
           height={140}
           alt={name}

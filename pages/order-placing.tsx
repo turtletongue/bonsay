@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { useAppSelector } from '../hooks';
+import {
+  removeDeletedProducts,
+  selectProductsIds,
+} from '../store/cart/cart.slice';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { selectIsAuthenticated } from '../store/core/core.slice';
 import OrderDataForm from '../containers/order-data-form.container';
 
@@ -16,6 +20,14 @@ export const OrderPlacing = () => {
       push('/');
     }
   }, [push, isAuthenticated]);
+
+  const dispatch = useAppDispatch();
+
+  const productsIds = useAppSelector(selectProductsIds);
+
+  useEffect(() => {
+    dispatch(removeDeletedProducts(productsIds));
+  }, [dispatch, productsIds]);
 
   return (
     <>

@@ -28,9 +28,11 @@ export const CatalogScreen = () => {
   const filters = useAppSelector(selectFilters);
   const search = useAppSelector(selectSearch);
 
-  const { pathname } = useRouter();
-
   const pageNumber = useAppSelector(selectPage);
+
+  useEffect(() => {
+    dispatch(setPage(1));
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchProducts({ page: pageNumber, filters }));

@@ -1,9 +1,33 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 import initialState from './cart.initial-state';
+import { api } from '../../api';
 
 import { Id, Product } from '../../declarations';
 import { RootState } from '..';
+
+export const removeDeletedProducts = createAsyncThunk(
+  'cart/removeDeletedProducts',
+  async (productsIds: Id[], { dispatch }) => {
+    const existingProductsIds: Id[] = (
+      await axios.get(api.products, {
+        params: {
+          $limit: productsIds.length,
+          id: {
+            $in: productsIds,
+          },
+        },
+      })
+    ).data.data?.map((product: Product) => String(product.id));
+
+    productsIds.forEach((productId) => {
+      if (!existingProductsIds.includes(String(productId))) {
+        dispatch(removeFromCart(productId));
+      }
+    });
+  }
+);
 
 export const cartSlice = createSlice({
   name: 'cart',

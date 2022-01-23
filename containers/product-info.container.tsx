@@ -8,7 +8,7 @@ import {
   selectProductsIds,
 } from '../store/cart/cart.slice';
 import { getAgeWord } from '../utils/get-age-word';
-import { DEFAULT_IMAGE } from '../variables';
+import { DEFAULT_IMAGE, DEFAULT_PRODUCT_IMAGE } from '../variables';
 import { IMAGE_API_URL } from '../api';
 import Button from '../components/button.component';
 import LittleImage from '../components/little-image.component';
@@ -33,9 +33,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
   useEffect(() => {
     setPhotos(product.photos || []);
 
-    setMainImage(
-      product.upload || { id: 0, path: product.path } || DEFAULT_IMAGE
-    );
+    setMainImage(product.upload || { id: 0, path: product.path });
   }, [product]);
 
   const changeMainImage = (event) => {
@@ -82,7 +80,11 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
         </div>
         <div className="relative">
           <Image
-            src={IMAGE_API_URL + mainImage.path}
+            src={
+              mainImage.path
+                ? IMAGE_API_URL + mainImage.path
+                : DEFAULT_PRODUCT_IMAGE
+            }
             width={450}
             height={500}
             alt={product.name}

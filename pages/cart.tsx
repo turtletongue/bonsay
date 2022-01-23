@@ -1,11 +1,14 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 
 import {
+  removeDeletedProducts,
   selectCartItems,
   selectCartItemsCount,
+  selectProductsIds,
   selectTotal,
 } from '../store/cart/cart.slice';
-import { useAppSelector } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import CartItems from '../containers/cart-items.container';
 import CartTotal from '../containers/cart-total.container';
 import Void from '../containers/void.container';
@@ -14,6 +17,14 @@ export const SignIn = () => {
   const cartItems = useAppSelector(selectCartItems);
   const total = useAppSelector(selectTotal);
   const cartItemsCount = useAppSelector(selectCartItemsCount);
+
+  const dispatch = useAppDispatch();
+
+  const productsIds = useAppSelector(selectProductsIds);
+
+  useEffect(() => {
+    dispatch(removeDeletedProducts(productsIds));
+  }, [dispatch, productsIds]);
 
   return (
     <>
