@@ -22,6 +22,7 @@ export interface ProductsState {
   loading: 'idle' | 'pending';
   error?: string;
   filters: ProductsFilters;
+  page: number;
 }
 
 export type FetchProductsParams = {

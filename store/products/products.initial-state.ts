@@ -2,7 +2,7 @@ import {
   DEFAULT_AGE_MAXIMUM,
   DEFAULT_AGE_MINIMUM,
   DEFAULT_PRICE_MAXIMUM,
-  DEFAULT_PRICE_MINIMUM
+  DEFAULT_PRICE_MINIMUM,
 } from '../../variables';
 
 import { ProductsState } from './products.declarations';
@@ -15,16 +15,17 @@ export const initialState: ProductsState = {
   filters: {
     price: {
       min: DEFAULT_PRICE_MINIMUM,
-      max: DEFAULT_PRICE_MAXIMUM
+      max: DEFAULT_PRICE_MAXIMUM,
     },
     age: {
       min: DEFAULT_AGE_MINIMUM,
-      max: DEFAULT_AGE_MAXIMUM
+      max: DEFAULT_AGE_MAXIMUM,
     },
     categories: {},
     sortId: '',
-    search: ''
-  }
+    search: '',
+  },
+  page: 1,
 };
 
 export default initialState;

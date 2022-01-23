@@ -14,19 +14,20 @@ import {
   setMaximumPrice,
   setMinimumAge,
   setMinimumPrice,
+  setPage,
   setSortId,
-  sortByOneCategory
+  sortByOneCategory,
 } from '../store/products/products.slice';
 import {
   fetchCategories,
-  selectCategories
+  selectCategories,
 } from '../store/categories/categories.slice';
 import {
   DEFAULT_AGE_MAXIMUM,
   DEFAULT_AGE_MINIMUM,
   DEFAULT_PRICE_MAXIMUM,
   DEFAULT_PRICE_MINIMUM,
-  sortTypes
+  sortTypes,
 } from '../variables';
 import RangeFilter from './range-filter.container';
 import SelectionFilter from './selection-filter.container';
@@ -38,7 +39,8 @@ interface FiltersProps {
 
 export const Filters = ({ className }: FiltersProps) => {
   const {
-    query: { category }
+    query: { category },
+    push,
   } = useRouter();
 
   const dispatch = useAppDispatch();
@@ -77,6 +79,8 @@ export const Filters = ({ className }: FiltersProps) => {
     } else {
       dispatch(setMinimumPrice(value));
     }
+
+    dispatch(setPage(1));
   };
 
   const changeMaximumPrice = (event) => {
@@ -92,6 +96,8 @@ export const Filters = ({ className }: FiltersProps) => {
     } else {
       dispatch(setMaximumPrice(value));
     }
+
+    dispatch(setPage(1));
   };
 
   const minimumAge = useAppSelector(selectMinimumAge);
@@ -110,6 +116,8 @@ export const Filters = ({ className }: FiltersProps) => {
     } else {
       dispatch(setMinimumAge(value));
     }
+
+    dispatch(setPage(1));
   };
 
   const changeMaximumAge = (event) => {
@@ -125,6 +133,8 @@ export const Filters = ({ className }: FiltersProps) => {
     } else {
       dispatch(setMaximumAge(value));
     }
+
+    dispatch(setPage(1));
   };
 
   const selectedCategories = useAppSelector(selectFilterCategories);
@@ -135,32 +145,34 @@ export const Filters = ({ className }: FiltersProps) => {
     if (event.target.checked) {
       dispatch(setSortId(event.target.value));
     }
+
+    dispatch(setPage(1));
   };
 
   return (
     <div className={className}>
       <RadioFilter
-        title='Сортировка'
+        title="Сортировка"
         values={sortTypes}
         selectedId={selectedSortId}
         onChange={changeSortId}
       />
       <RangeFilter
-        title='Цена'
+        title="Цена"
         min={minimumPrice}
         max={maximumPrice}
         onMinChange={changeMinimumPrice}
         onMaxChange={changeMaximumPrice}
       />
       <RangeFilter
-        title='Возраст'
+        title="Возраст"
         min={minimumAge}
         max={maximumAge}
         onMinChange={changeMinimumAge}
         onMaxChange={changeMaximumAge}
       />
       <SelectionFilter
-        title='Категория'
+        title="Категория"
         values={categories}
         selected={selectedCategories}
       />

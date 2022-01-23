@@ -1,23 +1,30 @@
-import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
-import { DEFAULT_FETCH_LIMIT } from "../variables";
-import { getPageNumberButtons } from "../utils";
+import { setPage } from '../store/products/products.slice';
+import { DEFAULT_FETCH_LIMIT } from '../variables';
+import { getPageNumberButtons } from '../utils';
+import { useAppDispatch } from '../hooks';
 
 interface PaginationProps {
   pageNumber: number;
-  url?: string;
   total: number;
   limit?: number;
 }
 
 export const Pagination = ({
   pageNumber,
-  url = "/",
   total,
   limit = DEFAULT_FETCH_LIMIT,
 }: PaginationProps) => {
   const pagesCount = Math.ceil(total / limit);
+
+  const dispatch = useAppDispatch();
+
+  const changePage = (page: number) => {
+    return () => {
+      dispatch(setPage(page));
+    };
+  };
 
   return (
     <>
@@ -26,23 +33,23 @@ export const Pagination = ({
           <ul className="inline-flex items-center -space-x-px my-6">
             {pageNumber > 1 && (
               <li>
-                <Link href={`${url}?page=${pageNumber - 1}`}>
+                <div onClick={changePage(pageNumber - 1)}>
                   <a className="block py-2 px-3 ml-0 leading-tight text-darkgray bg-white rounded-l-lg border border-gray hover:bg-lightgray hover:text-secondary">
                     <span className="sr-only">Предыдущая</span>
                     <ChevronLeftIcon className="w-5 h-5" />
                   </a>
-                </Link>
+                </div>
               </li>
             )}
-            {getPageNumberButtons(pagesCount, pageNumber, url)}
+            {getPageNumberButtons(pagesCount, pageNumber)}
             {pageNumber < pagesCount && (
               <li>
-                <Link href={`${url}?page=${pageNumber + 1}`}>
+                <div onClick={changePage(pageNumber + 1)}>
                   <a className="block py-2 px-3 leading-tight bg-white rounded-r-lg text-darkgray bg-white border border-gray hover:bg-lightgray hover:text-secondary">
                     <span className="sr-only">Следующая</span>
                     <ChevronRightIcon className="w-5 h-5" />
                   </a>
-                </Link>
+                </div>
               </li>
             )}
           </ul>

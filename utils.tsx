@@ -4,8 +4,7 @@ import PaginationButton from './components/pagination-button.component';
 
 export const getPageNumberButtons = (
   pagesCount: number,
-  activePageNumber?: number,
-  url?: string
+  activePageNumber?: number
 ) => {
   const buttons: ReactNode[] = [];
 
@@ -14,7 +13,6 @@ export const getPageNumberButtons = (
       <PaginationButton
         key={pageNumber}
         pageNumber={pageNumber}
-        url={url}
         isActive={pageNumber === activePageNumber}
       />
     );

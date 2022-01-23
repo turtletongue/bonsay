@@ -1,9 +1,13 @@
 import { useAppDispatch } from '../hooks';
-import { addCategory, removeCategory } from '../store/products/products.slice';
+import {
+  addCategory,
+  removeCategory,
+  setPage,
+} from '../store/products/products.slice';
 import CheckInput from '../components/check-input.component';
+import DisclosureBox from './disclosure-box.container';
 
 import { Category, Id } from '../declarations';
-import DisclosureBox from './disclosure-box.container';
 
 interface SelectionFilterProps {
   title: string;
@@ -14,7 +18,7 @@ interface SelectionFilterProps {
 export const SelectionFilter = ({
   title,
   values,
-  selected
+  selected,
 }: SelectionFilterProps) => {
   const dispatch = useAppDispatch();
 
@@ -24,13 +28,15 @@ export const SelectionFilter = ({
     } else {
       dispatch(removeCategory(categoryId));
     }
+
+    dispatch(setPage(1));
   };
 
   return (
     <DisclosureBox title={title}>
-      <div className='pt-6'>
-        <div className='space-y-6'>
-          <div className='flex flex-col'>
+      <div className="pt-6">
+        <div className="space-y-6">
+          <div className="flex flex-col">
             {values.map((value) => (
               <CheckInput
                 id={value.id.toString()}

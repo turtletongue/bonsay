@@ -9,7 +9,9 @@ import {
   selectTotal,
   selectFilters,
   selectSearch,
-  setSearch
+  setSearch,
+  selectPage,
+  setPage,
 } from '../store/products/products.slice';
 import Search from '../components/search.component';
 import Pagination from '../components/pagination.component';
@@ -26,10 +28,9 @@ export const CatalogScreen = () => {
   const filters = useAppSelector(selectFilters);
   const search = useAppSelector(selectSearch);
 
-  const { query, pathname } = useRouter();
+  const { pathname } = useRouter();
 
-  const { page } = query;
-  const pageNumber = +page || 1;
+  const pageNumber = useAppSelector(selectPage);
 
   useEffect(() => {
     dispatch(fetchProducts({ page: pageNumber, filters }));
@@ -37,23 +38,25 @@ export const CatalogScreen = () => {
 
   const changeSearchValue = (event) => {
     dispatch(setSearch(event.target.value));
+
+    dispatch(setPage(1));
   };
 
   return (
-    <div className='flex flex-col items-center w-full my-5'>
-      <div className='flex flex-row justify-center items-center w-full mb-3'>
-        <div className='ml-6 sm:ml-0'>
+    <div className="flex flex-col items-center w-full my-5">
+      <div className="flex flex-row justify-center items-center w-full mb-3">
+        <div className="ml-6 sm:ml-0">
           <Search value={search} onChange={changeSearchValue} />
         </div>
-        <div className='block sm:hidden mx-4'>
+        <div className="block sm:hidden mx-4">
           <FiltersDialog />
         </div>
       </div>
-      <div className='flex flex-row space-around my-6'>
-        <Filters className='hidden sm:block' />
+      <div className="flex flex-row space-around my-6">
+        <Filters className="hidden sm:block" />
         <ProductsGrid products={products} isLoading={isLoading} />
       </div>
-      <Pagination pageNumber={pageNumber} total={total} url={pathname} />
+      <Pagination pageNumber={pageNumber} total={total} />
     </div>
   );
 };

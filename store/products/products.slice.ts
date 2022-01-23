@@ -86,6 +86,9 @@ export const productsSlice = createSlice({
     setSortId: (state, action: PayloadAction<Id | undefined>) => {
       state.filters.sortId = action.payload;
     },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
   },
   extraReducers: {
     [fetchProducts.pending as any]: (state) => {
@@ -119,6 +122,7 @@ export const {
   sortByOneCategory,
   setSearch,
   setSortId,
+  setPage,
 } = productsSlice.actions;
 
 export const selectIsLoading = (state: RootState) =>
@@ -138,5 +142,6 @@ export const selectFilterCategories = (state: RootState) =>
 export const selectSearch = (state: RootState) => state.products.filters.search;
 export const selectSortId = (state: RootState) => state.products.filters.sortId;
 export const selectFilters = (state: RootState) => state.products.filters;
+export const selectPage = (state: RootState) => state.products.page;
 
 export default productsSlice.reducer;
