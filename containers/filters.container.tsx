@@ -40,7 +40,6 @@ interface FiltersProps {
 export const Filters = ({ className }: FiltersProps) => {
   const {
     query: { category },
-    push,
   } = useRouter();
 
   const dispatch = useAppDispatch();
