@@ -1,6 +1,8 @@
-FROM node:14-alpine as build
+FROM node:14-alpine
 
 WORKDIR /app
+
+RUN apk update & apk add nginx
 
 COPY package.json yarn.lock ./
 
@@ -8,12 +10,4 @@ RUN yarn
 
 COPY . ./
 
-RUN yarn build
-
-FROM nginx:alpine
-
-COPY --from=build /app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["yarn", "build", ";", "cp", "-R", "./build", "/usr/share/nginx/html", ";", "nginx", "-g", "daemon off;"]
