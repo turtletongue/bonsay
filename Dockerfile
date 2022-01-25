@@ -10,4 +10,4 @@ RUN yarn
 
 COPY . ./
 
-CMD ["yarn", "build", ";", "cp", "-R", "./build", "/usr/share/nginx/html", ";", "nginx", "-g", "daemon off;"]
+CMD "yarn build ; cp -R ./build /usr/share/nginx/html ; nginx -g daemon off;"
