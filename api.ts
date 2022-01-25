@@ -1,7 +1,7 @@
 export const FRONT_URL = 'https://bonsay.istmen.space/';
 export const API_URL = 'https://bonsay.istmen.space/api/';
 
-export const IMAGE_API_URL = 'http://172.28.0.1:3020/';
+export const IMAGE_API_URL = 'http://bonsay_api/api';
 
 export const api = {
   products: API_URL + 'products',
