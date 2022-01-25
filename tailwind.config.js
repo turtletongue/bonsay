@@ -1,11 +1,15 @@
 module.exports = {
-  purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
+  purge: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './containers/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+  ],
   plugins: [require('@tailwindcss/forms')],
   theme: {
     fontFamily: {
       noto: ['Noto Sans Bengali', 'sans-serif'],
       hanuman: ['Hanuman', 'sans-serif'],
-      nunito: ['Nunito', 'sans-serif']
+      nunito: ['Nunito', 'sans-serif'],
     },
     textColor: {
       primary: '#254125',
@@ -13,14 +17,14 @@ module.exports = {
       darkgray: '#596270',
       gray: '#718096',
       white: 'white',
-      red: '#D11A2A'
+      red: '#D11A2A',
     },
     borderColor: {
       primary: '#254125',
       secondary: '#627A52',
       decoration: '#EFEFEF',
       gray: '#D1D5DB',
-      red: '#D11A2A'
+      red: '#D11A2A',
     },
     backgroundColor: {
       primary: '#254125',
@@ -29,18 +33,18 @@ module.exports = {
       lightgray: '#FAFAFA',
       verylightgray: '#FDFDFD',
       white: 'white',
-      glassgreen: '#E6FFE6'
+      glassgreen: '#E6FFE6',
     },
     letterSpacing: {
       wider: '0.1em',
-      widest: '.25em'
+      widest: '.25em',
     },
     screens: {
       sm: '800px',
       md: '960px',
       lg: '1023px',
       xl: '1279px',
-      '2xl': '1535px'
+      '2xl': '1535px',
     },
     minWidth: {
       0: '0',
@@ -48,12 +52,12 @@ module.exports = {
       2: '4rem',
       4: '8rem',
       6: '16rem',
-      8: '32rem'
+      8: '32rem',
     },
     gridTemplateColumns: {
       2: 'repeat(auto-fill, minmax(0, 550px))',
-      4: 'repeat(auto-fill, minmax(0, 225px))'
-    }
+      4: 'repeat(auto-fill, minmax(0, 225px))',
+    },
   },
   variants: {
     accessibility: ['responsive', 'focus-within', 'focus'],
@@ -81,7 +85,7 @@ module.exports = {
       'group-hover',
       'focus-within',
       'hover',
-      'focus'
+      'focus',
     ],
     backgroundImage: ['responsive'],
     backgroundOpacity: [
@@ -90,7 +94,7 @@ module.exports = {
       'group-hover',
       'focus-within',
       'hover',
-      'focus'
+      'focus',
     ],
     backgroundPosition: ['responsive'],
     backgroundRepeat: ['responsive'],
@@ -104,7 +108,7 @@ module.exports = {
       'group-hover',
       'focus-within',
       'hover',
-      'focus'
+      'focus',
     ],
     borderOpacity: [
       'responsive',
@@ -112,7 +116,7 @@ module.exports = {
       'group-hover',
       'focus-within',
       'hover',
-      'focus'
+      'focus',
     ],
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
@@ -214,14 +218,14 @@ module.exports = {
       'group-hover',
       'focus-within',
       'hover',
-      'focus'
+      'focus',
     ],
     textDecoration: [
       'responsive',
       'group-hover',
       'focus-within',
       'hover',
-      'focus'
+      'focus',
     ],
     textOpacity: [
       'responsive',
@@ -229,7 +233,7 @@ module.exports = {
       'group-hover',
       'focus-within',
       'hover',
-      'focus'
+      'focus',
     ],
     textOverflow: ['responsive'],
     textTransform: ['responsive'],
@@ -246,6 +250,6 @@ module.exports = {
     whitespace: ['responsive'],
     width: ['responsive'],
     wordBreak: ['responsive'],
-    zIndex: ['responsive', 'focus-within', 'focus']
-  }
+    zIndex: ['responsive', 'focus-within', 'focus'],
+  },
 };
