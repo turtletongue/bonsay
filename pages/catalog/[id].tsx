@@ -38,7 +38,6 @@ export const ProductPage = ({ product }) => {
         <meta property="og:locale" content="ru_RU" />
         <meta property="og:site_name" content="BONSAY" />
         <meta name="description" content={product.description} />
-        <meta property="og:type" content="article" />
         <meta property="og:url" content={FRONT_URL + `catalog/${product.id}`} />
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
