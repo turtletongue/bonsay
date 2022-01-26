@@ -12,6 +12,7 @@ interface ProductsFilters {
   categories: {
     [key: Id]: true;
   };
+  isFilterByOneCategory: boolean;
   sortId?: Id;
   search: string;
 }

@@ -71,14 +71,17 @@ export const productsSlice = createSlice({
     },
     addCategory: (state, action: PayloadAction<Id>) => {
       state.filters.categories[action.payload] = true;
+      state.filters.isFilterByOneCategory = false;
     },
     removeCategory: (state, action: PayloadAction<Id>) => {
       delete state.filters.categories[action.payload];
+      state.filters.isFilterByOneCategory = false;
     },
     sortByOneCategory: (state, action: PayloadAction<Id>) => {
       state.filters.categories = {
         [action.payload.toString()]: true,
       };
+      state.filters.isFilterByOneCategory = true;
     },
     setSearch: (state, action: PayloadAction<string>) => {
       state.filters.search = action.payload;
@@ -139,6 +142,8 @@ export const selectMaximumAge = (state: RootState) =>
   state.products.filters.age.max;
 export const selectFilterCategories = (state: RootState) =>
   Object.keys(state.products.filters.categories);
+export const selectIsFilterByOneCategory = (state: RootState) =>
+  state.products.filters.isFilterByOneCategory;
 export const selectSearch = (state: RootState) => state.products.filters.search;
 export const selectSortId = (state: RootState) => state.products.filters.sortId;
 export const selectFilters = (state: RootState) => state.products.filters;

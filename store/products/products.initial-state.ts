@@ -22,6 +22,7 @@ export const initialState: ProductsState = {
       max: DEFAULT_AGE_MAXIMUM,
     },
     categories: {},
+    isFilterByOneCategory: false,
     sortId: '',
     search: '',
   },

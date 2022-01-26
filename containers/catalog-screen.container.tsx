@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
@@ -12,7 +11,6 @@ import {
   setSearch,
   selectPage,
   setPage,
-  sortByOneCategory,
 } from '../store/products/products.slice';
 import Search from '../components/search.component';
 import Pagination from '../components/pagination.component';
@@ -31,27 +29,13 @@ export const CatalogScreen = () => {
 
   const pageNumber = useAppSelector(selectPage);
 
-  const {
-    query: { category },
-  } = useRouter();
-
-  useEffect(() => {
-    if (category) {
-      dispatch(sortByOneCategory(category.toString()));
-    }
-  }, [dispatch, category]);
-
   useEffect(() => {
     dispatch(setPage(1));
   }, [dispatch]);
 
   useEffect(() => {
-    const categoriesFilter = Object.keys(filters.categories);
-
-    if (!category || categoriesFilter.includes(String(category))) {
-      dispatch(fetchProducts({ page: pageNumber, filters }));
-    }
-  }, [dispatch, pageNumber, filters, category]);
+    dispatch(fetchProducts({ page: pageNumber, filters }));
+  }, [dispatch, pageNumber, filters]);
 
   const changeSearchValue = (event) => {
     dispatch(setSearch(event.target.value));
