@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -8,13 +7,12 @@ import {
   selectProductsIds,
 } from '../store/cart/cart.slice';
 import { getAgeWord } from '../utils/get-age-word';
-import { DEFAULT_IMAGE, DEFAULT_PRODUCT_IMAGE } from '../variables';
+import { DEFAULT_PRODUCT_IMAGE } from '../variables';
 import { IMAGE_API_URL } from '../api';
 import Button from '../components/button.component';
-import LittleImage from '../components/little-image.component';
 import OutlineButton from '../components/outline-button.component';
 
-import { Product, Upload } from '../declarations';
+import { Product } from '../declarations';
 
 interface ProductInfoProps {
   product: Product;
