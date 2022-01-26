@@ -36,18 +36,19 @@ export const CatalogScreen = () => {
   } = useRouter();
 
   useEffect(() => {
-    if (category) {
-      dispatch(sortByOneCategory(category.toString()));
-    }
-  }, [dispatch, category]);
-
-  useEffect(() => {
     dispatch(setPage(1));
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchProducts({ page: pageNumber, filters }));
-  }, [dispatch, pageNumber, filters]);
+    if (
+      category &&
+      !Object.keys(filters.categories).includes(String(category))
+    ) {
+      dispatch(sortByOneCategory(category.toString()));
+    } else {
+      dispatch(fetchProducts({ page: pageNumber, filters }));
+    }
+  }, [dispatch, pageNumber, filters, category]);
 
   const changeSearchValue = (event) => {
     dispatch(setSearch(event.target.value));
