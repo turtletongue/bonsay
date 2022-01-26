@@ -1,15 +1,15 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <html>
-        <Head prefix="og: http://ogp.me/ns#" />
+      <Html prefix="og: http://ogp.me/ns#" lang="ru">
+        <Head />
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
