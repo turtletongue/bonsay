@@ -7,13 +7,13 @@ interface LogoProps {
 
 export const Logo = ({ onClick, color = 'text-primary' }: LogoProps) => {
   return (
-    <Link href='/'>
+    <Link href="/">
       <a
         onClick={onClick}
-        className={`flex flex-col items-center ${color} font-hanuman cursor-pointer`}
+        className={`flex flex-col items-center ${color} font-poppins cursor-pointer`}
       >
-        <div className='text-3xl'>BONSAY</div>
-        <div className='tracking-widest text-xs'>BEAUTY IN SMALL</div>
+        <div className="text-3xl">BONSAY</div>
+        <div className="tracking-widest text-xs">BEAUTY IN SMALL</div>
       </a>
     </Link>
   );

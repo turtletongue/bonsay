@@ -9,11 +9,11 @@ interface OutlineButtonProps {
 export const OutlineButton = ({
   className,
   children,
-  onClick
+  onClick,
 }: OutlineButtonProps) => {
   return (
     <button
-      className={`bg-white border-2 border-secondary text-primary text-xs font-hanuman tracking-wider w-full h-12 ${className}`}
+      className={`bg-white border-2 border-secondary text-primary text-xs font-poppins tracking-wider w-full h-12 ${className}`}
       onClick={onClick}
     >
       {children}

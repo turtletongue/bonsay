@@ -16,7 +16,7 @@ interface CardProps {
 export const Card = ({ title, price, imageUrl, onClick }: CardProps) => {
   return (
     <div
-      className={`group product-card bg-white max-h-96 max-w-xs flex flex-col overflow-hidden border-2 border-decoration hover:border-secondary transition-colors text-center font-hanuman text-primary cursor-pointer`}
+      className={`group product-card bg-white max-h-96 max-w-xs flex flex-col overflow-hidden border-2 border-decoration hover:border-secondary transition-colors text-center font-poppins text-primary cursor-pointer`}
       onClick={onClick}
     >
       <div className="relative flex justify-center items-center">

@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       noto: ['Noto Sans', 'sans-serif'],
-      hanuman: ['Hanuman', 'sans-serif'],
+      poppins: ['Poppins', 'sans-serif'],
       nunito: ['Nunito', 'sans-serif'],
     },
     textColor: {

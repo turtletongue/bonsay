@@ -1,6 +1,6 @@
 export const CardMock = () => {
   return (
-    <div className="group animate-pulse bg-white max-w-xs flex flex-col overflow-hidden border-2 border-decoration transition-colors text-center font-hanuman text-primary">
+    <div className="group animate-pulse bg-white max-w-xs flex flex-col overflow-hidden border-2 border-decoration transition-colors text-center font-poppins text-primary">
       <div className="relative flex justify-center items-center">
         <div className="overflow-hidden">
           <div className="bg-decoration w-56 h-64" />

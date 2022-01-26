@@ -9,7 +9,7 @@ interface UnderlineLinkProps {
 export const UnderlineLink = ({ href, children }: UnderlineLinkProps) => {
   return (
     <Link href={href}>
-      <a className='text-secondary underline font-hanuman'>{children}</a>
+      <a className="text-secondary underline font-poppins">{children}</a>
     </Link>
   );
 };
