@@ -36,19 +36,19 @@ export const CatalogScreen = () => {
   } = useRouter();
 
   useEffect(() => {
+    if (category) {
+      dispatch(sortByOneCategory(category.toString()));
+    }
+  }, [dispatch, category]);
+
+  useEffect(() => {
     dispatch(setPage(1));
   }, [dispatch]);
 
   useEffect(() => {
     const categoriesFilter = Object.keys(filters.categories);
 
-    if (
-      category &&
-      (categoriesFilter[0] !== String(category) ||
-        categoriesFilter.length !== 0)
-    ) {
-      dispatch(sortByOneCategory(category.toString()));
-    } else {
+    if (!category || categoriesFilter.includes(String(category))) {
       dispatch(fetchProducts({ page: pageNumber, filters }));
     }
   }, [dispatch, pageNumber, filters, category]);
