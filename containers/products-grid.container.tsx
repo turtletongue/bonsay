@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Transition } from '@headlessui/react';
 
@@ -38,17 +38,20 @@ export const ProductsGrid = ({
                 leaveTo="opacity-0"
                 key={product.id}
               >
-                <Card
-                  title={product.name}
-                  price={product.price}
-                  imageUrl={
-                    product.path ||
-                    product.upload?.path ||
-                    DEFAULT_PRODUCT_IMAGE
-                  }
-                  isInCart={cartProductsIds.includes(product.id.toString())}
-                  onClick={() => push(`/catalog/${product.id}`)}
-                />
+                <Link href={`/catalog/${product.id}`}>
+                  <a>
+                    <Card
+                      title={product.name}
+                      price={product.price}
+                      imageUrl={
+                        product.path ||
+                        product.upload?.path ||
+                        DEFAULT_PRODUCT_IMAGE
+                      }
+                      isInCart={cartProductsIds.includes(product.id.toString())}
+                    />
+                  </a>
+                </Link>
               </Transition>
             );
           })}
