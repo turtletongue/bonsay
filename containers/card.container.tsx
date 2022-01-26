@@ -1,7 +1,5 @@
 import Image from 'next/image';
 
-import { IMAGE_API_URL } from '../api';
-
 import {
   DEFAULT_CARD_IMAGE_HEIGHT,
   DEFAULT_CARD_IMAGE_WIDTH,
@@ -15,13 +13,7 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export const Card = ({
-  title,
-  price,
-  imageUrl,
-  isInCart,
-  onClick,
-}: CardProps) => {
+export const Card = ({ title, price, imageUrl, onClick }: CardProps) => {
   return (
     <div
       className={`group product-card bg-white max-h-96 max-w-xs flex flex-col overflow-hidden border-2 border-decoration hover:border-secondary transition-colors text-center font-hanuman text-primary cursor-pointer`}

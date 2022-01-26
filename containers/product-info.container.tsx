@@ -27,31 +27,6 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const cartProductsIds = useAppSelector(selectProductsIds);
 
-  const [photos, setPhotos] = useState<Upload[]>([]);
-  const [mainImage, setMainImage] = useState<Upload>(DEFAULT_IMAGE);
-
-  useEffect(() => {
-    setPhotos(product.photos || []);
-
-    setMainImage(product.upload || { id: 0, path: product.path });
-  }, [product]);
-
-  const changeMainImage = (event) => {
-    const selectedImage = photos.find(
-      (photo) => photo.id.toString() === event.target.id
-    );
-
-    setPhotos((photos) => [...photos, mainImage]);
-
-    setMainImage(selectedImage || DEFAULT_IMAGE);
-
-    setPhotos((photos) =>
-      photos.filter(
-        (photo) => photo.id.toString() !== selectedImage.id.toString()
-      )
-    );
-  };
-
   const addToCart = () => {
     dispatch(increaseProductQty(product));
   };
@@ -63,28 +38,9 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
   return (
     <div className="grid grid-cols-2 justify-center items-center grid-auto-flow gap-4 py-2 sm:py-10 px-2">
       <div className="flex flex-col-reverse sm:flex-row justify-center items-center h-full mx-2">
-        <div className="flex flex-row sm:flex-col justify-around mx-1 mb-1 sm:h-full max-h-screen mt-1 sm:mt-0">
-          {photos.map((photo) => (
-            <div
-              key={photo.id}
-              className="flex items-center cursor-pointer mx-1"
-              onClick={changeMainImage}
-            >
-              <LittleImage
-                src={IMAGE_API_URL + photo.path}
-                alt={product.name}
-                id={photo.id}
-              />
-            </div>
-          ))}
-        </div>
         <div className="relative">
           <Image
-            src={
-              mainImage.path
-                ? IMAGE_API_URL + mainImage.path
-                : DEFAULT_PRODUCT_IMAGE
-            }
+            src={product.path || product.upload?.path || DEFAULT_PRODUCT_IMAGE}
             width={450}
             height={500}
             alt={product.name}
