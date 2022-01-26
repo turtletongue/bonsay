@@ -8,7 +8,7 @@ Second, you should create .env file with following content (example):
 
 ```
 POSTGRES_PASSWORD=your_postgres_password
-PRIVATE_API_PATH=http://bonsay_api:3020/api
+PRIVATE_API_PATH=http://bonsay_api:3020/api/
 ```
 
 Now, you can execute this commands:
