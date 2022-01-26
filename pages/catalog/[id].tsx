@@ -36,6 +36,7 @@ export const ProductPage = ({ product }) => {
       <Head>
         <title>{product.name} | BONSAY</title>
         <meta name="description" content={product.description} />
+        <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
         <meta
           property="og:image"
