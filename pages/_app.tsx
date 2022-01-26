@@ -22,13 +22,15 @@ function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <AppContainer>
-            <Navbar />
-            <Component {...pageProps} />
-            <Footer />
-          </AppContainer>
-        </AlertProvider>
+        {() => (
+          <AlertProvider template={AlertTemplate} {...alertOptions}>
+            <AppContainer>
+              <Navbar />
+              <Component {...pageProps} />
+              <Footer />
+            </AppContainer>
+          </AlertProvider>
+        )}
       </PersistGate>
     </Provider>
   );
