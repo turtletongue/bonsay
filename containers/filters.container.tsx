@@ -56,12 +56,6 @@ export const Filters = ({ className }: FiltersProps) => {
     }
   }, [dispatch, category, categories]);
 
-  useEffect(() => {
-    if (category) {
-      dispatch(sortByOneCategory(category.toString()));
-    }
-  }, [dispatch, category]);
-
   const minimumPrice = useAppSelector(selectMinimumPrice);
   const maximumPrice = useAppSelector(selectMaximumPrice);
 

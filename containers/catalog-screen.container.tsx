@@ -12,6 +12,7 @@ import {
   setSearch,
   selectPage,
   setPage,
+  sortByOneCategory,
 } from '../store/products/products.slice';
 import Search from '../components/search.component';
 import Pagination from '../components/pagination.component';
@@ -29,6 +30,16 @@ export const CatalogScreen = () => {
   const search = useAppSelector(selectSearch);
 
   const pageNumber = useAppSelector(selectPage);
+
+  const {
+    query: { category },
+  } = useRouter();
+
+  useEffect(() => {
+    if (category) {
+      dispatch(sortByOneCategory(category.toString()));
+    }
+  }, [dispatch, category]);
 
   useEffect(() => {
     dispatch(setPage(1));
