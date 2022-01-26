@@ -40,7 +40,11 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
       <div className="flex flex-col-reverse sm:flex-row justify-center items-center h-full mx-2">
         <div className="relative">
           <Image
-            src={product.path || product.upload?.path || DEFAULT_PRODUCT_IMAGE}
+            src={
+              product.path
+                ? IMAGE_API_URL + product.path
+                : DEFAULT_PRODUCT_IMAGE
+            }
             width={450}
             height={500}
             alt={product.name}
