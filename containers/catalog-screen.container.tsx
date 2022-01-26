@@ -40,9 +40,12 @@ export const CatalogScreen = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const categoriesFilter = Object.keys(filters.categories);
+
     if (
       category &&
-      !Object.keys(filters.categories).includes(String(category))
+      (categoriesFilter[0] !== String(category) ||
+        categoriesFilter.length !== 0)
     ) {
       dispatch(sortByOneCategory(category.toString()));
     } else {
