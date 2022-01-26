@@ -2,30 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: Noto Sans Bengali;
-    font-weight: 300;
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300&display=swap');
-  }
-  @font-face {
-    font-family: Noto Sans Bengali;
-    font-weight: 400;
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400&display=swap');
-  }
-
-  @font-face {
-    font-family: Hanuman;
-    font-weight: 400;
-    src: url('https://fonts.googleapis.com/css2?family=Hanuman:wght@400&display=swap');
-  }
-
-  @font-face {
-    font-family: Nunito;
-    src: url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-  }
-}
-
 .product-card {
   max-height: 21.5rem;
 }

@@ -7,7 +7,7 @@ module.exports = {
   plugins: [require('@tailwindcss/forms')],
   theme: {
     fontFamily: {
-      noto: ['Noto Sans Bengali', 'sans-serif'],
+      noto: ['Noto Sans', 'sans-serif'],
       hanuman: ['Hanuman', 'sans-serif'],
       nunito: ['Nunito', 'sans-serif'],
     },
