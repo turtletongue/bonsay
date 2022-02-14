@@ -1,20 +1,66 @@
 import StripeCheckout, { Token } from 'react-stripe-checkout';
 
-import { KOPECKS_IN_RUBLE, STRIPE_KEY } from '../variables';
-import Button from '../components/button.component';
 import Total from '../components/total.component';
+import Button from '../components/button.component';
+import { KOPECKS_IN_RUBLE, STRIPE_KEY } from '../variables';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { selectCartItems, selectTotal } from '../store/cart/cart.slice';
+import {
+  createOrder,
+  selectCity,
+  selectFirstname,
+  selectHouse,
+  selectIsLoading,
+  selectLastname,
+  selectPhone,
+  selectPostcode,
+  selectStreet,
+} from '../store/order/order.slice';
+import { selectAccessToken } from '../store/core/core.slice';
 
-interface OrderSummaryProps {
-  total: number;
-  isButtonDisabled?: boolean;
-  onCreate: (token: Token) => void;
-}
+export const OrderSummary = () => {
+  const dispatch = useAppDispatch();
 
-export const OrderSummary = ({
-  total,
-  isButtonDisabled = false,
-  onCreate,
-}: OrderSummaryProps) => {
+  const total = useAppSelector(selectTotal);
+
+  const firstname = useAppSelector(selectFirstname);
+  const lastname = useAppSelector(selectLastname);
+  const city = useAppSelector(selectCity);
+  const street = useAppSelector(selectStreet);
+  const house = useAppSelector(selectHouse);
+  const postcode = useAppSelector(selectPostcode);
+  const phone = useAppSelector(selectPhone);
+
+  const cartItems = useAppSelector(selectCartItems);
+
+  const accessToken = useAppSelector(selectAccessToken);
+
+  const isLoading = useAppSelector(selectIsLoading);
+
+  const isButtonDisabled =
+    !firstname ||
+    !lastname ||
+    !city ||
+    !street ||
+    !house ||
+    !postcode ||
+    !phone ||
+    isLoading;
+
+  const onCreate = (token: Token) => {
+    dispatch(
+      createOrder({
+        accessToken,
+        fullname: { firstname, lastname },
+        address: { city, street, house, postcode },
+        phone,
+        cartItems,
+        token,
+        total,
+      })
+    );
+  };
+
   const button = (
     <Button className="mt-6" isDisabled={isButtonDisabled}>
       ОПЛАТИТЬ

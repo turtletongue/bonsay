@@ -9,8 +9,8 @@ interface BestsellersProps {
 
 export const Bestsellers = ({ bestsellers }: BestsellersProps) => {
   return (
-    <div className='max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mb-8'>
-      <ScreenHeading href='/catalog'>Популярное</ScreenHeading>
+    <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mb-8">
+      <ScreenHeading href="/catalog">Популярное</ScreenHeading>
       <ProductsGrid products={bestsellers} />
     </div>
   );
