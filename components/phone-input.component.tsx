@@ -20,7 +20,7 @@ export const PhoneInput = ({ className, value, setPhone }: PhoneInputProps) => {
       <input
         type="text"
         className="rounded-none rounded-r-lg form-control relative flex-auto min-w-0 block px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid focus:bg-white focus:ring-green-700 focus:border-secondary border-gray"
-        placeholder="(905) 033-5901"
+        placeholder="(xxx) xxx-xxxx"
         value={value}
         onChange={onPhoneChange}
       />
