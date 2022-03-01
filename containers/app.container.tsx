@@ -58,7 +58,7 @@ export const AppContainer = ({ children }: AppContainerProps) => {
     }
   }, [dispatch, refreshToken, accessTokenExpireAt]);
 
-  return <div className="min-h-screen">{children}</div>;
+  return <div className="min-h-screen flex flex-col">{children}</div>;
 };
 
 export default AppContainer;
