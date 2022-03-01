@@ -13,7 +13,7 @@ export const PhoneInput = ({ className, value, setPhone }: PhoneInputProps) => {
     setPhone(formatPhone(event.target.value));
 
   return (
-    <div className="flex">
+    <div className="flex w-100">
       <span className="inline-flex items-center px-3 text-sm text-gray bg-white rounded-l-md border border-r-0 border-gray">
         +7
       </span>
