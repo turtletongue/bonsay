@@ -16,7 +16,7 @@ export const SignInFormEmailInput = () => {
     <Input
       name="login"
       type="text"
-      className="w-100 sm:w-60"
+      className="w-60"
       value={email}
       onChange={changeEmail}
     />

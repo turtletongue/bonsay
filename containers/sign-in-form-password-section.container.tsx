@@ -3,7 +3,7 @@ import SignInFormPasswordInput from '../components/sign-in-form-password-input.c
 
 export const SignInFormPasswordSection = () => {
   return (
-    <div className="w-100 my-4">
+    <div className="my-4">
       <Label htmlFor="password" className="mb-2">
         Пароль
       </Label>
