@@ -6,8 +6,8 @@ import { clear, selectError } from '../store/sign-in/sign-in.slice';
 import { selectIsAuthenticated } from '../store/core/core.slice';
 import InputGroup from '../components/input-group.component';
 import UnderlineLink from '../components/underline-link.component';
-import SignInFormPasswordInput from '../components/sign-in-form-password-input.component';
 import SignInFormEmailSection from './sign-in-form-email-section.container';
+import SignInFormPasswordSection from './sign-in-form-password-section.container';
 import SignInButton from '../components/sign-in-button.component';
 
 export const SignInForm = () => {
@@ -36,7 +36,7 @@ export const SignInForm = () => {
           </div>
         )}
         <SignInFormEmailSection />
-        <SignInFormPasswordInput />
+        <SignInFormPasswordSection />
         <SignInButton />
         <div className="flex text-sm mt-4">
           <span className="mr-2">Нет аккаунта?</span>
