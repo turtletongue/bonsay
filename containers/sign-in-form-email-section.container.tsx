@@ -3,7 +3,7 @@ import SignInFormEmailInput from '../components/sign-in-form-email-input.compone
 
 export const SignInFormEmailSection = () => {
   return (
-    <div className="my-4">
+    <div className="w-100 my-4">
       <Label htmlFor="login" className="mb-2">
         Email
       </Label>

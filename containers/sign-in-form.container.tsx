@@ -29,7 +29,7 @@ export const SignInForm = () => {
 
   return (
     <InputGroup className="w-64 sm:w-96 flex justify-center items-center my-16 mx-auto rounded-lg py-4">
-      <div className="relative">
+      <div className="relative w-100">
         {error && (
           <div className="absolute text-sm text-red -top-6 text-center w-full">
             Неправильный логин или пароль
