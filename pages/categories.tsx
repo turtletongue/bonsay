@@ -17,8 +17,10 @@ export const Categories = ({ categories }) => {
         <title>Категории | BONSAY</title>
         <meta name="description" content={pageDescriptions.categories} />
       </Head>
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
-        <CategoriesGrid categories={categories} />
+      <div className="w-full">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
+          <CategoriesGrid categories={categories} />
+        </div>
       </div>
     </>
   );
