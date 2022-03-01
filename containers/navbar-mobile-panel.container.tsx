@@ -45,16 +45,19 @@ export const NavbarMobilePanel = ({
           {Object.values(navigation)
             .flat(1)
             .map((item) => (
-              <Disclosure.Button
+              <div
                 key={item.name}
-                as={NavbarLink}
-                href={item.href}
-                isActive={item.href === currentPathname}
                 onClick={item.isSignOut ? onSignOut : undefined}
               >
-                {item.name}
-                {item.extra}
-              </Disclosure.Button>
+                <Disclosure.Button
+                  as={NavbarLink}
+                  href={item.href}
+                  isActive={item.href === currentPathname}
+                >
+                  {item.name}
+                  {item.extra}
+                </Disclosure.Button>
+              </div>
             ))}
         </div>
       </Disclosure.Panel>
