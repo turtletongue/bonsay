@@ -16,7 +16,7 @@ export const SignInFormPasswordInput = () => {
     <Input
       name="password"
       type="password"
-      className="w-52 sm:w-60 mx-auto"
+      className="w-100 sm:w-60"
       value={password}
       onChange={changePassword}
     />
