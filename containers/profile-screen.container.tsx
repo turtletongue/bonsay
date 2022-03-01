@@ -8,7 +8,7 @@ interface ProfileScreenProps {
 
 export const ProfileScreen = ({ user }: ProfileScreenProps) => {
   return (
-    <div className="w-full p-4 min-h-screen">
+    <div className="w-full p-4">
       <Settings user={user} />
     </div>
   );
