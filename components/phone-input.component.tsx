@@ -1,7 +1,6 @@
 import { ChangeEventHandler } from 'react';
-import formatPhone from '../utils/format-phone';
 
-import Input from './input.component';
+import formatPhone from '../utils/format-phone';
 
 interface PhoneInputProps {
   className?: string;
@@ -14,12 +13,18 @@ export const PhoneInput = ({ className, value, setPhone }: PhoneInputProps) => {
     setPhone(formatPhone(event.target.value));
 
   return (
-    <Input
-      className={className}
-      type="text"
-      value={value}
-      onChange={onPhoneChange}
-    />
+    <div className="flex">
+      <span className="inline-flex items-center px-3 text-sm text-gray bg-white rounded-l-md border border-r-0 border-gray">
+        +7
+      </span>
+      <input
+        type="text"
+        className={`rounded-none rounded-r-lg form-control relative flex-auto min-w-0 block px-3 py-1.5 text-base font-normal text-gray bg-white bg-clip-padding border border-solid focus:bg-white focus:ring-green-700 focus:border-secondary border-gray ${className}`}
+        placeholder="(905) 033-5901"
+        value={value}
+        onChange={onPhoneChange}
+      />
+    </div>
   );
 };
 
