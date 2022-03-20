@@ -1,12 +1,12 @@
 import { ChangeEventHandler } from 'react';
 
-import Input from './input.component';
+import Input from '@components/input.component';
 import {
   selectNewPassword,
   selectPasswordChangeError,
   setNewPassword,
-} from '../store/settings/settings.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+} from '@store/settings/settings.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const ProfileNewPasswordInput = () => {
   const dispatch = useAppDispatch();

@@ -1,5 +1,5 @@
-import Label from '../components/label.component';
-import SignUpFormPasswordConfirmationInput from '../components/sign-up-form-password-confirmation-input.component';
+import Label from '@components/label.component';
+import SignUpFormPasswordConfirmationInput from '@components/sign-up-form-password-confirmation-input.component';
 
 export const SignUpFormPasswordConfirmationSection = () => {
   return (

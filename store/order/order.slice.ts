@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { api } from '@app/api';
 import initialState from './order.initial-state';
 
+import { RootState } from '@store/index';
 import { CreateOrderRequest } from './order.declarations';
-import { RootState } from '..';
-import { api } from '../../api';
 
 export const createOrder = createAsyncThunk(
   'order/create',

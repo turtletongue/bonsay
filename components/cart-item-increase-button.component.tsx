@@ -1,9 +1,9 @@
 import { ChevronRightIcon } from '@heroicons/react/solid';
 
-import { useAppDispatch } from '../hooks';
-import { increaseProductQty } from '../store/cart/cart.slice';
+import { useAppDispatch } from '@app/hooks';
+import { increaseProductQty } from '@store/cart/cart.slice';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 interface CartItemIncreaseButton {
   product: Product;

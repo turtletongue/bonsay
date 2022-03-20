@@ -2,19 +2,19 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
+import OrderSummary from '@containers/order-summary.container';
+import OrderFormFullnameSection from '@containers/order-form-fullname-section.container';
+import OrderFormAddressSection from '@containers/order-form-address-section.container';
+import OrderFormPhoneSection from '@containers/order-form-phone-section.container';
 import {
   clear,
   removeError,
   selectError,
   selectSuccess,
-} from '../store/order/order.slice';
-import { clearCart } from '../store/cart/cart.slice';
-import { ERROR_PAYMENT, SUCCESS_PAYMENT } from '../utils/alert-messages';
-import OrderSummary from './order-summary.container';
-import OrderFormFullnameSection from './order-form-fullname-section.container';
-import OrderFormAddressSection from './order-form-address-section.container';
-import OrderFormPhoneSection from './order-form-phone-section.container';
+} from '@store/order/order.slice';
+import { clearCart } from '@store/cart/cart.slice';
+import { ERROR_PAYMENT, SUCCESS_PAYMENT } from '@utils/alert-messages';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const OrderDataForm = () => {
   const { push } = useRouter();

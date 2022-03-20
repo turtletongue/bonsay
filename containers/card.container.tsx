@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
   DEFAULT_CARD_IMAGE_HEIGHT,
   DEFAULT_CARD_IMAGE_WIDTH,
-} from '../variables';
+} from '@app/variables';
 
 interface CardProps {
   title: string;

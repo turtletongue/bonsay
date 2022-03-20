@@ -1,4 +1,4 @@
-import { Category } from '../../declarations';
+import { Category } from '@app/declarations';
 
 export interface CategoriesState {
   data?: Category[];

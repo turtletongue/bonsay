@@ -1,9 +1,10 @@
-import CartItemIncreaseButton from '../components/cart-item-increase-button.component';
-import CartItemDecreaseButton from '../components/cart-item-decrease-button.component';
-import CartItemDeleteButton from '../components/cart-item-delete-button.component';
-import CartItemImage from '../components/cart-item-image.component';
+import CartItemIncreaseButton from '@components/cart-item-increase-button.component';
+import CartItemDecreaseButton from '@components/cart-item-decrease-button.component';
+import CartItemDeleteButton from '@components/cart-item-delete-button.component';
+import CartItemImage from '@components/cart-item-image.component';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
+
 interface CartItemProps {
   product: Product;
   qty: number;

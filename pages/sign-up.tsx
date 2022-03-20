@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import { pageDescriptions } from '../page-descriptions';
-import SignUpForm from '../containers/sign-up-form.container';
+import SignUpForm from '@containers/sign-up-form.container';
+import { pageDescriptions } from '@app/page-descriptions';
 
 export const SignIn = () => {
   return (

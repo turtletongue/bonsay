@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { clear, selectError } from '../store/sign-in/sign-in.slice';
-import { selectIsAuthenticated } from '../store/core/core.slice';
-import InputGroup from '../components/input-group.component';
-import UnderlineLink from '../components/underline-link.component';
-import SignInFormEmailSection from './sign-in-form-email-section.container';
-import SignInFormPasswordSection from './sign-in-form-password-section.container';
-import SignInButton from '../components/sign-in-button.component';
+import InputGroup from '@components/input-group.component';
+import UnderlineLink from '@components/underline-link.component';
+import SignInButton from '@components/sign-in-button.component';
+import SignInFormEmailSection from '@containers/sign-in-form-email-section.container';
+import SignInFormPasswordSection from '@containers/sign-in-form-password-section.container';
+import { clear, selectError } from '@store/sign-in/sign-in.slice';
+import { selectIsAuthenticated } from '@store/core/core.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignInForm = () => {
   const dispatch = useAppDispatch();

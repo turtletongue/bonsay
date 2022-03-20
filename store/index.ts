@@ -15,15 +15,15 @@ import {
   REGISTER,
 } from 'redux-persist';
 
+import coreReducer from '@store/core/core.slice';
+import productsReducer from '@store/products/products.slice';
+import categoriesReducer from '@store/categories/categories.slice';
+import cartReducer from '@store/cart/cart.slice';
+import settingsReducer from '@store/settings/settings.slice';
+import orderReducer from '@store/order/order.slice';
+import signUpReducer from '@store/sign-up/sign-up.slice';
+import signInReducer from '@store/sign-in/sign-in.slice';
 import persistStorage from './persistStorage';
-import coreReducer from './core/core.slice';
-import productsReducer from './products/products.slice';
-import categoriesReducer from './categories/categories.slice';
-import cartReducer from './cart/cart.slice';
-import settingsReducer from './settings/settings.slice';
-import orderReducer from './order/order.slice';
-import signUpReducer from './sign-up/sign-up.slice';
-import signInReducer from './sign-in/sign-in.slice';
 
 const persistConfig = {
   key: 'root',

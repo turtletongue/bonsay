@@ -1,14 +1,14 @@
 import { Disclosure, Transition } from '@headlessui/react';
 
-import NavbarLink from '../components/navbar-link.component';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import NavbarLink from '@components/navbar-link.component';
 import {
   revokeToken,
   selectRefreshToken,
   signOut,
-} from '../store/core/core.slice';
+} from '@store/core/core.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
-import { Navigation } from '../declarations';
+import { Navigation } from '@app/declarations';
 
 interface NavbarMobilePanelProps {
   open: boolean;

@@ -1,8 +1,8 @@
 import { ChangeEventHandler } from 'react';
 
-import Input from './input.component';
-import { selectEmail, setEmail } from '../store/sign-up/sign-up.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import Input from '@components/input.component';
+import { selectEmail, setEmail } from '@store/sign-up/sign-up.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignUpFormEmailInput = () => {
   const dispatch = useAppDispatch();

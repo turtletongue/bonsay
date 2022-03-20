@@ -4,9 +4,9 @@ import {
   CATEGORY_IMAGE_HEIGHT,
   CATEGORY_IMAGE_WIDTH,
   DEFAULT_CATEGORY_IMAGE,
-} from '../variables';
+} from '@app/variables';
 
-import { Category } from '../declarations';
+import { Category } from '@app/declarations';
 
 interface CategoryPreviewImageProps {
   category: Category;

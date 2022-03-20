@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import { Pool } from 'pg';
 
-import CategoriesGrid from '../containers/categories-grid.container';
-import { dbConnectionConfig } from '../db-connection.config';
-import { categories as categoriesQuery } from '../sql/categories.sql';
-import { ISR_DELAY_IN_SECONDS } from '../variables';
-import { pageDescriptions } from '../page-descriptions';
+import CategoriesGrid from '@containers/categories-grid.container';
+import { categories as categoriesQuery } from '@sql/categories.sql';
+import { dbConnectionConfig } from '@app/db-connection.config';
+import { pageDescriptions } from '@app/page-descriptions';
+import { ISR_DELAY_IN_SECONDS } from '@app/variables';
 
 import { GetStaticProps } from 'next';
-import { Category } from '../declarations';
+import { Category } from '@app/declarations';
 
 export const Categories = ({ categories }) => {
   return (

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-import Button from '../components/button.component';
+import Button from '@components/button.component';
 
 interface MainScreenProps {
   title: ReactElement;

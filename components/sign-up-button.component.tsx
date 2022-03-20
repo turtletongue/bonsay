@@ -1,10 +1,10 @@
-import Button from './button.component';
+import Button from '@components/button.component';
 import {
   register,
   selectEmail,
   selectPassword,
-} from '../store/sign-up/sign-up.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+} from '@store/sign-up/sign-up.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignUpButton = () => {
   const dispatch = useAppDispatch();

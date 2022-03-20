@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 
-import CategoryPreview from './category-preview.container';
+import CategoryPreview from '@containers/category-preview.container';
 
-import { Category } from '../declarations';
+import { Category } from '@app/declarations';
 
 interface CategoriesGridProps {
   categories: Category[];

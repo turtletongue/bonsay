@@ -1,10 +1,10 @@
-import OutlineButton from './outline-button.component';
+import OutlineButton from '@components/outline-button.component';
 import {
   clearPasswordFields,
   selectIsPasswordChange,
   togglePasswordChange,
-} from '../store/settings/settings.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+} from '@store/settings/settings.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const ProfilePasswordChangeButton = () => {
   const dispatch = useAppDispatch();

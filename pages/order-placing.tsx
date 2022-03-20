@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import OrderDataForm from '@containers/order-data-form.container';
 import {
   removeDeletedProducts,
   selectProductsIds,
-} from '../store/cart/cart.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { selectIsAuthenticated } from '../store/core/core.slice';
-import OrderDataForm from '../containers/order-data-form.container';
+} from '@store/cart/cart.slice';
+import { selectIsAuthenticated } from '@store/core/core.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const OrderPlacing = () => {
   const { push } = useRouter();

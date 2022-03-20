@@ -1,4 +1,4 @@
-import { Id } from '../../declarations';
+import { Id } from '@app/declarations';
 
 export interface SettingsState {
   email: string;

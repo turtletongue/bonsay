@@ -1,7 +1,7 @@
-import CartBadge from './components/cart-badge.component';
-import CardMock from './containers/card-mock.container';
+import CartBadge from '@components/cart-badge.component';
+import CardMock from '@containers/card-mock.container';
 
-import { Navigation, SortType } from './declarations';
+import { Navigation, SortType } from '@app/declarations';
 
 export const anonymousNavigation: (count: number) => Navigation = (
   cartItemsCount: number

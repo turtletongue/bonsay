@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import Logo from '../components/logo.component';
-import Instagram from '../public/icons/instagram.svg';
-import Facebook from '../public/icons/facebook.svg';
-import Twitter from '../public/icons/twitter.svg';
-import Vk from '../public/icons/vk.svg';
+import Logo from '@components/logo.component';
+import Instagram from '@icons/instagram.svg';
+import Facebook from '@icons/facebook.svg';
+import Twitter from '@icons/twitter.svg';
+import Vk from '@icons/vk.svg';
 
 interface FooterProps {
   instagramUrl?: string;

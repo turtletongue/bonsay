@@ -1,11 +1,11 @@
 import { GetServerSideProps } from 'next';
 import { Pool } from 'pg';
 
-import { FRONT_URL } from '../api';
-import { dbConnectionConfig } from '../db-connection.config';
-import { allProductsIds } from '../sql/all-products-ids.sql';
+import { allProductsIds } from '@sql/all-products-ids.sql';
+import { FRONT_URL } from '@app/api';
+import { dbConnectionConfig } from '@app/db-connection.config';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 const generateSiteMap = (products: Partial<Product>[]) => {
   return `<?xml version="1.0" encoding="UTF-8"?>

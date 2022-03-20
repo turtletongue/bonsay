@@ -1,8 +1,8 @@
 import { ChangeEventHandler } from 'react';
 
-import Input from './input.component';
-import { selectHouse, setHouse } from '../store/order/order.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import Input from '@components/input.component';
+import { selectHouse, setHouse } from '@store/order/order.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const OrderFormHouseInput = () => {
   const dispatch = useAppDispatch();

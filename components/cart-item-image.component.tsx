@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import { IMAGE_API_URL } from '../api';
-import { DEFAULT_PRODUCT_IMAGE } from '../variables';
+import { IMAGE_API_URL } from '@app/api';
+import { DEFAULT_PRODUCT_IMAGE } from '@app/variables';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 interface CartItemImageProps {
   product: Product;

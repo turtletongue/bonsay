@@ -1,9 +1,9 @@
 import { ChevronLeftIcon } from '@heroicons/react/solid';
 
-import { useAppDispatch } from '../hooks';
-import { decreaseProductQty } from '../store/cart/cart.slice';
+import { useAppDispatch } from '@app/hooks';
+import { decreaseProductQty } from '@store/cart/cart.slice';
 
-import { Id } from '../declarations';
+import { Id } from '@app/declarations';
 
 interface CartItemDecreaseButton {
   id: Id;

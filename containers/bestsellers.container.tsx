@@ -1,7 +1,7 @@
-import ScreenHeading from '../components/screen-heading.component';
-import ProductsGrid from './products-grid.container';
+import ScreenHeading from '@components/screen-heading.component';
+import ProductsGrid from '@containers/products-grid.container';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 interface BestsellersProps {
   bestsellers: Product[];

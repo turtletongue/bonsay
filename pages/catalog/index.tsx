@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import { pageDescriptions } from '../../page-descriptions';
-import CatalogScreen from '../../containers/catalog-screen.container';
+import CatalogScreen from '@containers/catalog-screen.container';
+import { pageDescriptions } from '@app/page-descriptions';
 
 export const Catalog = () => {
   return (

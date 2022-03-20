@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import fetchWithErrorHandling from '../../utils/fetch-with-error-handling';
+import fetchWithErrorHandling from '@utils/fetch-with-error-handling';
+import { api } from '@app/api';
 import initialState from './settings.initial-state';
-import { api } from '../../api';
 
+import { RootState } from '@store/index';
 import { UpdateSettingsRequest } from './settings.declarations';
-import { RootState } from '..';
 
 export const updateSettings = createAsyncThunk(
   'settings/updateSettings',

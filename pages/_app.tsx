@@ -3,13 +3,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
-import { store, persistor } from '../store';
+import AppContainer from '@containers/app.container';
+import Navbar from '@containers/navbar.container';
+import Footer from '@containers/footer.container';
+import { store, persistor } from '@store/index';
 
-import AppContainer from '../containers/app.container';
-import Navbar from '../containers/navbar.container';
-import Footer from '../containers/footer.container';
-
-import '../styles/globals.css';
+import '@app/styles/globals.css';
 
 const alertOptions = {
   position: positions.TOP_RIGHT,

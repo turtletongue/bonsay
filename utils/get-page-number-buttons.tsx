@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
-import PaginationButton from './components/pagination-button.component';
+import PaginationButton from "@components/pagination-button.component";
 
 export const getPageNumberButtons = (
   pagesCount: number,
@@ -20,3 +20,5 @@ export const getPageNumberButtons = (
 
   return buttons;
 };
+
+export default getPageNumberButtons;

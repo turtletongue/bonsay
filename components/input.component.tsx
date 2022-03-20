@@ -29,7 +29,7 @@ export const Input = (props: InputProps) => {
         value={value}
         onChange={onChange}
       />
-      {error && <p className='text-red text-xs mt-1 font-medium'>{error}</p>}
+      {error && <p className="text-red text-xs mt-1 font-medium">{error}</p>}
     </>
   );
 };

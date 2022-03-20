@@ -1,10 +1,8 @@
 import StripeCheckout, { Token } from 'react-stripe-checkout';
 
-import Total from '../components/total.component';
-import Button from '../components/button.component';
-import { KOPECKS_IN_RUBLE, STRIPE_KEY } from '../variables';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { selectCartItems, selectTotal } from '../store/cart/cart.slice';
+import Total from '@components/total.component';
+import Button from '@components/button.component';
+import { selectCartItems, selectTotal } from '@store/cart/cart.slice';
 import {
   createOrder,
   selectCity,
@@ -15,8 +13,10 @@ import {
   selectPhone,
   selectPostcode,
   selectStreet,
-} from '../store/order/order.slice';
-import { selectAccessToken } from '../store/core/core.slice';
+} from '@store/order/order.slice';
+import { selectAccessToken } from '@store/core/core.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
+import { KOPECKS_IN_RUBLE, STRIPE_KEY } from '@app/variables';
 
 export const OrderSummary = () => {
   const dispatch = useAppDispatch();

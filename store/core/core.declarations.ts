@@ -1,4 +1,4 @@
-import { User } from '../../declarations';
+import { User } from '@app/declarations';
 
 export interface UserState {
   user?: User;

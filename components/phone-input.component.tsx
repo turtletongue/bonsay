@@ -1,6 +1,6 @@
 import { ChangeEventHandler } from 'react';
 
-import formatPhone from '../utils/format-phone';
+import formatPhone from '@utils/format-phone';
 
 interface PhoneInputProps {
   className?: string;

@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { login } from '@store/sign-in/sign-in.slice';
+import fetchWithErrorHandling from '@utils/fetch-with-error-handling';
+import { api } from '@app/api';
 import initialState from './sign-up.initial-state';
-import { login } from './../sign-in/sign-in.slice';
-import { api } from '../../api';
 
+import { RootState } from '@store/index';
 import { RegisterRequest } from './sign-up.declarations';
-import { RootState } from '..';
-import fetchWithErrorHandling from '../../utils/fetch-with-error-handling';
 
 export const register = createAsyncThunk(
   'signUp/register',

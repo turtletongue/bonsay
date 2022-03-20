@@ -1,4 +1,4 @@
-import OrderFormPhoneInput from '../components/order-form-phone-input.component';
+import OrderFormPhoneInput from '@components/order-form-phone-input.component';
 
 export const OrderFormPhoneSection = () => {
   return (

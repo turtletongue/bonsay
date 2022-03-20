@@ -2,16 +2,16 @@ import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { Pool } from 'pg';
 
-import { ISR_DELAY_IN_SECONDS, mainScreenConfig } from '../variables';
-import { dbConnectionConfig } from '../db-connection.config';
-import { categoriesPreview } from '../sql/categories-preview.sql';
-import { pageDescriptions } from '../page-descriptions';
-import { bestsellers } from '../sql/bestsellers.sql';
-import MainScreen from '../containers/main-screen.container';
-import Bestsellers from '../containers/bestsellers.container';
-import CategoriesScreen from '../containers/categories-screen.container';
+import MainScreen from '@containers/main-screen.container';
+import Bestsellers from '@containers/bestsellers.container';
+import CategoriesScreen from '@containers/categories-screen.container';
+import { categoriesPreview } from '@sql/categories-preview.sql';
+import { pageDescriptions } from '@app/page-descriptions';
+import { bestsellers } from '@sql/bestsellers.sql';
+import { dbConnectionConfig } from '@app/db-connection.config';
+import { ISR_DELAY_IN_SECONDS, mainScreenConfig } from '@app/variables';
 
-import { Category, Product } from '../declarations';
+import { Category, Product } from '@app/declarations';
 
 export default function Home({ bestsellers, categories }) {
   return (

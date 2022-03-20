@@ -1,8 +1,8 @@
 import { ChangeEventHandler } from 'react';
 
-import Input from './input.component';
-import { selectLastname, setLastname } from '../store/order/order.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import Input from '@components/input.component';
+import { selectLastname, setLastname } from '@store/order/order.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const OrderFormLastnameInput = () => {
   const dispatch = useAppDispatch();

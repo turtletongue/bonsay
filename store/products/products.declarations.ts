@@ -1,4 +1,4 @@
-import { Id, Product } from '../../declarations';
+import { Id, Product } from '@app/declarations';
 
 interface ProductsFilters {
   price: {

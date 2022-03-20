@@ -1,5 +1,5 @@
-import Label from '../components/label.component';
-import SignInFormEmailInput from '../components/sign-in-form-email-input.component';
+import Label from '@components/label.component';
+import SignInFormEmailInput from '@components/sign-in-form-email-input.component';
 
 export const SignInFormEmailSection = () => {
   return (

@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
+import Search from '@components/search.component';
+import Pagination from '@components/pagination.component';
+import ProductsGrid from '@containers/products-grid.container';
+import Filters from '@containers/filters.container';
+import FiltersDialog from '@containers/filters-dialog.container';
 import {
   fetchProducts,
   selectIsLoading,
@@ -11,12 +15,8 @@ import {
   setSearch,
   selectPage,
   setPage,
-} from '../store/products/products.slice';
-import Search from '../components/search.component';
-import Pagination from '../components/pagination.component';
-import ProductsGrid from './products-grid.container';
-import Filters from './filters.container';
-import FiltersDialog from './filters-dialog.container';
+} from '@store/products/products.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const CatalogScreen = () => {
   const dispatch = useAppDispatch();

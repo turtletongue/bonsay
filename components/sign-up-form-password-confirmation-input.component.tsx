@@ -1,12 +1,12 @@
 import { ChangeEventHandler } from 'react';
 
-import Input from './input.component';
+import Input from '@components/input.component';
 import {
   selectPasswordConfirmation,
   selectPasswordsError,
   setPasswordConfirmation,
-} from '../store/sign-up/sign-up.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+} from '@store/sign-up/sign-up.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignUpFormPasswordConfirmationInput = () => {
   const dispatch = useAppDispatch();

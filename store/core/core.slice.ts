@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { api } from '@app/api';
+import { ACCESS_TOKEN_TTL, REFRESH_TOKEN_TTL } from '@app/variables';
 import initialState from './core.initial-state';
-import { ACCESS_TOKEN_TTL, REFRESH_TOKEN_TTL } from '../../variables';
-import { api } from '../../api';
 
-import { User } from '../../declarations';
+import { RootState } from '@store/index';
+import { User } from '@app/declarations';
 import {
   ReevokeTokensRequest,
   RefreshTokensRequest,
 } from './core.declarations';
-import { RootState } from '..';
 
 export const refreshTokens = createAsyncThunk(
   'core/refreshTokens',

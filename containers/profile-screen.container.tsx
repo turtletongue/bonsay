@@ -1,6 +1,6 @@
-import Settings from './settings.container';
+import Settings from '@containers/settings.container';
 
-import { User } from '../declarations';
+import { User } from '@app/declarations';
 
 interface ProfileScreenProps {
   user: User;

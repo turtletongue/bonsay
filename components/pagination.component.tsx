@@ -1,9 +1,9 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
-import { setPage } from '../store/products/products.slice';
-import { DEFAULT_FETCH_LIMIT } from '../variables';
-import { getPageNumberButtons } from '../utils';
-import { useAppDispatch } from '../hooks';
+import { setPage } from '@store/products/products.slice';
+import { getPageNumberButtons } from '@utils/get-page-number-buttons';
+import { useAppDispatch } from '@app/hooks';
+import { DEFAULT_FETCH_LIMIT } from '@app/variables';
 
 interface PaginationProps {
   pageNumber: number;

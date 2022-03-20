@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import ContactParagraph from './contact-paragraph.component';
+import ContactParagraph from '@components/contact-paragraph.component';
 
 interface ContactSectionProps {
   section: {

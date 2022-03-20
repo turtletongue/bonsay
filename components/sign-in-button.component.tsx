@@ -1,10 +1,10 @@
-import Button from './button.component';
+import Button from '@components/button.component';
 import {
   login,
   selectEmail,
   selectPassword,
-} from '../store/sign-in/sign-in.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+} from '@store/sign-in/sign-in.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignInButton = () => {
   const dispatch = useAppDispatch();

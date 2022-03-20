@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 
-import { useAppSelector } from '../hooks';
-import { selectIsAuthenticated } from '../store/core/core.slice';
-import Button from '../components/button.component';
-import Total from '../components/total.component';
-import OutlineButton from '../components/outline-button.component';
+import Button from '@components/button.component';
+import Total from '@components/total.component';
+import OutlineButton from '@components/outline-button.component';
+import { selectIsAuthenticated } from '@store/core/core.slice';
+import { useAppSelector } from '@app/hooks';
 
 interface CartTotalProps {
   total: number;

@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { api } from '@app/api';
 import initialState from './categories.initial-state';
-import { api } from '../../api';
 
-import { Category } from '../../declarations';
-import { RootState } from '..';
+import { RootState } from '@store/index';
+import { Category } from '@app/declarations';
 
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',

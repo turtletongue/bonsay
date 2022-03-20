@@ -1,9 +1,9 @@
-import CardWithTransition from './card-with-transition.container';
-import { selectProductsIds } from '../store/cart/cart.slice';
-import { useAppSelector } from '../hooks';
-import { cardMocks } from '../variables';
+import CardWithTransition from '@containers/card-with-transition.container';
+import { selectProductsIds } from '@store/cart/cart.slice';
+import { useAppSelector } from '@app/hooks';
+import { cardMocks } from '@app/variables';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 interface ProductsGridProps {
   products: Product[];

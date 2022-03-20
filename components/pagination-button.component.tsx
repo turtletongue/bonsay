@@ -1,5 +1,5 @@
-import { useAppDispatch } from '../hooks';
-import { setPage } from '../store/products/products.slice';
+import { setPage } from '@store/products/products.slice';
+import { useAppDispatch } from '@app/hooks';
 
 interface PaginationButtonProps {
   pageNumber: number;

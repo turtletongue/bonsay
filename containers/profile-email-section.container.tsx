@@ -1,5 +1,5 @@
-import Label from '../components/label.component';
-import ProfileEmailInput from '../components/profile-email-input.component';
+import Label from '@components/label.component';
+import ProfileEmailInput from '@components/profile-email-input.component';
 
 export const ProfileEmailSection = () => {
   return (

@@ -1,8 +1,8 @@
 import { ChangeEventHandler } from 'react';
 
-import Input from './input.component';
-import { selectCity, setCity } from '../store/order/order.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import Input from '@components/input.component';
+import { selectCity, setCity } from '@store/order/order.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const OrderFormCityInput = () => {
   const dispatch = useAppDispatch();

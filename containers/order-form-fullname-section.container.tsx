@@ -1,5 +1,5 @@
-import OrderFormFirstnameInput from '../components/order-form-firstname-input.component';
-import OrderFormLastnameInput from '../components/order-form-lastname-input.component';
+import OrderFormFirstnameInput from '@components/order-form-firstname-input.component';
+import OrderFormLastnameInput from '@components/order-form-lastname-input.component';
 
 export const OrderFormFullnameSection = () => {
   return (

@@ -1,8 +1,8 @@
 import { Transition } from '@headlessui/react';
 
-import { CardWithLink } from './card-with-link.container';
+import { CardWithLink } from '@containers/card-with-link.container';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 interface CardWithTransitionProps {
   isLoading: boolean;

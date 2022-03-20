@@ -1,9 +1,9 @@
 import { ChangeEventHandler } from 'react';
 
-import { DisclosureBox } from './disclosure-box.container';
+import RadioInput from '@components/radio-input.component';
+import { DisclosureBox } from '@containers/disclosure-box.container';
 
-import { Id, SortType } from '../declarations';
-import RadioInput from '../components/radio-input.component';
+import { Id, SortType } from '@app/declarations';
 
 interface RadioFilterProps {
   title: string;
@@ -16,13 +16,13 @@ export const RadioFilter = ({
   title,
   values,
   selectedId,
-  onChange
+  onChange,
 }: RadioFilterProps) => {
   return (
     <DisclosureBox title={title}>
-      <div className='pt-6'>
-        <div className='space-y-6'>
-          <div className='flex flex-col'>
+      <div className="pt-6">
+        <div className="space-y-6">
+          <div className="flex flex-col">
             {values.map((value) => (
               <RadioInput
                 id={value.id.toString()}

@@ -1,7 +1,7 @@
-import { useAppDispatch } from '../hooks';
-import { removeFromCart } from '../store/cart/cart.slice';
+import { useAppDispatch } from '@app/hooks';
+import { removeFromCart } from '@store/cart/cart.slice';
 
-import { Id } from '../declarations';
+import { Id } from '@app/declarations';
 
 interface CartItemDeleteButtonProps {
   id: Id;

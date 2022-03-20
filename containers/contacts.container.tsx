@@ -1,6 +1,6 @@
-import ContactSection from '../components/contact-section.component';
-import ContactsImage from '../components/contacts-image.component';
-import { aboutConfig } from '../variables';
+import ContactSection from '@components/contact-section.component';
+import ContactsImage from '@components/contacts-image.component';
+import { aboutConfig } from '@app/variables';
 
 export const Contacts = () => {
   return (

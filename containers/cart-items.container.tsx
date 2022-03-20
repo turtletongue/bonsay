@@ -1,7 +1,6 @@
-import CartItem from './cart-item.containter';
-import { DEFAULT_PRODUCT_IMAGE } from '../variables';
+import CartItem from '@containers/cart-item.containter';
 
-import { CartItem as CartItemData } from '../declarations';
+import { CartItem as CartItemData } from '@app/declarations';
 
 interface CartItemsProps {
   items: CartItemData[];

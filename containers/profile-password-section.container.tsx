@@ -1,6 +1,6 @@
-import Label from '../components/label.component';
-import ProfileNewPasswordInput from '../components/profile-new-password-input.component';
-import ProfilePasswordInput from '../components/profile-password-input.component';
+import Label from '@components/label.component';
+import ProfileNewPasswordInput from '@components/profile-new-password-input.component';
+import ProfilePasswordInput from '@components/profile-password-input.component';
 
 export const ProfilePasswordSection = () => {
   return (

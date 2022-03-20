@@ -1,13 +1,13 @@
-import { useAppDispatch } from '../hooks';
+import CheckInput from '@components/check-input.component';
+import DisclosureBox from '@containers/disclosure-box.container';
 import {
   addCategory,
   removeCategory,
   setPage,
-} from '../store/products/products.slice';
-import CheckInput from '../components/check-input.component';
-import DisclosureBox from './disclosure-box.container';
+} from '@store/products/products.slice';
+import { useAppDispatch } from '@app/hooks';
 
-import { Category, Id } from '../declarations';
+import { Category, Id } from '@app/declarations';
 
 interface SelectionFilterProps {
   title: string;

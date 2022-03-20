@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { api } from '@app/api';
 import initialState from './cart.initial-state';
-import { api } from '../../api';
 
-import { Id, Product } from '../../declarations';
-import { RootState } from '..';
+import { RootState } from '@store/index';
+import { Id, Product } from '@app/declarations';
 
 export const removeDeletedProducts = createAsyncThunk(
   'cart/removeDeletedProducts',

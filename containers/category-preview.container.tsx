@@ -1,7 +1,7 @@
-import CategoryPreviewImage from '../components/category-preview-image.component';
-import CategoryPreviewSearchButton from '../components/category-preview-search-button.component';
+import CategoryPreviewImage from '@components/category-preview-image.component';
+import CategoryPreviewSearchButton from '@components/category-preview-search-button.component';
 
-import { Category } from '../declarations';
+import { Category } from '@app/declarations';
 
 interface CategoryPreviewProps {
   category: Category;

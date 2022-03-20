@@ -1,7 +1,7 @@
-import OrderFormCityInput from '../components/order-form-city-input.component';
-import OrderFormHouseInput from '../components/order-form-house-input.component';
-import OrderFormPostcodeInput from '../components/order-form-postcode-input.component';
-import OrderFormStreetInput from '../components/order-form-street-input.component';
+import OrderFormCityInput from '@components/order-form-city-input.component';
+import OrderFormHouseInput from '@components/order-form-house-input.component';
+import OrderFormPostcodeInput from '@components/order-form-postcode-input.component';
+import OrderFormStreetInput from '@components/order-form-street-input.component';
 
 export const OrderFormAddressSection = () => {
   return (

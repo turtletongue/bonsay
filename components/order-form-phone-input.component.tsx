@@ -1,6 +1,6 @@
-import PhoneInput from './phone-input.component';
-import { selectPhone, setPhone } from '../store/order/order.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import PhoneInput from '@components/phone-input.component';
+import { selectPhone, setPhone } from '@store/order/order.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const OrderFormPhoneInput = () => {
   const dispatch = useAppDispatch();

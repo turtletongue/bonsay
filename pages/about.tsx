@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import { pageDescriptions } from '../page-descriptions';
-import Contacts from '../containers/contacts.container';
+import Contacts from '@containers/contacts.container';
+import { pageDescriptions } from '@app/page-descriptions';
 
 export const About = () => {
   return (

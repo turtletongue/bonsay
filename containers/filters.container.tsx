@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   addCategory,
   selectFilterCategories,
-  selectIsFilterByOneCategory,
   selectMaximumAge,
   selectMaximumPrice,
   selectMinimumAge,
@@ -17,7 +15,6 @@ import {
   setMinimumPrice,
   setPage,
   setSortId,
-  sortByOneCategory,
 } from '../store/products/products.slice';
 import {
   fetchCategories,

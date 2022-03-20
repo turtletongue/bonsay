@@ -3,7 +3,7 @@ import {
   DEFAULT_AGE_MINIMUM,
   DEFAULT_PRICE_MAXIMUM,
   DEFAULT_PRICE_MINIMUM,
-} from '../../variables';
+} from '@app/variables';
 
 import { ProductsState } from './products.declarations';
 

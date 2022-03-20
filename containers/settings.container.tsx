@@ -2,7 +2,10 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
+import Button from '@components/button.component';
+import ProfilePasswordChangeButton from '@components/profile-password-change-button.component';
+import ProfileEmailSection from '@containers/profile-email-section.container';
+import ProfilePasswordSection from '@containers/profile-password-section.container';
 import {
   clearPasswordFields,
   selectEmail,
@@ -13,18 +16,15 @@ import {
   selectSuccess,
   clear,
   selectError,
-} from '../store/settings/settings.slice';
+} from '@store/settings/settings.slice';
 import {
   selectAccessToken,
   selectIsAuthenticated,
-} from '../store/core/core.slice';
-import { SUCCESS_SAVE } from '../utils/alert-messages';
-import Button from '../components/button.component';
-import ProfileEmailSection from './profile-email-section.container';
-import ProfilePasswordSection from './profile-password-section.container';
+} from '@store/core/core.slice';
+import { SUCCESS_SAVE } from '@utils/alert-messages';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
-import { User } from '../declarations';
-import ProfilePasswordChangeButton from '../components/profile-password-change-button.component';
+import { User } from '@app/declarations';
 
 interface SettingsProps {
   user: User;

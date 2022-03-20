@@ -1,6 +1,7 @@
 import { ChangeEventHandler } from 'react';
-import NumberInput from '../components/number-input.component';
-import DisclosureBox from './disclosure-box.container';
+
+import NumberInput from '@components/number-input.component';
+import DisclosureBox from '@containers/disclosure-box.container';
 
 interface RangeFilterProps {
   title: string;
@@ -15,21 +16,21 @@ export const RangeFilter = ({
   min = 0,
   max = 100000,
   onMinChange,
-  onMaxChange
+  onMaxChange,
 }: RangeFilterProps) => {
   return (
     <DisclosureBox title={title}>
-      <div className='pt-6'>
-        <div className='space-y-6'>
-          <div className='flex flex-col'>
+      <div className="pt-6">
+        <div className="space-y-6">
+          <div className="flex flex-col">
             <NumberInput
-              leftItem='от'
+              leftItem="от"
               placeholder={min.toString()}
               value={min}
               onChange={onMinChange}
             />
             <NumberInput
-              leftItem='до'
+              leftItem="до"
               placeholder={max.toString()}
               value={max}
               onChange={onMaxChange}

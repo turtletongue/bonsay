@@ -1,6 +1,7 @@
 import { Token } from 'react-stripe-checkout';
 
-import { CartItem } from '../../declarations';
+import { CartItem } from '@app/declarations';
+
 export interface OrderState {
   fullname: {
     firstname: string;

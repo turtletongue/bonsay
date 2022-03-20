@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
+import InputGroup from '@components/input-group.component';
+import UnderlineLink from '@components/underline-link.component';
+import SignUpButton from '@components/sign-up-button.component';
+import SignUpFormEmailSection from '@containers/sign-up-form-email-section.container';
+import SignUpFormPasswordSection from '@containers/sign-up-form-password-section.container';
+import SignUpFormPasswordConfirmationSection from '@containers/sign-up-form-password-confirmation-section.container';
 import {
   clear,
   selectSuccess,
   selectError,
-} from '../store/sign-up/sign-up.slice';
-import InputGroup from '../components/input-group.component';
-import UnderlineLink from '../components/underline-link.component';
-import SignUpFormEmailSection from './sign-up-form-email-section.container';
-import SignUpFormPasswordSection from './sign-up-form-password-section.container';
-import SignUpFormPasswordConfirmationSection from './sign-up-form-password-confirmation-section.container';
-import SignUpButton from '../components/sign-up-button.component';
+} from '@store/sign-up/sign-up.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignUpForm = () => {
   const { push } = useRouter();

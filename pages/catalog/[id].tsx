@@ -4,18 +4,18 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Pool } from 'pg';
 
-import { DEFAULT_PRODUCT_IMAGE, ISR_DELAY_IN_SECONDS } from '../../variables';
-import { bestsellers } from '../../sql/bestsellers.sql';
-import { productById } from '../../sql/product-by-id.sql';
-import { productPhotos } from '../../sql/product-photos.sql';
-import { similarProducts } from '../../sql/similar-products.sql';
-import { API_URL, FRONT_URL, IMAGE_API_URL } from '../../api';
-import { dbConnectionConfig } from '../../db-connection.config';
-import ProductInfo from '../../containers/product-info.container';
-import ProductsGrid from '../../containers/products-grid.container';
-import Void from '../../containers/void.container';
+import ProductInfo from '@containers/product-info.container';
+import ProductsGrid from '@containers/products-grid.container';
+import Void from '@containers/void.container';
+import { bestsellers } from '@sql/bestsellers.sql';
+import { productById } from '@sql/product-by-id.sql';
+import { productPhotos } from '@sql/product-photos.sql';
+import { similarProducts } from '@sql/similar-products.sql';
+import { API_URL, FRONT_URL, IMAGE_API_URL } from '@app/api';
+import { dbConnectionConfig } from '@app/db-connection.config';
+import { DEFAULT_PRODUCT_IMAGE, ISR_DELAY_IN_SECONDS } from '@app/variables';
 
-import { Product, Upload } from '../../declarations';
+import { Product, Upload } from '@app/declarations';
 
 export const ProductPage = ({ product }) => {
   const router = useRouter();

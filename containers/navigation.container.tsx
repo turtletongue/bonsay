@@ -1,12 +1,12 @@
-import NavbarLink from '../components/navbar-link.component';
-
-import { useAppDispatch, useAppSelector } from '../hooks';
+import NavbarLink from '@components/navbar-link.component';
 import {
   revokeToken,
   selectRefreshToken,
   signOut,
-} from '../store/core/core.slice';
-import { NavLink } from '../declarations';
+} from '@store/core/core.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
+
+import { NavLink } from '@app/declarations';
 
 interface NavigationProps {
   navigation: NavLink[];

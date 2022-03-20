@@ -1,8 +1,8 @@
 import { ChangeEventHandler } from 'react';
 
-import Input from './input.component';
-import { selectPassword, setPassword } from '../store/sign-in/sign-in.slice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import Input from '@components/input.component';
+import { selectPassword, setPassword } from '@store/sign-in/sign-in.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignInFormPasswordInput = () => {
   const dispatch = useAppDispatch();

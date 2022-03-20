@@ -1,18 +1,15 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
-import {
-  increaseProductQty,
-  selectProductsIds,
-} from '../store/cart/cart.slice';
-import { getAgeWord } from '../utils/get-age-word';
-import { DEFAULT_PRODUCT_IMAGE } from '../variables';
-import { IMAGE_API_URL } from '../api';
-import Button from '../components/button.component';
-import OutlineButton from '../components/outline-button.component';
+import Button from '@components/button.component';
+import OutlineButton from '@components/outline-button.component';
+import { increaseProductQty, selectProductsIds } from '@store/cart/cart.slice';
+import { getAgeWord } from '@utils/get-age-word';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
+import { DEFAULT_PRODUCT_IMAGE } from '@app/variables';
+import { IMAGE_API_URL } from '@app/api';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 interface ProductInfoProps {
   product: Product;

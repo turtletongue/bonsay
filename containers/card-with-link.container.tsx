@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import Card from './card.container';
-import { DEFAULT_PRODUCT_IMAGE } from '../variables';
+import Card from '@containers/card.container';
+import { DEFAULT_PRODUCT_IMAGE } from '@app/variables';
 
-import { Product } from '../declarations';
+import { Product } from '@app/declarations';
 
 interface CardWithLinkProps {
   product: Product;

@@ -1,8 +1,8 @@
-import UnderlineLink from './underline-link.component';
-import { useAppDispatch } from '../hooks';
-import { sortByOneCategory } from '../store/products/products.slice';
+import UnderlineLink from '@components/underline-link.component';
+import { useAppDispatch } from '@app/hooks';
+import { sortByOneCategory } from '@store/products/products.slice';
 
-import { Id } from '../declarations';
+import { Id } from '@app/declarations';
 
 interface CategoryPreviewSearchButtonProps {
   id: Id;

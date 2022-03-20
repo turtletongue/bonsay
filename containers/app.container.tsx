@@ -1,13 +1,13 @@
 import { ReactNode, useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   refreshTokens,
   selectAccessTokenExpireAt,
   selectRefreshToken,
   selectRefreshTokenExpireAt,
   signOut,
-} from '../store/core/core.slice';
+} from '@store/core/core.slice';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 interface AppContainerProps {
   children?: ReactNode;
