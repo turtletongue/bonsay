@@ -1,7 +1,7 @@
 export const similarProducts = {
   name: 'similarProducts',
   text: `
-    SELECT product.id, product.name, product.price, upload.path
+    SELECT product.id, product.name, product.price, upload."internalPath"
     FROM products product
     LEFT JOIN uploads upload
     ON product."uploadId" = upload.id

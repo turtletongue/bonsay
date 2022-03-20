@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { api, IMAGE_API_URL } from '@app/api';
+import { api } from '@app/api';
 import { DEFAULT_FETCH_LIMIT, sortTypes } from '@app/variables';
 import initialState from './products.initial-state';
 
@@ -46,7 +46,7 @@ export const fetchProducts = createAsyncThunk(
       total: products.total,
       products: products.data.map((product) =>
         product.upload
-          ? { ...product, path: IMAGE_API_URL + product.upload.path }
+          ? { ...product, path: product.upload.internalPath }
           : product
       ),
     };

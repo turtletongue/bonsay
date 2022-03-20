@@ -20,6 +20,7 @@ export interface PaginationData {
 export interface Upload {
   id?: Id;
   path: string;
+  internalPath: string;
 }
 
 export interface Product {
@@ -33,6 +34,7 @@ export interface Product {
   categoryId?: Id;
 
   path?: string;
+  internalPath?: string;
   upload?: Upload;
 
   photos?: Upload[];
@@ -49,6 +51,7 @@ export interface Category {
   description: string;
 
   path?: string;
+  internalPath?: string;
   upload?: Upload;
 
   createdAt?: Date | string;

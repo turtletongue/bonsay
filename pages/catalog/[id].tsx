@@ -11,7 +11,7 @@ import { bestsellers } from '@sql/bestsellers.sql';
 import { productById } from '@sql/product-by-id.sql';
 import { productPhotos } from '@sql/product-photos.sql';
 import { similarProducts } from '@sql/similar-products.sql';
-import { API_URL, FRONT_URL, IMAGE_API_URL } from '@app/api';
+import { FRONT_URL } from '@app/api';
 import { dbConnectionConfig } from '@app/db-connection.config';
 import { DEFAULT_PRODUCT_IMAGE, ISR_DELAY_IN_SECONDS } from '@app/variables';
 
@@ -46,9 +46,7 @@ export const ProductPage = ({ product }) => {
         <meta
           property="og:image"
           content={
-            product.path
-              ? API_URL + product.path
-              : FRONT_URL + DEFAULT_PRODUCT_IMAGE
+            product.path ? product.path : FRONT_URL + DEFAULT_PRODUCT_IMAGE
           }
         />
       </Head>
@@ -97,12 +95,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       product: {
         ...product,
+        path: product.internalPath,
         photos,
-        similarProducts: similar.map((product) =>
-          product.path
-            ? { ...product, path: IMAGE_API_URL + product.path }
-            : product
-        ),
+        similarProducts: similar,
       },
     },
     revalidate: ISR_DELAY_IN_SECONDS,

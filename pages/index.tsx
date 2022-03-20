@@ -41,9 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
   await pool.end();
 
   const setPaths = (entity: Category | Product) =>
-    entity.path
-      ? { ...entity, path: process.env.PRIVATE_API_PATH + entity.path }
-      : entity;
+    entity.internalPath ? { ...entity, path: entity.internalPath } : entity;
 
   return {
     props: {

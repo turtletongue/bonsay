@@ -13,7 +13,11 @@ export const fetchCategories = createAsyncThunk(
     const categories: { data: Category[] } = (await axios.get(api.categories))
       .data;
 
-    return categories.data;
+    return categories.data.map((category) =>
+      category.upload
+        ? { ...category, path: category.upload.internalPath }
+        : category
+    );
   }
 );
 

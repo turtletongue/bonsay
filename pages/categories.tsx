@@ -38,8 +38,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       categories: categories.rows.map((category) =>
-        category.path
-          ? { ...category, path: process.env.PRIVATE_API_PATH + category.path }
+        category.internalPath
+          ? { ...category, path: category.internalPath }
           : category
       ),
     },

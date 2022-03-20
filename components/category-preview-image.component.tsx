@@ -13,12 +13,12 @@ interface CategoryPreviewImageProps {
 }
 
 export const CategoryPreviewImage = ({
-  category: { name, path, upload },
+  category: { name, path },
 }: CategoryPreviewImageProps) => {
   return (
     <div>
       <Image
-        src={path || upload?.path || DEFAULT_CATEGORY_IMAGE}
+        src={path || DEFAULT_CATEGORY_IMAGE}
         alt={name}
         width={CATEGORY_IMAGE_WIDTH}
         height={CATEGORY_IMAGE_HEIGHT}

@@ -7,7 +7,6 @@ import { increaseProductQty, selectProductsIds } from '@store/cart/cart.slice';
 import { getAgeWord } from '@utils/get-age-word';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
 import { DEFAULT_PRODUCT_IMAGE } from '@app/variables';
-import { IMAGE_API_URL } from '@app/api';
 
 import { Product } from '@app/declarations';
 
@@ -35,11 +34,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
       <div className="flex flex-col-reverse sm:flex-row justify-center items-center h-full mx-2">
         <div className="relative">
           <Image
-            src={
-              product.path
-                ? IMAGE_API_URL + product.path
-                : DEFAULT_PRODUCT_IMAGE
-            }
+            src={product.path ? product.path : DEFAULT_PRODUCT_IMAGE}
             width={450}
             height={500}
             alt={product.name}
