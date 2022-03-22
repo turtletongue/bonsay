@@ -16,7 +16,9 @@ const CategoryPreview = ({ category }: CategoryPreviewProps) => {
       <div className="flex flex-col justify-between">
         <div>
           <div className="text-primary text-2xl mb-4">{name}</div>
-          <p className="text-primary text-justify">{description}</p>
+          <p className="text-primary text-justify overflow-x-hidden">
+            {description}
+          </p>
         </div>
         <div className="mt-4 sm:mt-0">
           <CategoryPreviewSearchButton id={id} />

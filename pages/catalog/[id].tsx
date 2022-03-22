@@ -57,7 +57,7 @@ export const ProductPage = ({ product }) => {
             ПОХОЖИЕ ТОВАРЫ
           </div>
           <div className="my-6 flex justify-center w-full">
-            <ProductsGrid products={product.similarProducts} />
+            <ProductsGrid products={product.similarProducts} isFill={false} />
           </div>
         </>
       )}
@@ -101,7 +101,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...product,
         path: product.internalPath,
         photos,
-        similarProducts: similar,
+        similarProducts: similar.map((product) => ({
+          ...product,
+          path: product.internalPath,
+        })),
       },
     },
     revalidate: ISR_DELAY_IN_SECONDS,

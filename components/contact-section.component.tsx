@@ -13,7 +13,7 @@ interface ContactSectionProps {
 export const ContactSection = ({ section }: ContactSectionProps) => {
   return (
     <div className="my-2">
-      <div className="text-primary text-2xl text-center sm:text-left">
+      <div className="text-primary text-2xl text-center lg:text-left">
         {section.title}
       </div>
       {section.paragraphs.map((paragraph) => (

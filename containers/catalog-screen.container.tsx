@@ -55,7 +55,11 @@ export const CatalogScreen = () => {
       </div>
       <div className="flex flex-row space-around my-6">
         <Filters className="hidden sm:block" />
-        <ProductsGrid products={products} isLoading={isLoading} />
+        <ProductsGrid
+          products={products}
+          isLoading={isLoading}
+          className="max-w-6xl justify-center"
+        />
       </div>
       <Pagination pageNumber={pageNumber} total={total} />
     </div>

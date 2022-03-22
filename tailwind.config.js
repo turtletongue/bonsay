@@ -58,7 +58,8 @@ module.exports = {
     gridTemplateColumns: {
       2: 'repeat(2, minmax(0, 1fr))',
       '2-fill': 'repeat(auto-fill, minmax(0, 550px))',
-      4: 'repeat(auto-fill, minmax(0, 225px))',
+      4: 'repeat(4, minmax(0, 225px))',
+      '4-fill': 'repeat(auto-fill, minmax(0, 225px))',
     },
   },
   variants: {

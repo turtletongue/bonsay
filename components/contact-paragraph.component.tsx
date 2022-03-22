@@ -6,7 +6,7 @@ interface ContactParagraphProps {
 
 export const ContactParagraph = ({ content }: ContactParagraphProps) => {
   return (
-    <p className="text-primary text-center sm:text-left my-4">{content}</p>
+    <p className="text-primary text-center lg:text-left my-4">{content}</p>
   );
 };
 

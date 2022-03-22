@@ -22,7 +22,7 @@ export const MainScreen = ({ title, description, image }: MainScreenProps) => {
           <div className="text-primary text-2xl text-center sm:text-left">
             {title}
           </div>
-          <p className="text-primary my-4 text-center sm:text-justify">
+          <p className="text-primary my-4 sm:pr-12 text-center sm:text-justify">
             {description}
           </p>
           <Link href="/catalog">
@@ -31,7 +31,7 @@ export const MainScreen = ({ title, description, image }: MainScreenProps) => {
             </a>
           </Link>
         </div>
-        <div>
+        <div className="ml-2">
           <Image
             src={image.url}
             alt="Beautiful bonsai"
