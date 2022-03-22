@@ -1,10 +1,10 @@
-import { forwardRef, Ref } from 'react';
+import { forwardRef, ReactNode, Ref } from 'react';
 import Link from 'next/link';
 
 interface NavbarLinkProps {
   href: string;
   isActive: boolean;
-  children: any;
+  children: ReactNode;
   onClick?: () => void;
 }
 
@@ -13,17 +13,19 @@ const NavbarLink = (
   ref: Ref<HTMLAnchorElement>
 ) => {
   return (
-    <Link href={href}>
-      <a
-        ref={ref}
-        onClick={onClick}
-        className={`${
-          isActive ? 'text-primary' : 'text-secondary'
-        } text-base flex items-center`}
-      >
-        {children}
-      </a>
-    </Link>
+    <>
+      <Link href={href}>
+        <a
+          ref={ref}
+          onClick={onClick}
+          className={`${
+            isActive ? 'text-primary' : 'text-secondary'
+          } text-base flex items-center`}
+        >
+          {children}
+        </a>
+      </Link>
+    </>
   );
 };
 

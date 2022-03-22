@@ -33,6 +33,7 @@ module.exports = {
       lightgray: '#FAFAFA',
       verylightgray: '#FDFDFD',
       white: 'white',
+      black: 'black',
       glassgreen: '#E6FFE6',
     },
     letterSpacing: {
@@ -253,4 +254,5 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
+  mode: 'jit',
 };

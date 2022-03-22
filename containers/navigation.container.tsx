@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import NavbarLink from '@components/navbar-link.component';
 import {
   revokeToken,
@@ -17,6 +19,12 @@ export const Navigation = ({
   navigation,
   currentPathname,
 }: NavigationProps) => {
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, [setIsHydrated]);
+
   const dispatch = useAppDispatch();
 
   const refreshToken = useAppSelector(selectRefreshToken);
@@ -37,7 +45,7 @@ export const Navigation = ({
             onClick={item.isSignOut ? onSignOut : undefined}
           >
             {item.name}
-            {item.extra}
+            {isHydrated && item.extra}
           </NavbarLink>
         ))}
       </div>
