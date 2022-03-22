@@ -42,7 +42,7 @@ module.exports = {
     screens: {
       sm: '800px',
       md: '960px',
-      lg: '1023px',
+      lg: '1026px',
       xl: '1279px',
       '2xl': '1535px',
     },
@@ -55,7 +55,8 @@ module.exports = {
       8: '32rem',
     },
     gridTemplateColumns: {
-      2: 'repeat(auto-fill, minmax(0, 550px))',
+      2: 'repeat(2, minmax(0, 1fr))',
+      '2-fill': 'repeat(auto-fill, minmax(0, 550px))',
       4: 'repeat(auto-fill, minmax(0, 225px))',
     },
   },

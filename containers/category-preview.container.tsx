@@ -11,7 +11,7 @@ const CategoryPreview = ({ category }: CategoryPreviewProps) => {
   const { id, name, description } = category;
 
   return (
-    <div className="grid grid-cols-2 gap-6 sm:gap-12 justify-center">
+    <div className="grid grid-cols-2-fill gap-6 sm:gap-12 justify-center">
       <CategoryPreviewImage category={category} />
       <div className="flex flex-col justify-between">
         <div>

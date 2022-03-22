@@ -51,12 +51,16 @@ export const ProductPage = ({ product }) => {
         />
       </Head>
       <ProductInfo product={product} />
-      <div className="w-full my-2 text-center font-medium text-primary">
-        ПОХОЖИЕ ТОВАРЫ
-      </div>
-      <div className="my-6 flex justify-center w-full">
-        <ProductsGrid products={product.similarProducts} />
-      </div>
+      {product.similarProducts.length > 0 && (
+        <>
+          <div className="w-full my-2 text-center font-medium text-primary">
+            ПОХОЖИЕ ТОВАРЫ
+          </div>
+          <div className="my-6 flex justify-center w-full">
+            <ProductsGrid products={product.similarProducts} />
+          </div>
+        </>
+      )}
     </>
   );
 };

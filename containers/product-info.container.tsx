@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Button from '@components/button.component';
 import OutlineButton from '@components/outline-button.component';
 import { increaseProductQty, selectProductsIds } from '@store/cart/cart.slice';
+import LittleImage from '@components/little-image.component';
 import { getAgeWord } from '@utils/get-age-word';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
 import { DEFAULT_PRODUCT_IMAGE } from '@app/variables';
@@ -30,18 +31,31 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
   };
 
   return (
-    <div className="grid grid-cols-2 justify-center items-center grid-auto-flow gap-4 py-2 sm:py-10 px-2">
-      <div className="flex flex-col-reverse sm:flex-row justify-center items-center h-full mx-2">
-        <div className="relative">
-          <Image
-            src={product.path ? product.path : DEFAULT_PRODUCT_IMAGE}
-            width={450}
-            height={500}
-            alt={product.name}
-          />
+    <div className="grid grid-cols-2-fill lg:grid-cols-2 grid-auto-flow gap-4 py-2 sm:py-10 px-2 mx-auto">
+      <div className="flex flex-col-reverse sm:flex-row justify-center h-full mx-2">
+        <div className="flex flex-row sm:flex-col gap-2 sm:h-full max-h-screen justify-center mt-2 sm:mt-0">
+          {product.photos.map((photo) => (
+            <div key={photo.id} className="flex items-center cursor-pointer">
+              <LittleImage
+                src={photo.internalPath}
+                alt={product.name}
+                id={photo.id}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="relative sm:ml-2">
+          <div className="w-full h-full flex justify-center items-center">
+            <Image
+              src={product.path ? product.path : DEFAULT_PRODUCT_IMAGE}
+              width={505}
+              height={503}
+              alt={product.name}
+            />
+          </div>
         </div>
       </div>
-      <div className="max-w-lg">
+      <div className="mx-auto max-w-lg">
         <div className="flex flex-col sm:flex-row p-2 sm:p-0 items-start sm:items-center justify-between">
           <div className="w-full">
             <div className="flex justify-between w-full">
