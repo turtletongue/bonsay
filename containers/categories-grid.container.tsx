@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import CategoryPreview from '@containers/category-preview.container';
 
 import { Category } from '@app/declarations';
@@ -11,16 +9,9 @@ interface CategoriesGridProps {
 export const CategoriesGrid = ({ categories }: CategoriesGridProps) => {
   return (
     <div className="grid grid-flow-row auto-cols-fr grid-cols-1 justify-center gap-6 sm:gap-12">
-      {categories.map((category, index) => {
-        return (
-          <Fragment key={category.id}>
-            <CategoryPreview category={category} />
-            {index !== categories.length - 1 && (
-              <hr className="block sm:hidden border rounded-sm border-gray" />
-            )}
-          </Fragment>
-        );
-      })}
+      {categories.map((category) => (
+        <CategoryPreview key={category.id} category={category} />
+      ))}
     </div>
   );
 };

@@ -46,6 +46,9 @@ module.exports = {
       lg: '1026px',
       xl: '1279px',
       '2xl': '1535px',
+      '3-cols': '755px',
+      '4-cols': '964px',
+      '5-cols': '1253px',
     },
     minWidth: {
       0: '0',

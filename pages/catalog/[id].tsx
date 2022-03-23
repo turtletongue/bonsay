@@ -57,7 +57,11 @@ export const ProductPage = ({ product }) => {
             ПОХОЖИЕ ТОВАРЫ
           </div>
           <div className="my-6 flex justify-center w-full">
-            <ProductsGrid products={product.similarProducts} isFill={false} />
+            <ProductsGrid
+              products={product.similarProducts}
+              className="max-w-5xl"
+              lastItemClassNames="block 3-cols:hidden 4-cols:block"
+            />
           </div>
         </>
       )}

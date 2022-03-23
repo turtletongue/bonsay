@@ -10,6 +10,8 @@ interface ProductsGridProps {
   className?: string;
   isLoading?: boolean;
   isFill?: boolean;
+  lastItemClassNames?: string;
+  preLastItemClassNames?: string;
 }
 
 export const ProductsGrid = ({
@@ -17,25 +19,37 @@ export const ProductsGrid = ({
   className = '',
   isLoading = false,
   isFill = true,
+  lastItemClassNames = '',
+  preLastItemClassNames = '',
 }: ProductsGridProps) => {
   const cartProductsIds = useAppSelector(selectProductsIds);
 
   return (
     <div
-      className={`grid grid-flow-row ${className} ${
+      className={`grid grid-flow-row justify-center ${className} ${
         isFill ? 'grid-cols-4-fill' : 'grid-cols-4'
-      } gap-4`}
+      } gap-4 mx-4 sm:mx-0`}
     >
       {isLoading
         ? cardMocks
-        : products.map((product) => (
-            <CardWithTransition
-              key={product.id}
-              isLoading={isLoading}
-              isInCart={cartProductsIds.includes(product.id.toString())}
-              product={product}
-            />
-          ))}
+        : products.map((product, index) => {
+            const className =
+              index >= products.length - 1
+                ? lastItemClassNames
+                : index >= products.length - 2
+                ? preLastItemClassNames
+                : '';
+
+            return (
+              <div key={product.id} className={className}>
+                <CardWithTransition
+                  isLoading={isLoading}
+                  isInCart={cartProductsIds.includes(product.id.toString())}
+                  product={product}
+                />
+              </div>
+            );
+          })}
     </div>
   );
 };

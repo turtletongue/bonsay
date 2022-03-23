@@ -13,6 +13,6 @@ export const bestsellers = {
     ON product."uploadId" = upload.id
     GROUP BY product.id, upload."internalPath"
     ORDER BY sales DESC
-    LIMIT 8
+    LIMIT 10
   `,
 };
