@@ -76,5 +76,4 @@ export interface SortType {
 
 export interface CartItem {
   product: Product;
-  qty: number;
 }

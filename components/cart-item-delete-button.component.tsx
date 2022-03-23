@@ -16,7 +16,7 @@ export const CartItemDeleteButton = ({ id }: CartItemDeleteButtonProps) => {
 
   return (
     <div
-      className="text-gray font-medium text-xs cursor-pointer hover:text-red select-none mt-2"
+      className="text-gray font-medium text-sm cursor-pointer hover:text-red select-none"
       onClick={onDelete}
     >
       Удалить

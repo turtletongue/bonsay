@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
 import CartItems from '@containers/cart-items.container';
@@ -13,7 +13,13 @@ import {
 } from '@store/cart/cart.slice';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
 
-export const SignIn = () => {
+export const Cart = () => {
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, [setIsHydrated]);
+
   const cartItems = useAppSelector(selectCartItems);
   const total = useAppSelector(selectTotal);
   const cartItemsCount = useAppSelector(selectCartItemsCount);
@@ -31,15 +37,11 @@ export const SignIn = () => {
       <Head>
         <title>Корзина | BONSAY</title>
       </Head>
-      {cartItemsCount > 0 ? (
+      {isHydrated && cartItemsCount > 0 ? (
         <div className="w-full relative">
-          <CartItems items={cartItems} />
-          <div className="hidden md:block absolute right-12 top-12">
-            <CartTotal total={total} />
-          </div>
-          <div className="flex justify-center mb-4 w-full md:hidden">
-            <CartTotal total={total} />
-          </div>
+          <CartTotal total={total}>
+            <CartItems items={cartItems} />
+          </CartTotal>
         </div>
       ) : (
         <Void text="КОРЗИНА ПУСТА" />
@@ -48,4 +50,4 @@ export const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Cart;

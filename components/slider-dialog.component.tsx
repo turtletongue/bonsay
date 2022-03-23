@@ -44,8 +44,9 @@ export const SliderDialog = ({
                 alt="Slide"
               />
             </div>
-            <button className="absolute border-0 top-[45%] left-2 w-10 h-10 text-white rounded-full bg-secondary opacity-30 hover:opacity-100 cursor-pointer p-1">
+            <button className="absolute border-0 top-[45%] left-2 w-10 h-10 text-white rounded-full bg-secondary opacity-30 hover:opacity-40 cursor-pointer p-1">
               <ArrowLeftIcon
+                className="opacity-30 hover:opacity-100"
                 onClick={() =>
                   setCurrenSliderIndex((currentIndex) =>
                     currentIndex - 1 >= 0 ? currentIndex - 1 : urls.length - 1
@@ -53,8 +54,9 @@ export const SliderDialog = ({
                 }
               />
             </button>
-            <button className="absolute border-0 top-[45%] right-2 w-10 h-10 text-white rounded-full bg-secondary opacity-30 hover:opacity-100 cursor-pointer p-1">
+            <button className="absolute border-0 top-[45%] right-2 w-10 h-10 text-white rounded-full bg-secondary opacity-30 hover:opacity-40 cursor-pointer p-1">
               <ArrowRightIcon
+                className="opacity-30 hover:opacity-100"
                 onClick={() =>
                   setCurrenSliderIndex((currentIndex) =>
                     currentIndex + 1 < urls.length ? currentIndex + 1 : 0

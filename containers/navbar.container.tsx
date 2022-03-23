@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Disclosure } from '@headlessui/react';
 
@@ -12,21 +13,28 @@ import { useAppSelector } from '@app/hooks';
 import { anonymousNavigation, authenticatedNavigation } from '@app/variables';
 
 export const Navbar = () => {
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, [setIsHydrated]);
+
   const { pathname } = useRouter();
 
   const cartItemsCount = useAppSelector(selectCartItemsCount);
 
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
-  const getNavigation = isAuthenticated
-    ? authenticatedNavigation
-    : anonymousNavigation;
+  const getNavigation =
+    isAuthenticated && isHydrated
+      ? authenticatedNavigation
+      : anonymousNavigation;
 
   const navigation = getNavigation(cartItemsCount);
 
   return (
     <>
-      <Disclosure as="nav" className="sticky sm:static top-0 z-10 bg-white">
+      <Disclosure as="nav" className="sticky sm:static top-0 z-30 bg-white">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">

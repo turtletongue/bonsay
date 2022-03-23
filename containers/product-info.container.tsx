@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import Button from '@components/button.component';
 import OutlineButton from '@components/outline-button.component';
-import { increaseProductQty, selectProductsIds } from '@store/cart/cart.slice';
+import { addProductToCart, selectProductsIds } from '@store/cart/cart.slice';
 import LittleImage from '@components/little-image.component';
 import { getAgeWord } from '@utils/get-age-word';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
@@ -30,7 +30,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
   const cartProductsIds = useAppSelector(selectProductsIds);
 
   const addToCart = () => {
-    dispatch(increaseProductQty(product));
+    dispatch(addProductToCart(product));
   };
 
   const navigateToCart = () => {

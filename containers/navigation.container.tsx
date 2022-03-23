@@ -35,7 +35,7 @@ export const Navigation = ({
   };
 
   return (
-    <div className="hidden sm:block sm:ml-6 z-20">
+    <div className="hidden sm:block sm:ml-6 z-30">
       <div className="flex space-x-8 font-nunito">
         {navigation.map((item) => (
           <NavbarLink

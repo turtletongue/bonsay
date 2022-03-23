@@ -33,25 +33,16 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    increaseProductQty: (state, action: PayloadAction<Product>) => {
+    addProductToCart: (state, action: PayloadAction<Product>) => {
       const product = action.payload;
 
       const existingCartItem = state.items[product.id];
 
       if (existingCartItem) {
-        existingCartItem.qty++;
-      } else {
-        state.items[product.id] = { product, qty: 1 };
+        return;
       }
-    },
-    decreaseProductQty: (state, action: PayloadAction<Id>) => {
-      const productId = action.payload;
 
-      const existingCartItem = state.items[productId];
-
-      if (existingCartItem && --existingCartItem.qty === 0) {
-        delete state.items[productId];
-      }
+      state.items[product.id] = { product };
     },
     removeFromCart: (state, action: PayloadAction<Id>) => {
       delete state.items[action.payload];
@@ -62,12 +53,8 @@ export const cartSlice = createSlice({
   },
 });
 
-export const {
-  increaseProductQty,
-  decreaseProductQty,
-  removeFromCart,
-  clearCart,
-} = cartSlice.actions;
+export const { addProductToCart, removeFromCart, clearCart } =
+  cartSlice.actions;
 
 export const selectCartItems = (state: RootState) =>
   Object.values(state.cart.items);
@@ -75,7 +62,7 @@ export const selectProductsIds = (state: RootState) =>
   Object.keys(state.cart.items);
 export const selectTotal = (state: RootState) =>
   Object.values(state.cart.items).reduce(
-    (acc, item) => acc + item.product.price * item.qty,
+    (acc, item) => acc + +item.product.price,
     0
   );
 export const selectCartItemsCount = (state: RootState) =>

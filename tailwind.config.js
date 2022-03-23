@@ -34,6 +34,7 @@ module.exports = {
       verylightgray: '#FDFDFD',
       white: 'white',
       black: 'black',
+      'red-500': 'rgb(239 68 68)',
       glassgreen: '#E6FFE6',
     },
     letterSpacing: {
@@ -61,6 +62,8 @@ module.exports = {
     gridTemplateColumns: {
       2: 'repeat(2, minmax(0, 1fr))',
       '2-fill': 'repeat(auto-fill, minmax(0, 550px))',
+      3: 'repeat(2, minmax(0, 400fr))',
+      '3-fill': 'repeat(auto-fill, minmax(0, 400px))',
       4: 'repeat(4, minmax(0, 225px))',
       '4-fill': 'repeat(auto-fill, minmax(0, 225px))',
     },

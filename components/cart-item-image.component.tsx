@@ -15,7 +15,7 @@ export const CartItemImage = ({
     <Image
       src={path ? path : DEFAULT_PRODUCT_IMAGE}
       width={110}
-      height={140}
+      height={110}
       alt={name}
       className="select-none"
     />
