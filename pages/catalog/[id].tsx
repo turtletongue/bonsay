@@ -7,7 +7,7 @@ import { Pool } from 'pg';
 import ProductInfo from '@containers/product-info.container';
 import ProductsGrid from '@containers/products-grid.container';
 import Void from '@containers/void.container';
-import { bestsellers } from '@sql/bestsellers.sql';
+import { newProducts } from '@sql/new-products.sql';
 import { productById } from '@sql/product-by-id.sql';
 import { productPhotos } from '@sql/product-photos.sql';
 import { similarProducts } from '@sql/similar-products.sql';
@@ -74,7 +74,7 @@ export default ProductPage;
 export const getStaticPaths: GetStaticPaths = async () => {
   const pool = new Pool(dbConnectionConfig);
 
-  const products: { rows: Product[] } = await pool.query(bestsellers);
+  const products: { rows: Product[] } = await pool.query(newProducts);
 
   await pool.end();
 

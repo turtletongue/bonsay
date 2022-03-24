@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -11,6 +11,12 @@ import { selectIsAuthenticated } from '@store/core/core.slice';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const OrderPlacing = () => {
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, [setIsHydrated]);
+
   const { push } = useRouter();
 
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
@@ -35,7 +41,7 @@ export const OrderPlacing = () => {
         <title>Оформление заказа | BONSAY</title>
       </Head>
       <div className="py-4 max-w-md mx-auto">
-        <OrderDataForm />
+        {isHydrated && <OrderDataForm />}
       </div>
     </>
   );

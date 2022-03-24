@@ -3,17 +3,17 @@ import ProductsGrid from '@containers/products-grid.container';
 
 import { Product } from '@app/declarations';
 
-interface BestsellersProps {
-  bestsellers: Product[];
+interface NewProductsProps {
+  newProducts: Product[];
 }
 
-export const Bestsellers = ({ bestsellers }: BestsellersProps) => {
+export const NewProducts = ({ newProducts }: NewProductsProps) => {
   return (
     <div className="w-full">
       <div className="max-w-7xl mx-auto px-2 lg:px-8 mb-8">
-        <ScreenHeading href="/catalog">Популярное</ScreenHeading>
+        <ScreenHeading href="/catalog">Новинки</ScreenHeading>
         <ProductsGrid
-          products={bestsellers}
+          products={newProducts}
           lastItemClassNames="block 3-cols:hidden 4-cols:hidden 5-cols:block"
           preLastItemClassNames="block 4-cols:hidden 5-cols:block"
         />
@@ -22,4 +22,4 @@ export const Bestsellers = ({ bestsellers }: BestsellersProps) => {
   );
 };
 
-export default Bestsellers;
+export default NewProducts;
