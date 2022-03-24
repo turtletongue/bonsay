@@ -5,3 +5,12 @@
 .product-card {
   max-height: 21.5rem;
 }
+
+.without-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.without-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

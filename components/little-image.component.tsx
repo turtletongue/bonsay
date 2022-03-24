@@ -23,7 +23,7 @@ export const LittleImage = ({
       width={120}
       height={120}
       alt={alt}
-      id={id.toString()}
+      id={id?.toString()}
       onClick={(...args) => onClick(index, args)}
     />
   );

@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import ProfileScreen from '@containers/profile-screen.container';
+import ProfileNavigation from '@components/profile-navigation.component';
+import Settings from '@containers/settings.container';
 import { selectIsAuthenticated, selectUser } from '@store/core/core.slice';
 import { useAppSelector } from '@app/hooks';
 
-export const Profile = () => {
+export const ProfileSettings = () => {
   const { push } = useRouter();
 
   const user = useAppSelector(selectUser);
@@ -21,11 +22,16 @@ export const Profile = () => {
   return (
     <>
       <Head>
-        <title>Профиль | BONSAY</title>
+        <title>Настройки | BONSAY</title>
       </Head>
-      <ProfileScreen user={user} />
+      <div className="w-full h-[35rem] p-4">
+        <ProfileNavigation activePage="settings" />
+        <div className="w-full h-full flex justify-center items-center">
+          <Settings user={user} />
+        </div>
+      </div>
     </>
   );
 };
 
-export default Profile;
+export default ProfileSettings;

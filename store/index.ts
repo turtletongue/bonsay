@@ -23,13 +23,21 @@ import settingsReducer from '@store/settings/settings.slice';
 import orderReducer from '@store/order/order.slice';
 import signUpReducer from '@store/sign-up/sign-up.slice';
 import signInReducer from '@store/sign-in/sign-in.slice';
+import profileOrdersReducer from '@store/profile-orders/profile-orders.slice';
 import persistStorage from './persistStorage';
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage: persistStorage,
-  blacklist: ['settings', 'products', 'categories', 'signIn', 'signUp'],
+  blacklist: [
+    'settings',
+    'products',
+    'categories',
+    'signIn',
+    'signUp',
+    'profileOrders',
+  ],
 };
 
 const rootReducer = combineReducers({
@@ -41,6 +49,7 @@ const rootReducer = combineReducers({
   order: orderReducer,
   signUp: signUpReducer,
   signIn: signInReducer,
+  profileOrders: profileOrdersReducer,
 });
 
 const persistedRootReducer = persistReducer(persistConfig, rootReducer);

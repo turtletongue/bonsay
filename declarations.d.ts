@@ -30,7 +30,7 @@ export interface Product {
   age?: number;
   birthdate?: Date | string;
   height: number;
-  price: number;
+  price: string | number;
   categoryId?: Id;
 
   path?: string;
@@ -64,6 +64,23 @@ export interface User {
 
   createdAt: string | Date;
   updatedAt: string | Date;
+}
+
+export interface Purchase {
+  id: Id;
+  productId: Id;
+  orderId: Id;
+  product: Product;
+}
+
+export interface Order {
+  id: Id;
+  status: 'processing' | 'delivery' | 'completed' | 'cancelled';
+  phone: string;
+  addressId: Id;
+  clientId: Id;
+  purchases: Purchase[];
+  createdAt: string | Date;
 }
 
 export interface SortType {

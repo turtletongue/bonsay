@@ -13,7 +13,7 @@ const NavbarLink = (
   ref: Ref<HTMLAnchorElement>
 ) => {
   return (
-    <>
+    <li>
       <Link href={href}>
         <a
           ref={ref}
@@ -25,7 +25,7 @@ const NavbarLink = (
           {children}
         </a>
       </Link>
-    </>
+    </li>
   );
 };
 

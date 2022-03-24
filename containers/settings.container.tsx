@@ -78,7 +78,7 @@ export const Settings = ({ user }: SettingsProps) => {
   };
 
   return (
-    <div className="w-52 sm:w-96 mx-auto my-16 relative">
+    <div className="w-52 sm:w-96 relative">
       {error && (
         <div className="absolute -top-6 text-red text-sm text-center w-full">
           {error}

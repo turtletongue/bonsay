@@ -30,7 +30,7 @@ export const authenticatedNavigation: (count: number) => Navigation = (
     { name: 'О нас', href: '/about' },
   ],
   rightNavigation: [
-    { name: 'Профиль', href: '/profile' },
+    { name: 'Профиль', href: '/profile/orders' },
     {
       name: 'Корзина',
       href: '/cart',

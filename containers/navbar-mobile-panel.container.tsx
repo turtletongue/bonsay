@@ -41,7 +41,7 @@ export const NavbarMobilePanel = ({
       leaveTo="opacity-0 -translate-y-full"
     >
       <Disclosure.Panel className="sm:hidden z-30">
-        <div className="px-2 pt-2 pb-3 space-y-1 w-full flex flex-col bg-white absolute">
+        <ul className="px-2 pt-2 pb-3 space-y-1 w-full flex flex-col bg-white absolute">
           {Object.values(navigation)
             .flat(1)
             .map((item) => (
@@ -59,7 +59,7 @@ export const NavbarMobilePanel = ({
                 </Disclosure.Button>
               </div>
             ))}
-        </div>
+        </ul>
       </Disclosure.Panel>
     </Transition>
   );
