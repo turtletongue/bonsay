@@ -5,7 +5,7 @@ import CartItems from '@containers/cart-items.container';
 import CartTotal from '@containers/cart-total.container';
 import Void from '@containers/void.container';
 import {
-  removeDeletedProducts,
+  removeUnavailableProducts,
   selectCartItems,
   selectCartItemsCount,
   selectProductsIds,
@@ -29,7 +29,7 @@ export const Cart = () => {
   const productsIds = useAppSelector(selectProductsIds);
 
   useEffect(() => {
-    dispatch(removeDeletedProducts(productsIds));
+    dispatch(removeUnavailableProducts(productsIds));
   }, [dispatch, productsIds]);
 
   return (

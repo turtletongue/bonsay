@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import OrderDataForm from '@containers/order-data-form.container';
 import {
-  removeDeletedProducts,
+  removeUnavailableProducts,
   selectProductsIds,
 } from '@store/cart/cart.slice';
 import { selectIsAuthenticated } from '@store/core/core.slice';
@@ -32,7 +32,7 @@ export const OrderPlacing = () => {
   const productsIds = useAppSelector(selectProductsIds);
 
   useEffect(() => {
-    dispatch(removeDeletedProducts(productsIds));
+    dispatch(removeUnavailableProducts(productsIds));
   }, [dispatch, productsIds]);
 
   return (

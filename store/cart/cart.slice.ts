@@ -7,8 +7,8 @@ import initialState from './cart.initial-state';
 import { RootState } from '@store/index';
 import { Id, Product } from '@app/declarations';
 
-export const removeDeletedProducts = createAsyncThunk(
-  'cart/removeDeletedProducts',
+export const removeUnavailableProducts = createAsyncThunk(
+  'cart/removeUnavailableProducts',
   async (productsIds: Id[], { dispatch }) => {
     const existingProductsIds: Id[] = (
       await axios.get(api.products, {
@@ -17,6 +17,8 @@ export const removeDeletedProducts = createAsyncThunk(
           id: {
             $in: productsIds,
           },
+          isAvailable: true,
+          isDeleted: false,
         },
       })
     ).data.data?.map((product: Product) => String(product.id));

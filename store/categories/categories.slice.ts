@@ -10,8 +10,13 @@ import { Category } from '@app/declarations';
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
   async () => {
-    const categories: { data: Category[] } = (await axios.get(api.categories))
-      .data;
+    const categories: { data: Category[] } = (
+      await axios.get(api.categories, {
+        params: {
+          isDeleted: false,
+        },
+      })
+    ).data;
 
     return categories.data.map((category) =>
       category.upload

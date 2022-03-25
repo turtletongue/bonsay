@@ -2,6 +2,8 @@ export const allProductsIds = {
   name: 'allProductsIds',
   text: `
     SELECT products.id
-    FROM products;
+    FROM products product
+    WHERE product."isAvailable" = TRUE AND
+          product."isDeleted" = FALSE;
   `,
 };

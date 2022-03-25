@@ -7,7 +7,9 @@ export const productById = {
     FROM products product
     LEFT JOIN uploads upload
     ON product."uploadId" = upload.id
-    WHERE product.id = $1
+    WHERE product.id = $1 AND
+          product."isAvailable" = TRUE AND
+          product."isDeleted" = FALSE
     GROUP BY product.id, upload."internalPath"
   `,
 };

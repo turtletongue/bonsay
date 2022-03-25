@@ -6,7 +6,9 @@ export const similarProducts = {
     LEFT JOIN uploads upload
     ON product."uploadId" = upload.id
     WHERE product."categoryId" = $1 AND
-          product.id != $2
+          product.id != $2 AND
+          product."isAvailable" = TRUE AND
+          product."isDeleted" = FALSE
     LIMIT 4
   `,
 };

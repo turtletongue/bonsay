@@ -6,5 +6,6 @@ export const categories = {
     FROM categories category
     LEFT JOIN uploads upload
     ON category."uploadId" = upload.id
+    WHERE category."isDeleted" = FALSE
   `,
 };

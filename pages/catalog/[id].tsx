@@ -82,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: products.rows.map((product) => ({
       params: { id: String(product.id) },
     })),
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
@@ -90,6 +90,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pool = new Pool(dbConnectionConfig);
 
   const product: Product = (await pool.query(productById, [params.id])).rows[0];
+
+  if (!product) {
+    return {
+      notFound: true,
+    };
+  }
 
   const photos: Upload[] = (await pool.query(productPhotos, [product.id])).rows;
 

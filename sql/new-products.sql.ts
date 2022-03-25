@@ -6,6 +6,8 @@ export const newProducts = {
     FROM products product
     LEFT JOIN uploads upload
     ON product."uploadId" = upload.id
+    WHERE product."isAvailable" = TRUE AND
+          product."isDeleted" = FALSE
     ORDER BY product."createdAt" DESC
     LIMIT 10
   `,
