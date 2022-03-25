@@ -1,5 +1,5 @@
-export const FRONT_URL = 'http://localhost:3020/';
-export const API_URL = 'http://localhost:3020/api/';
+export const FRONT_URL = 'https://bonsay.istmen.space/';
+export const API_URL = 'https://bonsay.istmen.space/api/';
 
 export const api = {
   products: API_URL + 'products',
