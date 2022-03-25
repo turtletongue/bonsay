@@ -62,20 +62,26 @@ export const ProfileOrders = () => {
       <Head>
         <title>Заказы | BONSAY</title>
       </Head>
-      <div className="w-full p-4">
-        <ProfileNavigation activePage="orders" />
-        {isLoading ? (
-          <Void text={<FadeLoader color="#627A52" />} />
+      <div className="w-full">
+        {orders.length !== 0 ? (
+          <div className="p-4">
+            <ProfileNavigation activePage="orders" />
+            {isLoading ? (
+              <Void text={<FadeLoader color="#627A52" />} />
+            ) : (
+              <Orders orders={orders} />
+            )}
+            <div className="w-full flex justify-center">
+              <Pagination
+                pageNumber={pageNumber}
+                total={total}
+                onPageChange={onPageChange}
+              />
+            </div>
+          </div>
         ) : (
-          <Orders orders={orders} />
+          <Void text="ЗАКАЗЫ НЕ НАЙДЕНЫ" />
         )}
-        <div className="w-full flex justify-center">
-          <Pagination
-            pageNumber={pageNumber}
-            total={total}
-            onPageChange={onPageChange}
-          />
-        </div>
       </div>
     </>
   );

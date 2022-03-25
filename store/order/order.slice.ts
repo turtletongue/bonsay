@@ -38,7 +38,6 @@ export const createOrder = createAsyncThunk(
           phone,
           purchases: cartItems.map((cartItem) => ({
             productId: cartItem.product.id,
-            qty: cartItem.qty,
           })),
           addressId: address.id,
         },
