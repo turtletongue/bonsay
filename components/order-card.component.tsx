@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Badge from '@components/badge.component';
 import { getOrderNumber } from '@utils/get-order-number';
 import { orderStatus } from '@utils/order-status';
+import { orderBadgeType } from '@utils/order-badge-type';
 
 import { Id, Purchase } from '@app/declarations';
 
@@ -25,7 +26,7 @@ export const OrderCard = ({ id, status, createdAt, purchases }: OrderProps) => {
             от {new Date(createdAt).toLocaleDateString('ru')}
           </span>
         </div>
-        <Badge>{orderStatus[status]}</Badge>
+        <Badge type={orderBadgeType[status]}>{orderStatus[status]}</Badge>
       </div>
       <div className="w-full p-4 bg-white flex flex-col justify-center gap-4">
         <div className="grid grid-flow-row grid-cols-mini gap-1 justify-center">

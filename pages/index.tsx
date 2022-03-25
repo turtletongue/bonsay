@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import { Pool } from 'pg';
 
 import MainScreen from '@containers/main-screen.container';
-import NewProducts from '@containersnew-products.container';
+import NewProducts from '@containers/new-products.container';
 import CategoriesScreen from '@containers/categories-screen.container';
 import { categoriesPreview } from '@sql/categories-preview.sql';
 import { pageDescriptions } from '@app/page-descriptions';
