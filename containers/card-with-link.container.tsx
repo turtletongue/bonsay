@@ -16,7 +16,7 @@ export const CardWithLink = ({ product, isInCart }: CardWithLinkProps) => {
       <a>
         <Card
           title={product.name}
-          price={product.price}
+          price={+product.price}
           imageUrl={product.path || DEFAULT_PRODUCT_IMAGE}
           isInCart={isInCart}
         />
