@@ -264,5 +264,4 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  mode: 'jit',
 };
