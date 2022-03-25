@@ -26,10 +26,10 @@ export const Cart = () => {
 
   const dispatch = useAppDispatch();
 
-  const productsIds = useAppSelector(selectProductsIds);
+  const productsIds = JSON.stringify(useAppSelector(selectProductsIds));
 
   useEffect(() => {
-    dispatch(removeUnavailableProducts(productsIds));
+    dispatch(removeUnavailableProducts(JSON.parse(productsIds)));
   }, [dispatch, productsIds]);
 
   return (
