@@ -11,13 +11,8 @@ interface CartItemsProps {
 export const CartItems = ({ items }: CartItemsProps) => {
   return (
     <div className="py-4">
-      {items.map((item, index) => (
-        <Fragment key={item.product.id}>
-          <CartItem product={item.product} />
-          {index !== items.length - 1 && (
-            <hr className="max-w-5xl mx-auto opacity-30" />
-          )}
-        </Fragment>
+      {items.map((item) => (
+        <CartItem key={item.product.id} product={item.product} />
       ))}
     </div>
   );

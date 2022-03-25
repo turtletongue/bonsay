@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import Button from '@components/button.component';
 import OutlineButton from '@components/outline-button.component';
+import SliderDialog from '@components/slider-dialog.component';
 import { addProductToCart, selectProductsIds } from '@store/cart/cart.slice';
 import LittleImage from '@components/little-image.component';
 import { getAgeWord } from '@utils/get-age-word';
@@ -11,7 +12,6 @@ import { DEFAULT_PRODUCT_IMAGE } from '@app/variables';
 
 import { Product } from '@app/declarations';
 import { useState } from 'react';
-import SliderDialog from '@componentsslider-dialog.component';
 
 interface ProductInfoProps {
   product: Product;

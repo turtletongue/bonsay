@@ -43,6 +43,12 @@ export const CatalogScreen = () => {
     dispatch(setPage(1));
   };
 
+  const onPageChange = (page: number) => {
+    return () => {
+      dispatch(setPage(page));
+    };
+  };
+
   return (
     <div className="flex flex-col items-center w-full my-5">
       <div className="flex flex-row justify-center items-center w-full mb-3">
@@ -61,7 +67,11 @@ export const CatalogScreen = () => {
           className="max-w-6xl justify-center"
         />
       </div>
-      <Pagination pageNumber={pageNumber} total={total} />
+      <Pagination
+        pageNumber={pageNumber}
+        total={total}
+        onPageChange={onPageChange}
+      />
     </div>
   );
 };

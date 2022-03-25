@@ -37,7 +37,11 @@ export const fetchProfileOrders = createAsyncThunk(
 export const profileOrdersSlice = createSlice({
   name: 'profileOrders',
   initialState,
-  reducers: {},
+  reducers: {
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
+  },
   extraReducers: {
     [fetchProfileOrders.pending as any]: (state) => {
       state.loading = 'pending';
@@ -65,6 +69,12 @@ export const profileOrdersSlice = createSlice({
   },
 });
 
+export const { setPage } = profileOrdersSlice.actions;
+
 export const selectOrders = (state: RootState) => state.profileOrders.orders;
+export const selectPage = (state: RootState) => state.profileOrders.page;
+export const selectTotal = (state: RootState) => state.profileOrders.total;
+export const selectIsLoading = (state: RootState) =>
+  state.profileOrders.loading !== 'idle';
 
 export default profileOrdersSlice.reducer;

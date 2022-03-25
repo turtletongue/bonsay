@@ -24,7 +24,7 @@ export const CartTotal = ({ total, children }: CartTotalProps) => {
     <div className="grid grid-cols-1 w-full justify-center max-w-5xl select-none mx-auto my-4 p-4 w-full">
       <div className="w-full relative">
         <Total total={total} className="absolute w-full" />
-        <hr className="max-w-5xl mx-auto opacity-30 mt-4" />
+        <hr className="max-w-5xl mx-auto opacity-30 mt-4 border-black" />
       </div>
       {children}
       {isAuthenticated ? (

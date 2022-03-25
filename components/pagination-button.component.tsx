@@ -3,27 +3,23 @@ import { useAppDispatch } from '@app/hooks';
 
 interface PaginationButtonProps {
   pageNumber: number;
+  onPageChange: (page: number) => (...args: unknown[]) => unknown;
   isActive?: boolean;
 }
 
 export const PaginationButton = ({
   pageNumber,
+  onPageChange,
   isActive = false,
 }: PaginationButtonProps) => {
   const normalStyle = 'bg-white hover:bg-lightgray hover:text-secondary';
   const activeStyle = 'bg-glassgreen text-primary';
 
-  const dispatch = useAppDispatch();
-
-  const onClick = () => {
-    dispatch(setPage(pageNumber));
-  };
-
   return (
     <li>
-      <div onClick={onClick}>
+      <div onClick={onPageChange(pageNumber)}>
         <a
-          className={`block py-2 px-3 leading-tight text-darkgray  border border-gray ${
+          className={`block py-2 px-3 leading-tight text-darkgray  border border-gray select-none ${
             isActive ? activeStyle : normalStyle
           }`}
         >

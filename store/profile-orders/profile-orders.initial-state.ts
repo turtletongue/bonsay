@@ -5,6 +5,7 @@ export const initialState: ProfileOrdersState = {
   orders: [],
   loading: 'idle',
   error: undefined,
+  page: 1,
   success: false,
 };
 

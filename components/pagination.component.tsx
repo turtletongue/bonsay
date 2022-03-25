@@ -1,30 +1,22 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
-import { setPage } from '@store/products/products.slice';
 import { getPageNumberButtons } from '@utils/get-page-number-buttons';
-import { useAppDispatch } from '@app/hooks';
 import { DEFAULT_FETCH_LIMIT } from '@app/variables';
 
 interface PaginationProps {
   pageNumber: number;
   total: number;
   limit?: number;
+  onPageChange: (page: number) => (...args: unknown[]) => unknown;
 }
 
 export const Pagination = ({
   pageNumber,
   total,
+  onPageChange,
   limit = DEFAULT_FETCH_LIMIT,
 }: PaginationProps) => {
   const pagesCount = Math.ceil(total / limit);
-
-  const dispatch = useAppDispatch();
-
-  const changePage = (page: number) => {
-    return () => {
-      dispatch(setPage(page));
-    };
-  };
 
   return (
     <>
@@ -33,7 +25,7 @@ export const Pagination = ({
           <ul className="inline-flex items-center -space-x-px my-6">
             {pageNumber > 1 && (
               <li>
-                <div onClick={changePage(pageNumber - 1)}>
+                <div onClick={onPageChange(pageNumber - 1)}>
                   <a className="block py-2 px-3 ml-0 leading-tight text-darkgray bg-white rounded-l-lg border border-gray hover:bg-lightgray hover:text-secondary">
                     <span className="sr-only">Предыдущая</span>
                     <ChevronLeftIcon className="w-5 h-5" />
@@ -41,10 +33,10 @@ export const Pagination = ({
                 </div>
               </li>
             )}
-            {getPageNumberButtons(pagesCount, pageNumber)}
+            {getPageNumberButtons(pagesCount, onPageChange, pageNumber)}
             {pageNumber < pagesCount && (
               <li>
-                <div onClick={changePage(pageNumber + 1)}>
+                <div onClick={onPageChange(pageNumber + 1)}>
                   <a className="block py-2 px-3 leading-tight bg-white rounded-r-lg text-darkgray bg-white border border-gray hover:bg-lightgray hover:text-secondary">
                     <span className="sr-only">Следующая</span>
                     <ChevronRightIcon className="w-5 h-5" />

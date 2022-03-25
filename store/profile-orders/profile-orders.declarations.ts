@@ -4,6 +4,7 @@ export interface ProfileOrdersState {
   total: number;
   orders: Order[];
   loading: 'idle' | 'pending';
+  page: number;
   error?: string;
   success: boolean;
 }

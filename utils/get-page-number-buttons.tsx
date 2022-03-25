@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-import PaginationButton from "@components/pagination-button.component";
+import PaginationButton from '@components/pagination-button.component';
 
 export const getPageNumberButtons = (
   pagesCount: number,
+  onPageChange: (page: number) => (...args: unknown[]) => unknown,
   activePageNumber?: number
 ) => {
   const buttons: ReactNode[] = [];
@@ -13,6 +14,7 @@ export const getPageNumberButtons = (
       <PaginationButton
         key={pageNumber}
         pageNumber={pageNumber}
+        onPageChange={onPageChange}
         isActive={pageNumber === activePageNumber}
       />
     );
