@@ -26,7 +26,7 @@ export const FiltersDialog = () => {
         <Dialog open={isOpen} onClose={close}>
           <Dialog.Overlay />
 
-          <div className="z-10 absolute left-0 top-[3.5rem] bg-white">
+          <div className="z-10 absolute left-0 right-0 top-[3.7rem] bg-white">
             <XIcon className="h-5 w-5 absolute right-0 m-5" onClick={close} />
             <div className="flex justify-center w-full">
               <Filters />
