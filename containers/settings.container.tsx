@@ -16,6 +16,9 @@ import {
   selectSuccess,
   clear,
   selectError,
+  selectEmailError,
+  selectNewPasswordError,
+  selectPasswordChangeError,
 } from '@store/settings/settings.slice';
 import {
   selectAccessToken,
@@ -77,6 +80,17 @@ export const Settings = ({ user }: SettingsProps) => {
     );
   };
 
+  const emailError = useAppSelector(selectEmailError);
+  const newPasswordError = useAppSelector(selectNewPasswordError);
+  const passwordChangeError = useAppSelector(selectPasswordChangeError);
+
+  const isError =
+    !!emailError ||
+    !!newPasswordError ||
+    !!passwordChangeError ||
+    !email.length ||
+    (isPasswordChange && !newPassword.length);
+
   return (
     <div className="w-52 sm:w-96 relative">
       {error && (
@@ -87,7 +101,7 @@ export const Settings = ({ user }: SettingsProps) => {
       <ProfileEmailSection />
       {isPasswordChange && <ProfilePasswordSection />}
       <div className="mt-4">
-        <Button className="mt-2" onClick={saveChanges}>
+        <Button className="mt-2" onClick={saveChanges} isDisabled={isError}>
           СОХРАНИТЬ
         </Button>
         <ProfilePasswordChangeButton />

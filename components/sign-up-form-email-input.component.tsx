@@ -1,7 +1,11 @@
 import { ChangeEventHandler } from 'react';
 
 import Input from '@components/input.component';
-import { selectEmail, setEmail } from '@store/sign-up/sign-up.slice';
+import {
+  selectEmail,
+  selectEmailError,
+  setEmail,
+} from '@store/sign-up/sign-up.slice';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const SignUpFormEmailInput = () => {
@@ -12,6 +16,8 @@ export const SignUpFormEmailInput = () => {
     dispatch(setEmail(event.target.value));
   };
 
+  const emailError = useAppSelector(selectEmailError);
+
   return (
     <Input
       name="login"
@@ -19,6 +25,7 @@ export const SignUpFormEmailInput = () => {
       className="w-52 sm:w-60"
       value={email}
       onChange={changeEmail}
+      error={emailError}
     />
   );
 };

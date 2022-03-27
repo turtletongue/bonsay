@@ -30,6 +30,11 @@ export const signUpSlice = createSlice({
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {
       state.email = action.payload.trim();
+
+      state.emailError =
+        state.email.length <= 3 || !state.email.includes('@')
+          ? 'Некорректный email'
+          : undefined;
     },
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
@@ -38,6 +43,11 @@ export const signUpSlice = createSlice({
         state.password === state.passwordConfirmation
           ? undefined
           : 'Пароли не совпадают';
+
+      state.onlyPasswordError =
+        state.password.length < 7
+          ? 'Пароль содержит менее 7 символов'
+          : undefined;
     },
     setPasswordConfirmation: (state, action: PayloadAction<string>) => {
       state.passwordConfirmation = action.payload;
@@ -76,7 +86,10 @@ export const { setEmail, setPassword, setPasswordConfirmation, clear } =
   signUpSlice.actions;
 
 export const selectEmail = (state: RootState) => state.signUp.email;
+export const selectEmailError = (state: RootState) => state.signUp.emailError;
 export const selectPassword = (state: RootState) => state.signUp.password;
+export const selectOnlyPasswordError = (state: RootState) =>
+  state.signUp.onlyPasswordError;
 export const selectPasswordConfirmation = (state: RootState) =>
   state.signUp.passwordConfirmation;
 export const selectPasswordsError = (state: RootState) =>

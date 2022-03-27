@@ -2,7 +2,9 @@ import { Id } from '@app/declarations';
 
 export interface SettingsState {
   email: string;
+  emailError?: string;
   newPassword: string;
+  newPasswordError?: string;
   confirmPassword: string;
   passwordChangeError?: string;
   isPasswordChange: boolean;

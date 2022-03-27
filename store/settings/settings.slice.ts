@@ -28,6 +28,11 @@ export const settingsSlice = createSlice({
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {
       state.email = action.payload.trim();
+
+      state.emailError =
+        state.email.length <= 3 || !state.email.includes('@')
+          ? 'Некорректный email'
+          : undefined;
     },
     setNewPassword: (state, action: PayloadAction<string>) => {
       state.newPassword = action.payload;
@@ -36,6 +41,11 @@ export const settingsSlice = createSlice({
         state.newPassword === state.confirmPassword
           ? undefined
           : 'Пароли не совпадают';
+
+      state.newPasswordError =
+        state.newPassword.length < 7
+          ? 'Пароль содержит менее 7 символов'
+          : undefined;
     },
     setConfirmPassword: (state, action: PayloadAction<string>) => {
       state.confirmPassword = action.payload;
@@ -87,8 +97,11 @@ export const {
 } = settingsSlice.actions;
 
 export const selectEmail = (state: RootState) => state.settings.email;
+export const selectEmailError = (state: RootState) => state.settings.emailError;
 export const selectNewPassword = (state: RootState) =>
   state.settings.newPassword;
+export const selectNewPasswordError = (state: RootState) =>
+  state.settings.newPasswordError;
 export const selectConfirmPassword = (state: RootState) =>
   state.settings.confirmPassword;
 export const selectIsPasswordChange = (state: RootState) =>

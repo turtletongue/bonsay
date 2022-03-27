@@ -1,7 +1,11 @@
 import { ChangeEventHandler } from 'react';
 
 import Input from '@components/input.component';
-import { selectEmail, setEmail } from '@store/settings/settings.slice';
+import {
+  selectEmail,
+  selectEmailError,
+  setEmail,
+} from '@store/settings/settings.slice';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
 
 export const ProfileEmailInput = () => {
@@ -12,6 +16,8 @@ export const ProfileEmailInput = () => {
     dispatch(setEmail(event.target.value));
   };
 
+  const emailError = useAppSelector(selectEmailError);
+
   return (
     <Input
       name="email"
@@ -19,6 +25,7 @@ export const ProfileEmailInput = () => {
       className="w-full"
       value={email}
       onChange={onEmailChange}
+      error={emailError}
     />
   );
 };

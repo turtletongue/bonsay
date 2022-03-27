@@ -2,7 +2,9 @@ import { SignUpState } from './sign-up.declarations';
 
 export const initialState: SignUpState = {
   email: '',
+  emailError: undefined,
   password: '',
+  onlyPasswordError: undefined,
   passwordConfirmation: '',
   passwordsError: undefined,
   loading: 'idle',

@@ -3,6 +3,7 @@ import { ChangeEventHandler } from 'react';
 import Input from '@components/input.component';
 import {
   selectNewPassword,
+  selectNewPasswordError,
   selectPasswordChangeError,
   setNewPassword,
 } from '@store/settings/settings.slice';
@@ -16,6 +17,7 @@ export const ProfileNewPasswordInput = () => {
     dispatch(setNewPassword(event.target.value));
   };
 
+  const newPasswordError = useAppSelector(selectNewPasswordError);
   const passwordChangeError = useAppSelector(selectPasswordChangeError);
 
   return (
@@ -25,7 +27,7 @@ export const ProfileNewPasswordInput = () => {
       className="w-full"
       value={newPassword}
       onChange={onNewPasswordChange}
-      error={passwordChangeError}
+      error={passwordChangeError || newPasswordError}
     />
   );
 };

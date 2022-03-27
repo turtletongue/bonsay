@@ -2,6 +2,7 @@ import { ChangeEventHandler } from 'react';
 
 import Input from '@components/input.component';
 import {
+  selectOnlyPasswordError,
   selectPassword,
   selectPasswordsError,
   setPassword,
@@ -16,6 +17,7 @@ export const SignUpFormPasswordInput = () => {
     dispatch(setPassword(event.target.value));
   };
 
+  const onlyPasswordError = useAppSelector(selectOnlyPasswordError);
   const passwordsError = useAppSelector(selectPasswordsError);
 
   return (
@@ -25,7 +27,7 @@ export const SignUpFormPasswordInput = () => {
       className="w-52 sm:w-60"
       value={password}
       onChange={changePassword}
-      error={passwordsError}
+      error={passwordsError || onlyPasswordError}
     />
   );
 };
