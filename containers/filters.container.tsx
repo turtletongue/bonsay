@@ -120,14 +120,7 @@ export const Filters = ({ className }: FiltersProps) => {
 
   const selectedCategories = useAppSelector(selectFilterCategories);
 
-  useEffect(() => {
-    if (selectedCategories.length === 0) {
-      categories.forEach((category) => dispatch(addCategory(category.id)));
-    }
-  }, [dispatch, selectedCategories, categories]);
-
   const selectedSortId = useAppSelector(selectSortId);
-
   const changeSortId = (event) => {
     if (event.target.checked) {
       dispatch(setSortId(event.target.value));

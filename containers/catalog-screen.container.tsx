@@ -17,6 +17,7 @@ import {
   setPage,
 } from '@store/products/products.slice';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
+import Void from './void.container';
 
 export const CatalogScreen = () => {
   const dispatch = useAppDispatch();
@@ -61,11 +62,18 @@ export const CatalogScreen = () => {
       </div>
       <div className="flex flex-row space-around my-6">
         <Filters className="hidden sm:block" />
-        <ProductsGrid
-          products={products}
-          isLoading={isLoading}
-          className="max-w-6xl justify-center"
-        />
+        <div className="relative">
+          <ProductsGrid
+            products={products}
+            isLoading={isLoading}
+            className="max-w-6xl justify-center"
+          />
+          {products.length === 0 && (
+            <div className="absolute top-[6rem] sm:top-[45%] w-full items-center uppercase text-secondary text-xl text-bold font-medium text-center">
+              Ничего не найдено
+            </div>
+          )}
+        </div>
       </div>
       <Pagination
         pageNumber={pageNumber}
