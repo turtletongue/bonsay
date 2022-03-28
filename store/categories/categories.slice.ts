@@ -14,6 +14,7 @@ export const fetchCategories = createAsyncThunk(
       await axios.get(api.categories, {
         params: {
           isDeleted: false,
+          disablePagination: true,
         },
       })
     ).data;

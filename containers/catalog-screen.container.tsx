@@ -17,7 +17,6 @@ import {
   setPage,
 } from '@store/products/products.slice';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
-import Void from './void.container';
 
 export const CatalogScreen = () => {
   const dispatch = useAppDispatch();
