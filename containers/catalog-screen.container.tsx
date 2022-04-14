@@ -15,8 +15,14 @@ import {
   setSearch,
   selectPage,
   setPage,
+  selectIsFilterByOneCategory,
+  addCategory,
 } from '@store/products/products.slice';
 import { useAppDispatch, useAppSelector } from '@app/hooks';
+import {
+  fetchCategories,
+  selectCategories,
+} from '@store/categories/categories.slice';
 
 export const CatalogScreen = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +42,19 @@ export const CatalogScreen = () => {
   useEffect(() => {
     dispatch(fetchProducts({ page: pageNumber, filters }));
   }, [dispatch, pageNumber, filters]);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  const categories = useAppSelector(selectCategories);
+  const isFilterByOneCategory = useAppSelector(selectIsFilterByOneCategory);
+
+  useEffect(() => {
+    if (!isFilterByOneCategory) {
+      categories.forEach((category) => dispatch(addCategory(category.id)));
+    }
+  }, [dispatch, categories, isFilterByOneCategory]);
 
   const changeSearchValue = (event) => {
     dispatch(setSearch(event.target.value));

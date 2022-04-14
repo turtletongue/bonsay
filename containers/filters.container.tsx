@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
-
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
-  addCategory,
   selectFilterCategories,
-  selectIsFilterByOneCategory,
   selectMaximumAge,
   selectMaximumPrice,
   selectMinimumAge,
@@ -40,10 +36,6 @@ export const Filters = ({ className }: FiltersProps) => {
   const dispatch = useAppDispatch();
 
   const categories = useAppSelector(selectCategories);
-
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]);
 
   const minimumPrice = useAppSelector(selectMinimumPrice);
   const maximumPrice = useAppSelector(selectMaximumPrice);
@@ -120,13 +112,6 @@ export const Filters = ({ className }: FiltersProps) => {
   };
 
   const selectedCategories = useAppSelector(selectFilterCategories);
-  const isFilterByOneCategory = useAppSelector(selectIsFilterByOneCategory);
-
-  useEffect(() => {
-    if (!isFilterByOneCategory) {
-      categories.forEach((category) => dispatch(addCategory(category.id)));
-    }
-  }, [dispatch, categories, isFilterByOneCategory]);
 
   const selectedSortId = useAppSelector(selectSortId);
   const changeSortId = (event) => {
