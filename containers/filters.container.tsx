@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   addCategory,
   selectFilterCategories,
+  selectIsFilterByOneCategory,
   selectMaximumAge,
   selectMaximumPrice,
   selectMinimumAge,
@@ -119,10 +120,13 @@ export const Filters = ({ className }: FiltersProps) => {
   };
 
   const selectedCategories = useAppSelector(selectFilterCategories);
+  const isFilterByOneCategory = useAppSelector(selectIsFilterByOneCategory);
 
   useEffect(() => {
-    categories.forEach((category) => dispatch(addCategory(category.id)));
-  }, [dispatch, categories]);
+    if (!isFilterByOneCategory) {
+      categories.forEach((category) => dispatch(addCategory(category.id)));
+    }
+  }, [dispatch, categories, isFilterByOneCategory]);
 
   const selectedSortId = useAppSelector(selectSortId);
   const changeSortId = (event) => {
