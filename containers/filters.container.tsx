@@ -41,13 +41,13 @@ export const Filters = ({ className }: FiltersProps) => {
   const maximumPrice = useAppSelector(selectMaximumPrice);
 
   const changeMinimumPrice = (event) => {
-    const value = +event.target.value;
+    const value = event.target.value;
 
-    if (value > DEFAULT_PRICE_MAXIMUM) {
+    if (+value > +DEFAULT_PRICE_MAXIMUM) {
       dispatch(setMinimumPrice(DEFAULT_PRICE_MAXIMUM));
-    } else if (value < DEFAULT_PRICE_MINIMUM) {
+    } else if (+value < +DEFAULT_PRICE_MINIMUM) {
       dispatch(setMinimumPrice(DEFAULT_PRICE_MINIMUM));
-    } else if (value > maximumPrice) {
+    } else if (+value > +maximumPrice) {
       dispatch(setMinimumPrice(value));
       dispatch(setMaximumPrice(value));
     } else {
@@ -58,13 +58,13 @@ export const Filters = ({ className }: FiltersProps) => {
   };
 
   const changeMaximumPrice = (event) => {
-    const value = +event.target.value;
+    const value = event.target.value;
 
-    if (value > DEFAULT_PRICE_MAXIMUM) {
+    if (+value > +DEFAULT_PRICE_MAXIMUM) {
       dispatch(setMaximumPrice(DEFAULT_PRICE_MAXIMUM));
-    } else if (value < DEFAULT_PRICE_MINIMUM) {
+    } else if (+value < +DEFAULT_PRICE_MINIMUM) {
       dispatch(setMaximumPrice(DEFAULT_PRICE_MINIMUM));
-    } else if (value < minimumPrice) {
+    } else if (+value < +minimumPrice) {
       dispatch(setMaximumPrice(value));
       dispatch(setMinimumPrice(value));
     } else {
@@ -78,13 +78,13 @@ export const Filters = ({ className }: FiltersProps) => {
   const maximumAge = useAppSelector(selectMaximumAge);
 
   const changeMinimumAge = (event) => {
-    const value = +event.target.value;
+    const value = event.target.value;
 
-    if (value > DEFAULT_AGE_MAXIMUM) {
+    if (+value > +DEFAULT_AGE_MAXIMUM) {
       dispatch(setMinimumAge(DEFAULT_AGE_MAXIMUM));
-    } else if (value < DEFAULT_AGE_MINIMUM) {
+    } else if (+value < +DEFAULT_AGE_MINIMUM) {
       dispatch(setMinimumAge(DEFAULT_AGE_MINIMUM));
-    } else if (value > maximumAge) {
+    } else if (+value > +maximumAge) {
       dispatch(setMinimumAge(value));
       dispatch(setMaximumAge(value));
     } else {
@@ -95,13 +95,13 @@ export const Filters = ({ className }: FiltersProps) => {
   };
 
   const changeMaximumAge = (event) => {
-    const value = +event.target.value;
+    const value = event.target.value;
 
-    if (value > DEFAULT_AGE_MAXIMUM) {
+    if (+value > +DEFAULT_AGE_MAXIMUM) {
       dispatch(setMaximumAge(DEFAULT_AGE_MAXIMUM));
-    } else if (value < DEFAULT_AGE_MINIMUM) {
+    } else if (+value < +DEFAULT_AGE_MINIMUM) {
       dispatch(setMaximumAge(DEFAULT_AGE_MINIMUM));
-    } else if (value < minimumAge) {
+    } else if (+value < +minimumAge) {
       dispatch(setMinimumAge(value));
       dispatch(setMaximumAge(value));
     } else {

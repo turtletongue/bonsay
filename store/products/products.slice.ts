@@ -16,10 +16,10 @@ export const fetchProducts = createAsyncThunk(
     filters: { price, age, categories, sortId, search },
   }: FetchProductsParams) => {
     const minBirthdate = new Date();
-    minBirthdate.setFullYear(minBirthdate.getFullYear() - age.max);
+    minBirthdate.setFullYear(minBirthdate.getFullYear() - +age.max);
 
     const maxBirthdate = new Date();
-    maxBirthdate.setFullYear(maxBirthdate.getFullYear() - age.min);
+    maxBirthdate.setFullYear(maxBirthdate.getFullYear() - +age.min);
 
     const products: { total: number; data: Product[] } = (
       await axios.get(api.products, {
@@ -27,7 +27,7 @@ export const fetchProducts = createAsyncThunk(
           $skip: page * DEFAULT_FETCH_LIMIT - DEFAULT_FETCH_LIMIT,
           $order: sortTypes.find((type) => String(type.id) === sortId)?.order,
           price: {
-            $btw: [price.min, price.max],
+            $btw: [+price.min, +price.max],
           },
           birthdate: {
             $btw: [minBirthdate, maxBirthdate],
@@ -59,17 +59,25 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setMinimumPrice: (state, action: PayloadAction<number>) => {
-      state.filters.price.min = action.payload;
+    setMinimumPrice: (state, action: PayloadAction<string>) => {
+      state.filters.price.min = (
+        action.payload === '' ? action.payload : +action.payload
+      ) as number;
     },
-    setMaximumPrice: (state, action: PayloadAction<number>) => {
-      state.filters.price.max = action.payload;
+    setMaximumPrice: (state, action: PayloadAction<string>) => {
+      state.filters.price.max = (
+        action.payload === '' ? action.payload : +action.payload
+      ) as number;
     },
-    setMinimumAge: (state, action: PayloadAction<number>) => {
-      state.filters.age.min = action.payload;
+    setMinimumAge: (state, action: PayloadAction<string>) => {
+      state.filters.age.min = (
+        action.payload === '' ? action.payload : +action.payload
+      ) as number;
     },
-    setMaximumAge: (state, action: PayloadAction<number>) => {
-      state.filters.age.max = action.payload;
+    setMaximumAge: (state, action: PayloadAction<string>) => {
+      state.filters.age.max = (
+        action.payload === '' ? action.payload : +action.payload
+      ) as number;
     },
     addCategory: (state, action: PayloadAction<Id>) => {
       state.filters.categories[action.payload] = true;
