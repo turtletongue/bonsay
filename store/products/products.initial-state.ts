@@ -14,12 +14,12 @@ export const initialState: ProductsState = {
   error: undefined,
   filters: {
     price: {
-      min: DEFAULT_PRICE_MINIMUM,
-      max: DEFAULT_PRICE_MAXIMUM,
+      min: +DEFAULT_PRICE_MINIMUM,
+      max: +DEFAULT_PRICE_MAXIMUM,
     },
     age: {
-      min: DEFAULT_AGE_MINIMUM,
-      max: DEFAULT_AGE_MAXIMUM,
+      min: +DEFAULT_AGE_MINIMUM,
+      max: +DEFAULT_AGE_MAXIMUM,
     },
     categories: {},
     isFilterByOneCategory: false,

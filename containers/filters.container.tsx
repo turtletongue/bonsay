@@ -13,10 +13,7 @@ import {
   setPage,
   setSortId,
 } from '../store/products/products.slice';
-import {
-  fetchCategories,
-  selectCategories,
-} from '../store/categories/categories.slice';
+import { selectCategories } from '../store/categories/categories.slice';
 import {
   DEFAULT_AGE_MAXIMUM,
   DEFAULT_AGE_MINIMUM,
