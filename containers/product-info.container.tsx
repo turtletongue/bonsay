@@ -64,7 +64,7 @@ export const ProductInfo = ({ product }: ProductInfoProps) => {
               <Image
                 src={product.path ? product.path : DEFAULT_PRODUCT_IMAGE}
                 width={505}
-                height={503}
+                height={525}
                 alt={product.name}
               />
             </div>
