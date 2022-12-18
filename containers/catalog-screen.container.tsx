@@ -40,7 +40,13 @@ export const CatalogScreen = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchProducts({ page: pageNumber, filters }));
+    const timerId = setTimeout(() => {
+      dispatch(fetchProducts({ page: pageNumber, filters }));
+    }, 200);
+    
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [dispatch, pageNumber, filters]);
 
   useEffect(() => {
