@@ -46,7 +46,7 @@ export const ProductPage = ({ product }) => {
         <meta
           property="og:image"
           content={
-            product.path ? product.path : FRONT_URL + DEFAULT_PRODUCT_IMAGE
+            product.ogPath ? product.ogPath : FRONT_URL + DEFAULT_PRODUCT_IMAGE
           }
         />
       </Head>
@@ -110,6 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       product: {
         ...product,
         path: product.internalPath,
+        ogPath: product.path,
         photos,
         similarProducts: similar.map((product) => ({
           ...product,
