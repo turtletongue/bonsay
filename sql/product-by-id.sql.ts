@@ -10,6 +10,6 @@ export const productById = {
     WHERE product.id = $1 AND
           product."isAvailable" = TRUE AND
           product."isDeleted" = FALSE
-    GROUP BY product.id, upload."internalPath"
+    GROUP BY product.id, upload."internalPath", upload.path
   `,
 };
